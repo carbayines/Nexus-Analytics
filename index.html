@@ -305,22 +305,49 @@
         </div>
     </section>
 
-    <footer class="border-t border-white/5 bg-[#010308] pt-20 pb-10 relative z-10">
-        <div class="container mx-auto px-6 text-center max-w-4xl">
-            <h2 class="text-3xl md:text-5xl font-black mb-10 text-white tracking-tight leading-tight">Visualiza el Rendimiento Real de tus Datos</h2>
-            <button onclick="openModal('modal-general')" class="inline-flex items-center justify-center bg-white hover:bg-gray-200 text-black font-black py-4.5 px-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base mb-20">
-                Agendar Mi Auditoría Gratuita Ahora
-            </button>
-            <div class="w-full h-px bg-white/5 mb-10"></div>
-            <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] text-gray-500 font-mono">
-                <div class="text-center md:text-left">
-                    <p class="text-gray-400 font-bold mb-1 tracking-wider">NEXUS ANALYTICS | Data Consulting Group</p>
-                    <p>© 2026 Todos los derechos reservados.</p>
-                </div>
+   <footer class="container mx-auto px-6 pt-24 pb-12 text-center relative z-10 border-t border-white/5 max-w-5xl mt-20">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-8 text-left mb-16 items-start">
+        
+        <!-- Bloque 1: Marca -->
+        <div class="md:col-span-4 space-y-3">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg text-white flex items-center justify-center font-black text-base border border-blue-500/30">N</div>
+                <span class="text-sm font-black tracking-widest text-white font-sans">NEXUS ANALYTICS</span>
             </div>
+            <p class="text-xs text-gray-500 leading-relaxed font-sans">Sustituimos el caos operativo por arquitecturas de datos de alto rendimiento. Consultoría e infraestructura segura en la nube.</p>
         </div>
-    </footer>
 
+        <!-- Bloque 2: Enlaces de Conversión -->
+        <div class="md:col-span-4 md:text-center space-y-2">
+            <p class="text-[10px] font-mono tracking-widest text-blue-400 uppercase font-bold mb-3">Diagnósticos Rápidos</p>
+            <button onclick="openModal('calculator')" class="block text-xs text-gray-400 hover:text-white transition-colors mx-auto md:mx-0 font-sans">Calculadora de Pérdidas</button>
+            <button onclick="openModal('maturity')" class="block text-xs text-gray-400 hover:text-white transition-colors mx-auto md:mx-0 font-sans pt-1">Auditoría de Madurez Digital</button>
+            <button onclick="openModal('automation')" class="block text-xs text-gray-400 hover:text-white transition-colors mx-auto md:mx-0 font-sans pt-1">Potencial de Automatización</button>
+        </div>
+
+        <!-- Bloque 3: Soporte y Contacto -->
+        <div class="md:col-span-4 md:text-right space-y-2">
+            <p class="text-[10px] font-mono tracking-widest text-blue-400 uppercase font-bold mb-3">Canales Oficiales</p>
+            <p class="text-xs text-gray-400 font-sans">Soporte Técnico: <a href="mailto:nexusalanalytics011@gmail.com" class="text-blue-400 hover:underline">nexusalanalytics011@gmail.com</a></p>
+            <p class="text-[10px] font-mono text-emerald-400 uppercase tracking-wider pt-1 flex items-center justify-start md:justify-end gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Atención Corporativa Activa
+            </p>
+        </div>
+    </div>
+
+    <!-- Barra Inferior de Privacidad y Copyright (Vital para Google Search Console) -->
+    <div class="pt-8 border-t border-white/5 flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-mono text-gray-600 uppercase tracking-wider">
+        <p>NEXUS ANALYTICS &copy; 2026 • TODOS LOS DERECHOS RESERVADOS</p>
+        <div class="flex gap-4">
+            <a href="#" class="hover:text-gray-400 transition-colors">Aviso Legal</a>
+            <span>•</span>
+            <a href="#" class="hover:text-gray-400 transition-colors">Política de Privacidad (RGPD)</a>
+            <span>•</span>
+            <a href="#" class="hover:text-gray-400 transition-colors">Cookies</a>
+        </div>
+    </div>
+</footer>
     <div id="modal-general" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
         <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
             <button onclick="closeModal('modal-general')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
