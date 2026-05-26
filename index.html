@@ -4,22 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <!-- SEO Básico Obligatorio para Google -->
     <title>NEXUS ANALYTICS | Data Analytics & Infrastructure Consulting</title>
     <meta name="description" content="Sustituimos el caos operativo por soluciones técnicas de alto rendimiento. Obtén una auditoría de datos gratuita y optimiza la infraestructura de tu negocio.">
     <meta name="keywords" content="Nexus Analytics, consultoría de datos, data analytics, auditoría de datos gratis, infraestructura de datos, optimización de datos">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://vercel.app">
-
-    <!-- Metadatos Open Graph (Para cuando compartas tu web por WhatsApp, LinkedIn o X) -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="NEXUS ANALYTICS | Data Analytics & Infrastructure Consulting">
-    <meta property="og:description" content="Sustituimos el caos operativo por soluciones de alto rendimiento. Solicita tu auditoría de datos gratuita.">
-    <meta property="og:url" content="https://vercel.app">
-    <meta property="og:site_name" content="Nexus Analytics">
-    <meta name="twitter:card" content="summary_large_image">
-
-    <!-- Scripts Externos Existentes -->
+    
     <script src="https://cdn.tailwindcss.com"></script>
     <script async src="https://tally.so/widgets/embed.js"></script>
 
@@ -34,7 +23,7 @@
             background-position: center center;
         }
 
-        /* Paneles con efecto Glassmorphic premium (Estilo Linear/Vercel) */
+        /* Paneles con efecto Glassmorphic premium */
         .glass-panel {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(20px);
@@ -137,7 +126,7 @@
         </div>
     </header>
 
-    <section class="container mx-auto px-6 py-16 md:py-28 text-center relative z-10 max-w-5xl">
+    <section class="container mx-auto px-6 py-16 md:py-24 text-center relative z-10 max-w-5xl">
         <h1 class="text-5xl md:text-6xl lg:text-7xl font-black mb-6 leading-[1.1] tracking-tighter text-white">
             Tus datos esconden dinero.<br class="hidden md:block">
             Nosotros <span id="typewriter" class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 typewriter-cursor"></span>
@@ -158,7 +147,18 @@
         </div>
     </section>
 
-    <div class="w-full overflow-hidden border-y border-white/5 bg-[#030712]/50 py-5 mb-24 relative z-10 backdrop-blur-sm">
+    <section class="container mx-auto px-6 py-12 border-y border-white/5 bg-white/[0.01] relative z-10">
+        <p class="text-center text-xs font-mono tracking-widest text-gray-500 uppercase mb-8">Especialistas en la infraestructura líder del sector</p>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
+            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-blue-500 rounded-sm"></div> GOOGLE BIGQUERY</span>
+            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-indigo-500 rounded-sm"></div> LOOKER STUDIO</span>
+            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-yellow-500 rounded-sm"></div> PYTHON (DATA)</span>
+            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-cyan-500 rounded-sm"></div> POSTGRESQL</span>
+            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-orange-500 rounded-sm"></div> GA4 ANALYTICS</span>
+        </div>
+    </section>
+
+    <div class="w-full overflow-hidden border-b border-white/5 bg-[#030712]/50 py-5 relative z-10 backdrop-blur-sm">
         <div class="animate-marquee flex gap-16 items-center text-gray-600 font-mono font-bold uppercase tracking-widest text-[11px] whitespace-nowrap">
             <span>◆ MIGRACIÓN DE BASES DE DATOS</span>
             <span>◆ PYTHON DATA PIPELINES</span>
@@ -174,15 +174,48 @@
         </div>
     </div>
 
+    <section class="container mx-auto px-6 py-20 max-w-6xl relative z-10">
+        <div class="text-center mb-16">
+            <div class="text-xs font-bold text-amber-500 font-mono tracking-widest uppercase mb-2">Diagnóstico Gratuito</div>
+            <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">¿Qué analizamos en tu Auditoría Gratuita?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">No necesitas prepararnos informes complejos. Nosotros identificamos las fugas de dinero evaluando los síntomas reales de tu negocio.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
+                <div class="w-12 h-12 bg-red-600/10 border border-red-500/30 rounded-xl flex items-center justify-center text-red-400 font-bold mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">01</div>
+                <h3 class="text-xl font-bold text-white mb-3">Fugas de Presupuesto</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero por inventario mal cuadrado, ventas no registradas o procesos financieros rotos en tu ERP.</p>
+            </div>
+
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
+                <div class="w-12 h-12 bg-amber-600/10 border border-amber-500/30 rounded-xl flex items-center justify-center text-amber-400 font-bold mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">02</div>
+                <h3 class="text-xl font-bold text-white mb-3">Caos Operativo</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Analizamos exactamente cuántas horas pierde tu equipo a la semana picando y cruzando datos a mano en hojas de cálculo.</p>
+            </div>
+
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
+                <div class="w-12 h-12 bg-emerald-600/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400 font-bold mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">03</div>
+                <h3 class="text-xl font-bold text-white mb-3">Infraestructura y LOPD</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Validamos que el almacenamiento de tus bases de datos corporativas cumpla con las normativas de seguridad actuales para evitar sanciones.</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-12">
+            <button data-tally-open="RGVWPv" data-tally-layout="modal" data-tally-overlay="1" class="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-200 text-black font-black rounded-xl transition-all duration-300 tracking-wide shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transform hover:-translate-y-1">
+                Reclamar mi Auditoría y Diagnóstico
+            </button>
+        </div>
+    </section>
+
     <section class="container mx-auto px-6 py-4 relative z-10 max-w-6xl" id="servicios">
         <div class="mb-14 md:mb-16 max-w-3xl">
-            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-3">Infraestructura y Analítica</div>
-            <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">Soluciones de Datos Llave en Mano</h2>
+            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-3">Soluciones a Medida</div>
+            <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">Infraestructura de Datos Llave en Mano</h2>
             <p class="text-base md:text-lg text-gray-400 font-light">Estructuramos la información de tu empresa para detener las fugas ocultas de rentabilidad.</p>
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-            
             <div class="glass-panel tilt-card rounded-3xl p-8 md:col-span-4 min-h-[280px] flex flex-col justify-between group relative overflow-hidden">
                 <svg class="svg-watermark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
                 <div class="flex items-center justify-between mb-4 relative z-10">
@@ -237,7 +270,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
     </section>
 
@@ -248,7 +280,7 @@
                 
                 <div class="text-center mb-12 max-w-2xl mx-auto">
                     <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-4 inline-block shadow-inner">
-                        Analizador de Fricción Financiera
+                        Diagnóstico Financiero Interactivo
                     </span>
                     <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight mt-2">El Impacto Oculto en tu Facturación</h3>
                     <p class="text-gray-400 mt-4 font-light text-sm md:text-base">Mueve el control para evaluar las fugas financieras generadas por la ineficiencia de datos en tu infraestructura actual.</p>
@@ -301,7 +333,7 @@
                 <h4 class="font-bold text-lg text-white mb-3">Auditoría e Identificación</h4>
                 <p class="text-gray-400 text-sm leading-relaxed">Analizamos las debilidades metodológicas en tus hojas de cálculo, procesos ETL manuales y bases de datos. Localizamos exactamente dónde se rompe o duplica tu información operativa.</p>
             </div>
-            <div class="glass-panel tilt-card p-8 rounded-2xl relative border-t border-white/5">
+            <div class="glass-panel tilt-card p-8 rounded-2xl relative border-t-2 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.15)]">
                 <div class="text-6xl font-black text-blue-500/20 absolute top-4 right-6 font-mono select-none">03</div>
                 <h4 class="font-bold text-lg text-white mb-3">Producción y Automatización</h4>
                 <p class="text-gray-400 text-sm leading-relaxed">Desplegamos los scripts automatizados en Python, conectamos tus cuadros de mando interactivos e integramos tus sistemas con FacturaScripts. Comienzas a monitorizar tus KPIs con un clic.</p>
@@ -517,8 +549,8 @@
                     const centerX = rect.width / 2;
                     const centerY = rect.height / 2;
                     
-                    const rotateX = ((y - centerY) / centerY) * -4; // Max rotación Y
-                    const rotateY = ((x - centerX) / centerX) * 4;  // Max rotación X
+                    const rotateX = ((y - centerY) / centerY) * -4; 
+                    const rotateY = ((x - centerX) / centerX) * 4;  
                     
                     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
                     card.style.transition = 'none';
@@ -540,7 +572,6 @@
             calcularFriccionData();
             setTimeout(executeTyping, 800);
             
-            // Activar efecto 3D solo en escritorio (pantallas anchas) para evitar bugs en móviles
             if (window.innerWidth > 768) {
                 initTiltEffect();
             }
