@@ -8,7 +8,15 @@
     <meta name="description" content="Sustituimos el caos operativo por soluciones técnicas de alto rendimiento. Obtén una auditoría de datos gratuita y optimiza la infraestructura de tu negocio.">
     <meta name="keywords" content="Nexus Analytics, consultoría de datos, data analytics, auditoría de datos gratis, infraestructura de datos, optimización de datos">
     <meta name="robots" content="index, follow">
-    
+    <link rel="canonical" href="https://nexus-analytics-kappa.vercel.app/">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NEXUS ANALYTICS | Data Analytics & Infrastructure Consulting">
+    <meta property="og:description" content="Sustituimos el caos operativo por soluciones de alto rendimiento. Solicita tu auditoría de datos gratuita.">
+    <meta property="og:url" content="https://nexus-analytics-kappa.vercel.app/">
+    <meta property="og:site_name" content="Nexus Analytics">
+    <meta name="twitter:card" content="summary_large_image">
+
     <script src="https://cdn.tailwindcss.com"></script>
     <script async src="https://tally.so/widgets/embed.js"></script>
 
@@ -23,7 +31,7 @@
             background-position: center center;
         }
 
-        /* Paneles con efecto Glassmorphic premium */
+        /* Paneles Glassmorphic premium */
         .glass-panel {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(20px);
@@ -33,7 +41,7 @@
             transform-style: preserve-3d;
         }
 
-        /* Orbes de luz difuminados con animación CSS */
+        /* Animación orbes */
         @keyframes orbit {
             0% { transform: translate(0px, 0px) scale(1); }
             33% { transform: translate(40px, -60px) scale(1.1); }
@@ -42,7 +50,7 @@
         }
         .animate-glow { animation: orbit 14s ease-in-out infinite; }
 
-        /* Efecto de cinta sin fin (Marquee horizontal) */
+        /* Cinta sin fin */
         @keyframes marquee {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -50,7 +58,7 @@
         .animate-marquee { display: flex; width: 200%; animation: marquee 35s linear infinite; }
         .animate-marquee:hover { animation-play-state: paused; }
 
-        /* Customización avanzada del control range de la calculadora */
+        /* Range slider customizado */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
@@ -63,21 +71,21 @@
             border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        /* Animación suave para acordeón de FAQs */
+        /* FAQs */
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out; opacity: 0; }
         .faq-item.active .faq-answer { max-height: 300px; opacity: 1; }
         .faq-item .faq-icon { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease; }
         .faq-item.active .faq-icon { transform: rotate(45deg); color: #ef4444; }
 
-        /* Máquina de escribir cursor dinámico */
+        /* Cursor animado */
         .typewriter-cursor::after { content: '|'; animation: blink 0.8s step-end infinite; color: #3b82f6; font-weight: 300; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Gráfico de barras animado de las tarjetas */
+        /* Barras animadas */
         @keyframes growBar { from { height: 10%; } to { height: var(--target-height); } }
         .data-bar { animation: growBar 2s cubic-bezier(0.4, 0, 0.2, 1) forwards; }
         
-        /* Icono SVG de marca de agua gigante para los servicios */
+        /* Marca de agua */
         .svg-watermark { position: absolute; right: -25px; bottom: -25px; width: 180px; height: 180px; opacity: 0.02; color: white; transform: rotate(-15deg); transition: all 0.5s ease; pointer-events: none; }
         .glass-panel:hover .svg-watermark { opacity: 0.06; color: #3b82f6; transform: rotate(0deg) scale(1.1); }
     </style>
@@ -137,24 +145,43 @@
         
         <div class="flex flex-col items-center gap-4 max-w-xl mx-auto">
             <button data-tally-open="RGVWPv" data-tally-layout="modal" data-tally-overlay="1" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-4.5 px-10 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:shadow-[0_0_50px_rgba(79,70,229,0.6)] transition-all duration-300 transform hover:-translate-y-1 text-base md:text-lg flex items-center justify-center gap-3 group border border-blue-400/30">
-                Obtener Auditoría de Datos Gratuita
+                Analizar las pérdidas de mi negocio gratis
                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
-            <p class="text-[11px] md:text-xs text-gray-500 font-mono flex items-center justify-center gap-2 mt-2 px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 backdrop-blur-sm">
-                <svg class="w-4 h-4 text-emerald-500 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
-                <span>Garantía LOPD: Firmamos un Acuerdo de Confidencialidad (NDA) antes de revisar tus sistemas.</span>
-            </p>
+            
+            <div class="flex flex-wrap justify-center items-center gap-6 mt-4 text-[11px] font-mono text-gray-400 tracking-wide uppercase bg-white/[0.02] border border-white/5 px-6 py-2 rounded-full backdrop-blur-sm">
+                <span class="flex items-center gap-1.5 text-emerald-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                    100% Confidencial (Firmamos NDA)
+                </span>
+                <span class="hidden md:inline">•</span>
+                <span class="flex items-center gap-1.5">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    Sin Compromiso de Permanencia
+                </span>
+            </div>
         </div>
     </section>
 
     <section class="container mx-auto px-6 py-12 border-y border-white/5 bg-white/[0.01] relative z-10">
         <p class="text-center text-xs font-mono tracking-widest text-gray-500 uppercase mb-8">Especialistas en la infraestructura líder del sector</p>
-        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16 opacity-50 hover:opacity-100 transition-opacity duration-500 grayscale hover:grayscale-0">
-            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-blue-500 rounded-sm"></div> GOOGLE BIGQUERY</span>
-            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-indigo-500 rounded-sm"></div> LOOKER STUDIO</span>
-            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-yellow-500 rounded-sm"></div> PYTHON (DATA)</span>
-            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-cyan-500 rounded-sm"></div> POSTGRESQL</span>
-            <span class="font-black text-sm md:text-base tracking-wider text-white flex items-center gap-2"><div class="w-2 h-2 bg-orange-500 rounded-sm"></div> GA4 ANALYTICS</span>
+        <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M14.25.18c.9 0 1.66.73 1.66 1.65v2.89h2.9c.91 0 1.64.74 1.64 1.63v4.33c0 .91-.73 1.64-1.64 1.64h-1.1v-1.47c0-1.8-1.46-3.27-3.27-3.27H9.72V5.19c0-.92.73-1.65 1.65-1.65h2.88V1.83c0-.92-.74-1.65-1.65-1.65H8.38c-.9 0-1.64.73-1.64 1.65v1.1h1.47c1.8 0 3.27 1.45 3.27 3.26v4.72H6.76c-.92 0-1.65-.73-1.65-1.64V5c0-.91.73-1.64 1.65-1.64h2.89v-1.1a1.64 1.64 0 0 0-1.65-1.64H4.37c-.9 0-1.64.73-1.64 1.64v4.34c0 .9.74 1.64 1.64 1.64h1.1v1.47c0 1.8 1.46 3.27 3.27 3.27h4.72v2.18c0 .91-.73 1.64-1.64 1.64H8.94c-.9 0-1.64-.73-1.64-1.64v-2.89H4.4c-.91 0-1.64-.74-1.64-1.63V9.12c0-.91.73-1.64 1.64-1.64h1.1v1.47c0 1.8 1.46 3.27 3.27 3.27h4.72v2.18c0 .91-.73 1.64-1.64 1.64H8.94c-.9 0-1.64-.73-1.64-1.64v-2.89H4.4c-.91 0-1.64-.74-1.64-1.63V9.12c0-.91.73-1.64 1.64-1.64H7.3V4.4c0-.92-.73-1.65-1.65-1.65H2.76c-.9 0-1.64.73-1.64 1.65v4.34c0 .91.74 1.64 1.64 1.64h1.1v1.47c0 1.8 1.46 3.27 3.27 3.27h4.72v2.18c0 .91-.73 1.64-1.64 1.64H8.94c-.9 0-1.64-.73-1.64-1.64v-2.89H4.4c-.91 0-1.64-.74-1.64-1.63V9.12c0-.91.73-1.64 1.64-1.64h2.9v-2.9c0-.9-.74-1.64-1.64-1.64H2.76A1.64 1.64 0 0 0 1.12 4.4v4.34c0 .9.74 1.64 1.64 1.64h1.1v-1.47c0-1.8 1.46-3.27 3.27-3.27h4.72V2.8c0-.91.73-1.64 1.64-1.64h2.88z"/></svg>
+                <span class="font-bold text-xs tracking-wider font-mono">PYTHON</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm-1 5.5v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2z"/></svg>
+                <span class="font-bold text-xs tracking-wider font-mono">POSTGRESQL</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95A5.469 5.469 0 0112 6c2.63 0 4.89 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
+                <span class="font-bold text-xs tracking-wider font-mono">GOOGLE CLOUD</span>
+            </div>
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
+                <span class="font-bold text-xs tracking-wider font-mono">LOOKER STUDIO</span>
+            </div>
         </div>
     </section>
 
@@ -185,102 +212,87 @@
             <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
                 <div class="w-12 h-12 bg-red-600/10 border border-red-500/30 rounded-xl flex items-center justify-center text-red-400 font-bold mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">01</div>
                 <h3 class="text-xl font-bold text-white mb-3">Fugas de Presupuesto</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero por inventario mal cuadrado, ventas no registradas o procesos financieros rotos en tu ERP.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero en campañas de marketing digital mal rastreadas, atribuciones duplicadas o métricas fantasma.</p>
             </div>
 
             <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
                 <div class="w-12 h-12 bg-amber-600/10 border border-amber-500/30 rounded-xl flex items-center justify-center text-amber-400 font-bold mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">02</div>
                 <h3 class="text-xl font-bold text-white mb-3">Caos Operativo</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">Analizamos exactamente cuántas horas pierde tu equipo a la semana picando y cruzando datos a mano en hojas de cálculo.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">Analizamos cuántas horas pierde tu equipo consolidando datos de forma manual que podrían centralizarse en cuadros automáticos.</p>
             </div>
 
             <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
                 <div class="w-12 h-12 bg-emerald-600/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400 font-bold mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">03</div>
-                <h3 class="text-xl font-bold text-white mb-3">Infraestructura y LOPD</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">Validamos que el almacenamiento de tus bases de datos corporativas cumpla con las normativas de seguridad actuales para evitar sanciones.</p>
+                <h3 class="text-xl font-bold text-white mb-3">Seguridad e Infraestructura</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Validamos que el almacenamiento de tus bases de datos cumpla normativas internacionales para blindarte ante multas LOPD.</p>
             </div>
-        </div>
-
-        <div class="text-center mt-12">
-            <button data-tally-open="RGVWPv" data-tally-layout="modal" data-tally-overlay="1" class="inline-flex items-center justify-center px-8 py-4 bg-white hover:bg-gray-200 text-black font-black rounded-xl transition-all duration-300 tracking-wide shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_40px_rgba(255,255,255,0.4)] transform hover:-translate-y-1">
-                Reclamar mi Auditoría y Diagnóstico
-            </button>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-4 relative z-10 max-w-6xl" id="servicios">
-        <div class="mb-14 md:mb-16 max-w-3xl">
-            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-3">Soluciones a Medida</div>
-            <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tight">Infraestructura de Datos Llave en Mano</h2>
-            <p class="text-base md:text-lg text-gray-400 font-light">Estructuramos la información de tu empresa para detener las fugas ocultas de rentabilidad.</p>
+    <section class="container mx-auto px-6 pb-20 max-w-5xl relative z-10">
+        <div class="glass-panel p-8 md:p-12 rounded-3xl border border-blue-500/20 bg-gradient-to-r from-blue-950/20 to-indigo-950/20 flex flex-col md:flex-row items-center justify-between gap-8 shadow-[0_0_40px_rgba(59,130,246,0.1)]">
+            <div class="max-w-xl text-center md:text-left">
+                <span class="text-[10px] font-mono font-bold tracking-wider text-blue-400 bg-blue-500/10 border border-blue-500/20 px-3 py-1 rounded-full uppercase mb-4 inline-block">Recurso Gratuito (Excel)</span>
+                <h3 class="text-2xl md:text-3xl font-black text-white mb-3">Mapea tus fugas en 10 minutos</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Descarga la misma plantilla de auditoría interna que utilizamos para localizar ineficiencias de software y duplicidades operativas en las empresas de nuestros clientes.</p>
+            </div>
+            <div class="w-full md:w-auto">
+                <button data-tally-open="RGVWPv" class="w-full md:w-auto px-8 py-4 bg-white text-black font-black rounded-xl hover:bg-gray-200 transition-all duration-300 shadow-lg text-sm whitespace-nowrap transform hover:-translate-y-1">
+                    Descargar Plantilla Ahora
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <section class="container mx-auto px-6 py-12 relative z-10 max-w-5xl">
+        <div class="text-center mb-16">
+            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-2">Herramientas Diagnósticas</div>
+            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">Cuantifica tus Oportunidades</h2>
+            <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Tests rápidos diseñados para evaluar la madurez de tus datos reales y descubrir pérdidas invisibles en tu organización.</p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-6 gap-6">
-            <div class="glass-panel tilt-card rounded-3xl p-8 md:col-span-4 min-h-[280px] flex flex-col justify-between group relative overflow-hidden">
-                <svg class="svg-watermark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                <div class="flex items-center justify-between mb-4 relative z-10">
-                    <div class="w-12 h-12 bg-blue-500/10 border border-blue-500/20 rounded-2xl flex items-center justify-center text-blue-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4m0 5c0 2.21-3.582 4-8 4s-8-1.79-8-4"></path></svg>
-                    </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group">
+                <div>
+                    <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Gratis</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Calculadora de Pérdida Operativa</h3>
+                    <p class="text-sm text-gray-400 mb-6">Estima cuánto dinero dejas sobre la mesa por ineficiencias de software y cruce manual de datos.</p>
                 </div>
-                <div class="relative z-10">
-                    <h3 class="text-xl md:text-2xl font-black text-white mb-2 tracking-tight">Estructuración y Limpieza (Procesamiento ETL)</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-2xl">
-                        Extraemos, transformamos y unificamos tus datos dispersos en hojas de cálculo, CSVs o CRMs obsoletos. Eliminamos duplicados y resolvemos incoherencias para entregarte una base de datos única, limpia y centralizada.
-                    </p>
-                </div>
+                <button data-tally-open="RGVWPv" class="w-full py-3 bg-white/5 hover:bg-blue-600 border border-white/10 rounded-xl text-white font-bold text-sm transition-all duration-300">
+                    Probar calculadora →
+                </button>
             </div>
-
-            <div class="glass-panel tilt-card rounded-3xl p-8 md:col-span-2 min-h-[280px] flex flex-col justify-between group relative overflow-hidden border-t border-indigo-500/30">
-                <svg class="svg-watermark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
-                <div class="relative z-10">
-                    <h3 class="text-xl font-black text-white tracking-tight mb-2">Cuadros de Mando (BI)</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed mb-4">Tus KPIs en tiempo real. Visualiza métricas interactivas al instante.</p>
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group border-t-2 border-indigo-500">
+                <div>
+                    <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">5 Preguntas</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Test de Madurez de Infraestructura</h3>
+                    <p class="text-sm text-gray-400 mb-6">Descubre el nivel de seguridad de tu almacenamiento actual frente al estándar corporativo del mercado.</p>
                 </div>
-                <div class="flex items-end gap-2 h-16 w-full opacity-60 group-hover:opacity-100 transition-opacity relative z-10">
-                    <div class="w-full bg-blue-600/80 rounded-t-sm data-bar" style="--target-height: 40%"></div>
-                    <div class="w-full bg-indigo-500/80 rounded-t-sm data-bar" style="--target-height: 75%; animation-delay: 0.1s"></div>
-                    <div class="w-full bg-purple-500/80 rounded-t-sm data-bar" style="--target-height: 55%; animation-delay: 0.2s"></div>
-                    <div class="w-full bg-cyan-400/90 rounded-t-sm data-bar" style="--target-height: 100%; animation-delay: 0.3s"></div>
-                </div>
+                <button data-tally-open="RGVWPv" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 border border-transparent rounded-xl text-white font-bold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)]">
+                    Iniciar diagnóstico →
+                </button>
             </div>
-
-            <div class="glass-panel tilt-card rounded-3xl p-8 md:col-span-2 min-h-[280px] flex flex-col justify-between group relative overflow-hidden">
-                <svg class="svg-watermark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
-                <div class="w-10 h-10 bg-cyan-500/10 border border-cyan-500/20 rounded-xl flex items-center justify-center text-cyan-400 relative z-10">
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group">
+                <div>
+                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Hoja de Ruta</span>
+                    <h3 class="text-xl font-bold text-white mb-3">Potencial de Automatización</h3>
+                    <p class="text-sm text-gray-400 mb-6">Calcula las horas y costes de personal que puedes recortar integrando pipelines modernos.</p>
                 </div>
-                <div class="relative z-10 mt-4">
-                    <h3 class="text-xl font-black text-white mb-2 tracking-tight">Scripts en Python</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed">Algoritmos a medida para modelar tu negocio, automatizar el cruce de datos financieros y extraer proyecciones.</p>
-                </div>
-            </div>
-
-            <div class="glass-panel tilt-card rounded-3xl p-8 md:col-span-4 min-h-[280px] flex flex-col justify-between group relative overflow-hidden border-t border-purple-500/30">
-                <svg class="svg-watermark" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                <div class="flex items-center justify-between mb-4 relative z-10">
-                    <div class="w-12 h-12 bg-purple-500/10 border border-purple-500/20 rounded-2xl flex items-center justify-center text-purple-400">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01"></path></svg>
-                    </div>
-                </div>
-                <div class="relative z-10">
-                    <h3 class="text-xl md:text-2xl font-black text-white mb-2 tracking-tight">Integración ERP y Soporte Remoto Seguro</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-2xl">
-                        Migramos tu facturación e inventario hacia sistemas modernos de gestión. Desarrollamos plugins personalizados para <strong>FacturaScripts</strong> y configuramos arquitecturas de automatización en remoto mediante <strong>Rundeck</strong> de forma aislada y controlada.
-                    </p>
-                </div>
+                <button data-tally-open="RGVWPv" class="w-full py-3 bg-white/5 hover:bg-blue-600 border border-white/10 rounded-xl text-white font-bold text-sm transition-all duration-300">
+                    Analizar potencial →
+                </button>
             </div>
         </div>
     </section>
 
-    <section class="py-20 md:py-32 relative z-10">
+    <section class="py-20 relative z-10">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="glass-panel p-8 md:p-14 rounded-[3rem] border border-blue-500/20 shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative overflow-hidden bg-[#050b14]">
                 <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
                 
                 <div class="text-center mb-12 max-w-2xl mx-auto">
                     <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-4 inline-block shadow-inner">
-                        Diagnóstico Financiero Interactivo
+                        Simulador Financiero
                     </span>
                     <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight mt-2">El Impacto Oculto en tu Facturación</h3>
                     <p class="text-gray-400 mt-4 font-light text-sm md:text-base">Mueve el control para evaluar las fugas financieras generadas por la ineficiencia de datos en tu infraestructura actual.</p>
@@ -326,17 +338,17 @@
             <div class="glass-panel tilt-card p-8 rounded-2xl relative border-t border-white/5">
                 <div class="text-6xl font-black text-blue-900/20 absolute top-4 right-6 font-mono select-none">01</div>
                 <h4 class="font-bold text-lg text-white mb-3">NDA y Acceso Seguro</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Firmamos un Acuerdo de Confidencialidad estricto bajo marco legal. Conectamos de forma aislada a tus entornos mediante Rundeck o volcados controlados para auditar tu infraestructura sin riesgos.</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Firmamos un Acuerdo de Confidencialidad estricto bajo marco legal. Conectamos de forma aislada a tus entornos para auditar tu infraestructura sin riesgos.</p>
             </div>
             <div class="glass-panel tilt-card p-8 rounded-2xl relative border-t border-white/5">
                 <div class="text-6xl font-black text-blue-900/20 absolute top-4 right-6 font-mono select-none">02</div>
                 <h4 class="font-bold text-lg text-white mb-3">Auditoría e Identificación</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Analizamos las debilidades metodológicas en tus hojas de cálculo, procesos ETL manuales y bases de datos. Localizamos exactamente dónde se rompe o duplica tu información operativa.</p>
+                <p class="text-gray-400 text-sm leading-relaxed">Analizamos las debilidades en tus hojas de cálculo, procesos manuales y bases de datos. Localizamos dónde se duplica tu información.</p>
             </div>
             <div class="glass-panel tilt-card p-8 rounded-2xl relative border-t-2 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.15)]">
                 <div class="text-6xl font-black text-blue-500/20 absolute top-4 right-6 font-mono select-none">03</div>
-                <h4 class="font-bold text-lg text-white mb-3">Producción y Automatización</h4>
-                <p class="text-gray-400 text-sm leading-relaxed">Desplegamos los scripts automatizados en Python, conectamos tus cuadros de mando interactivos e integramos tus sistemas con FacturaScripts. Comienzas a monitorizar tus KPIs con un clic.</p>
+                <h4 class="font-bold text-lg text-white mb-3">Producción Automática</h4>
+                <p class="text-gray-400 text-sm leading-relaxed">Desplegamos scripts en Python e integramos tus cuadros de mando interactivos. Comienzas a monitorizar tus KPIs con un solo clic.</p>
             </div>
         </div>
     </section>
@@ -347,70 +359,10 @@
                 <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
             </div>
             <div class="text-center md:text-left">
-                <h3 class="text-xl md:text-2xl font-black text-white mb-2.5 tracking-tight">Protocolo de Confidencialidad y Cumplimiento Normativo</h3>
+                <h3 class="text-xl md:text-2xl font-black text-white mb-2.5 tracking-tight">Protocolo de Confidencialidad LOPD</h3>
                 <p class="text-gray-400 font-light text-sm leading-relaxed">
-                    Operamos de estricto acuerdo con la <strong>LOPDGDD española y el Reglamento General de Protección de Datos (RGPD) europeo</strong>. Tus credenciales corporativas e informes financieros quedan protegidos de forma absoluta. Jamás procesamos tus bases de datos corporativas en nubes públicas ni las empleamos para alimentar modelos abiertos de terceros. Seguridad corporativa verificada.
+                    Operamos bajo estricto acuerdo con el <strong>RGPD europeo</strong>. Tus credenciales e informes financieros quedan protegidos. Jamás procesamos tus bases de datos en modelos de IA públicos. Seguridad verificada.
                 </p>
-            </div>
-        </div>
-    </section>
-
-    <section class="py-16 relative z-10 max-w-5xl container mx-auto px-6">
-        <div class="text-center mb-16">
-            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-2">Validación</div>
-            <h2 class="text-3xl md:text-4xl font-black text-white tracking-tight">Testimonios de Infraestructura</h2>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="text-amber-400 text-xs tracking-widest mb-5">★★★★★</div>
-                    <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-8">
-                        "Teniendo tres años de registros de clientes e inventario dispersos en formatos inservibles. Nos unificaron la base de datos, desarrollaron un plugin para nuestro FacturaScripts y el flujo financiero ahora es impecable."
-                    </p>
-                </div>
-                <div class="flex items-center gap-4 pt-5 border-t border-white/5">
-                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos M." onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-12 h-12 rounded-full border border-gray-600 object-cover shadow-md">
-                    <div style="display:none;" class="w-12 h-12 rounded-full bg-blue-900 items-center justify-center font-bold text-sm text-white uppercase shadow-md">CM</div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white">Carlos M.</h4>
-                        <p class="text-[11px] text-gray-500">CEO, Sector Retail</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between border-t-2 border-blue-500 shadow-[0_10px_30px_rgba(59,130,246,0.1)] transform md:-translate-y-4">
-                <div>
-                    <div class="text-amber-400 text-xs tracking-widest mb-5">★★★★★</div>
-                    <p class="text-white font-light text-sm leading-relaxed italic mb-8">
-                        "Abandonar el control manual de excels para utilizar un Dashboard ejecutivo interactivo hecho en Python nos ha cambiado por completo la toma de decisiones. Monitorizamos el margen comercial diario al segundo."
-                    </p>
-                </div>
-                <div class="flex items-center gap-4 pt-5 border-t border-white/5">
-                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Elena R." onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-12 h-12 rounded-full border border-blue-500 object-cover shadow-md">
-                    <div style="display:none;" class="w-12 h-12 rounded-full bg-indigo-900 items-center justify-center font-bold text-sm text-white uppercase shadow-md">ER</div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white">Elena R.</h4>
-                        <p class="text-[11px] text-blue-400 font-medium">Directora de Operaciones</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="glass-panel p-8 rounded-3xl flex flex-col justify-between">
-                <div>
-                    <div class="text-amber-400 text-xs tracking-widest mb-5">★★★★★</div>
-                    <p class="text-gray-300 font-light text-sm leading-relaxed italic mb-8">
-                        "Demuestran un conocimiento técnico impecable a nivel de infraestructura. La migración de nuestros sistemas heredados fue transparente y el control en remoto vía Rundeck es completamente hermético."
-                    </p>
-                </div>
-                <div class="flex items-center gap-4 pt-5 border-t border-white/5">
-                    <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Miguel A." onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" class="w-12 h-12 rounded-full border border-gray-600 object-cover shadow-md">
-                    <div style="display:none;" class="w-12 h-12 rounded-full bg-gray-800 items-center justify-center font-bold text-sm text-white uppercase shadow-md">MA</div>
-                    <div>
-                        <h4 class="text-sm font-bold text-white">Miguel A.</h4>
-                        <p class="text-[11px] text-gray-500">CTO, Infraestructuras Logística</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -425,29 +377,20 @@
             <div class="space-y-4">
                 <div class="glass-panel rounded-2xl p-2 faq-item cursor-pointer" onclick="toggleFAQElement(this)">
                     <div class="flex justify-between items-center p-4">
-                        <h4 class="font-bold text-white text-sm md:text-base">¿Cómo se realiza la integración segura con FacturaScripts u otros ERPs?</h4>
+                        <h4 class="font-bold text-white text-sm md:text-base">¿Cómo se realiza la integración segura con ERPs?</h4>
                         <span class="text-blue-500 font-black text-xl md:text-2xl faq-icon">+</span>
                     </div>
                     <div class="faq-answer px-4 text-gray-400 text-sm leading-relaxed">
-                        <p class="pb-4">Establecemos conexiones privadas mediante APIs seguras o accesos cifrados controlados a las bases de datos. Los entornos se configuran aislados de redes públicas corporativas, garantizando integraciones estables que leen o migran la facturación operativa sin alterar tus sistemas de producción en vivo.</p>
+                        <p class="pb-4">Establecemos conexiones privadas mediante APIs seguras. Los entornos se configuran aislados garantizando integraciones estables sin alterar tus sistemas de producción en vivo.</p>
                     </div>
                 </div>
                 <div class="glass-panel rounded-2xl p-2 faq-item cursor-pointer" onclick="toggleFAQElement(this)">
                     <div class="flex justify-between items-center p-4">
-                        <h4 class="font-bold text-white text-sm md:text-base">¿De qué modo se garantiza el blindaje de la información según la LOPD?</h4>
+                        <h4 class="font-bold text-white text-sm md:text-base">¿Qué ocurre si la empresa trabaja con Excels desordenados?</h4>
                         <span class="text-blue-500 font-black text-xl md:text-2xl faq-icon">+</span>
                     </div>
                     <div class="faq-answer px-4 text-gray-400 text-sm leading-relaxed">
-                        <p class="pb-4">Firmamos contratos de confidencialidad (NDA) vinculantes antes de realizar auditorías. La ingesta de datos confidenciales se maneja en almacenamiento local cifrado de nivel militar AES-256 bajo rigurosas directivas RGPD europeas.</p>
-                    </div>
-                </div>
-                <div class="glass-panel rounded-2xl p-2 faq-item cursor-pointer" onclick="toggleFAQElement(this)">
-                    <div class="flex justify-between items-center p-4">
-                        <h4 class="font-bold text-white text-sm md:text-base">¿Qué ocurre si la empresa trabaja actualmente con sistemas antiguos o Excels desordenados?</h4>
-                        <span class="text-blue-500 font-black text-xl md:text-2xl faq-icon">+</span>
-                    </div>
-                    <div class="faq-answer px-4 text-gray-400 text-sm leading-relaxed">
-                        <p class="pb-4">Es el escenario ideal para intervenir. Diseñamos canalizaciones ETL a medida mediante código nativo en Python. Extraemos la información fragmentada de tus sistemas legados, normalizamos las columnas caóticas y las reestructuramos en un entorno moderno.</p>
+                        <p class="pb-4">Es el escenario ideal para intervenir. Extraemos la información fragmentada, normalizamos las columnas caóticas y las reestructuramos en un entorno moderno mediante código en Python.</p>
                     </div>
                 </div>
             </div>
@@ -456,32 +399,23 @@
 
     <footer class="border-t border-white/5 bg-[#010308] pt-20 pb-10 relative z-10">
         <div class="container mx-auto px-6 text-center max-w-4xl">
-            
             <div class="inline-block px-4 py-1.5 rounded-full bg-amber-400/10 border border-amber-400/20 text-amber-400 text-[10px] font-mono font-bold uppercase tracking-wider mb-6">
-                ⚡ Escasez: Solo queda 1 auditoría gratuita disponible este mes
+                ⚡ Escasez: Solo queda 1 auditoría gratuita disponible
             </div>
-            
             <h2 class="text-3xl md:text-5xl font-black mb-10 text-white tracking-tight leading-tight">Visualiza el Rendimiento Real de tus Datos</h2>
-            
             <button data-tally-open="RGVWPv" data-tally-layout="modal" data-tally-overlay="1" class="inline-flex items-center justify-center bg-white hover:bg-gray-200 text-black font-black py-4.5 px-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.2)] hover:shadow-[0_0_35px_rgba(255,255,255,0.5)] transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base mb-20 border border-transparent">
                 Agendar Mi Auditoría Gratuita Ahora
             </button>
-            
             <div class="w-full h-px bg-white/5 mb-10"></div>
-
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 text-[11px] text-gray-500 font-mono">
                 <div class="text-center md:text-left">
                     <p class="text-gray-400 font-bold mb-1 tracking-wider">NEXUS ANALYTICS | Data Consulting Group</p>
-                    <p>© 2026 Todos los derechos reservados. Infraestructura Avanzada de Datos.</p>
+                    <p>© 2026 Todos los derechos reservados.</p>
                 </div>
                 <div class="text-center md:text-right space-y-2">
-                    <p>Contacto corporativo: <a href="mailto:nexusanalytics011@gmail.com" class="text-blue-400 hover:text-blue-300 font-bold transition-colors">nexusanalytics011@gmail.com</a></p>
+                    <p>Contacto: <a href="mailto:nexusanalytics011@gmail.com" class="text-blue-400 hover:text-blue-300 font-bold transition-colors">nexusanalytics011@gmail.com</a></p>
                     <div class="flex justify-center md:justify-end gap-3 text-[10px] text-gray-600">
-                        <a class="hover:text-gray-400 transition-colors cursor-pointer">Política de Privacidad</a>
-                        <span>•</span>
-                        <a class="hover:text-gray-400 transition-colors cursor-pointer">Cumplimiento LOPD</a>
-                        <span>•</span>
-                        <a class="hover:text-gray-400 transition-colors cursor-pointer">Cookies</a>
+                        <a class="hover:text-gray-400 cursor-pointer">Privacidad</a> <span>•</span> <a class="hover:text-gray-400 cursor-pointer">LOPD</a>
                     </div>
                 </div>
             </div>
@@ -489,7 +423,7 @@
     </footer>
 
     <script>
-        // 1. Calculadora de Fricción Financiera
+        // 1. Calculadora Financiera
         function calcularFriccionData() {
             const inputVal = parseInt(document.getElementById('friccionInput').value);
             document.getElementById('friccionLabel').innerText = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 }).format(inputVal) + " €";
@@ -503,7 +437,7 @@
             document.getElementById('gainMétrica').innerText = formatMoney.format(recuperableAnualizado);
         }
 
-        // 2. Máquina de escribir (Typewriter)
+        // 2. Typewriter (Máquina de escribir)
         const stringsTypewriter = ["lo transformamos en decisiones.", "lo estructuramos de forma segura.", "lo traducimos en beneficio neto."];
         let stringIdx = 0; let charIdx = 0;
         const domTarget = document.getElementById("typewriter");
@@ -527,7 +461,7 @@
             }
         }
 
-        // 3. Acordeón de FAQs
+        // 3. Acordeón FAQs
         function toggleFAQElement(selectedItem) {
             const currentItems = document.querySelectorAll('.faq-item');
             currentItems.forEach(item => {
@@ -538,7 +472,7 @@
             selectedItem.classList.toggle('active');
         }
 
-        // 4. Efecto 3D Premium (Tilt en Vanilla JS)
+        // 4. Efecto 3D Tilt
         function initTiltEffect() {
             const cards = document.querySelectorAll('.tilt-card');
             cards.forEach(card => {
@@ -567,14 +501,11 @@
             });
         }
 
-        // Inicializar Scripts
+        // Inicializador
         window.addEventListener('DOMContentLoaded', () => {
             calcularFriccionData();
             setTimeout(executeTyping, 800);
-            
-            if (window.innerWidth > 768) {
-                initTiltEffect();
-            }
+            if (window.innerWidth > 768) { initTiltEffect(); }
         });
     </script>
 </body>
