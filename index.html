@@ -18,7 +18,6 @@
     <meta name="twitter:card" content="summary_large_image">
 
     <script src="https://cdn.tailwindcss.com"></script>
-    <script async src="https://tally.so/widgets/embed.js"></script>
 
     <style>
         html { scroll-behavior: smooth; }
@@ -58,7 +57,7 @@
         .animate-marquee { display: flex; width: 200%; animation: marquee 35s linear infinite; }
         .animate-marquee:hover { animation-play-state: paused; }
 
-        /* Range slider customizado */
+        /* Range slider customizado base */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
@@ -71,10 +70,18 @@
             border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
+        /* Estilo Exclusivo Calculadora Global Principal */
+        .slider-global::-webkit-slider-thumb {
+            background: #10b981 !important; /* Emerald */
+            box-shadow: 0 0 25px rgba(16, 185, 129, 0.9) !important;
+            height: 28px !important; width: 28px !important; margin-top: -10px !important;
+        }
+        .slider-global::-webkit-slider-thumb:hover { transform: scale(1.2); background: #34d399 !important; }
+
         /* Modal custom CSS */
-        .modal { opacity: 0; pointer-events: none; transition: all 0.3s ease; backdrop-filter: blur(10px); }
+        .modal { opacity: 0; pointer-events: none; transition: all 0.3s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
         .modal.active { opacity: 1; pointer-events: auto; }
-        .modal-content { transform: scale(0.95) translateY(20px); transition: all 0.3s ease; }
+        .modal-content { transform: scale(0.95) translateY(20px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .modal.active .modal-content { transform: scale(1) translateY(0); }
 
         /* FAQs */
@@ -86,10 +93,6 @@
         /* Cursor animado */
         .typewriter-cursor::after { content: '|'; animation: blink 0.8s step-end infinite; color: #3b82f6; font-weight: 300; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
-
-        /* Marca de agua */
-        .svg-watermark { position: absolute; right: -25px; bottom: -25px; width: 180px; height: 180px; opacity: 0.02; color: white; transform: rotate(-15deg); transition: all 0.5s ease; pointer-events: none; }
-        .glass-panel:hover .svg-watermark { opacity: 0.06; color: #3b82f6; transform: rotate(0deg) scale(1.1); }
     </style>
 </head>
 <body class="text-gray-300 font-sans antialiased relative z-0 dot-grid pt-12 selection:bg-blue-600 selection:text-white">
@@ -129,7 +132,7 @@
                 </div>
             </div>
             <div>
-                <button data-tally-open="RGVWPv" data-tally-layout="modal" data-tally-overlay="1" class="inline-flex items-center justify-center px-5 py-2 border border-white/10 hover:border-blue-500/50 bg-white/5 hover:bg-blue-600 text-white rounded-xl transition-all duration-300 font-bold text-xs tracking-wide shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5">
+                <button onclick="openModal('modal-general')" class="inline-flex items-center justify-center px-5 py-2 border border-white/10 hover:border-blue-500/50 bg-white/5 hover:bg-blue-600 text-white rounded-xl transition-all duration-300 font-bold text-xs tracking-wide shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5">
                     Solicitar Auditoría
                 </button>
             </div>
@@ -146,7 +149,7 @@
         </p>
         
         <div class="flex flex-col items-center gap-4 max-w-xl mx-auto">
-            <button onclick="document.getElementById('herramientas').scrollIntoView()" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-4.5 px-10 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:shadow-[0_0_50px_rgba(79,70,229,0.6)] transition-all duration-300 transform hover:-translate-y-1 text-base md:text-lg flex items-center justify-center gap-3 group border border-blue-400/30">
+            <button onclick="openModal('modal-general')" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-4.5 px-10 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:shadow-[0_0_50px_rgba(79,70,229,0.6)] transition-all duration-300 transform hover:-translate-y-1 text-base md:text-lg flex items-center justify-center gap-3 group border border-blue-400/30">
                 Analizar las pérdidas de mi negocio gratis
                 <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
@@ -200,13 +203,11 @@
                 <h3 class="text-xl font-bold text-white mb-3">Fugas de Presupuesto</h3>
                 <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero en campañas de marketing digital mal rastreadas, atribuciones duplicadas o métricas fantasma.</p>
             </div>
-
             <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
                 <div class="w-12 h-12 bg-amber-600/10 border border-amber-500/30 rounded-xl flex items-center justify-center text-amber-400 font-bold mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">02</div>
                 <h3 class="text-xl font-bold text-white mb-3">Caos Operativo</h3>
                 <p class="text-sm text-gray-400 leading-relaxed">Analizamos cuántas horas pierde tu equipo consolidando datos de forma manual que podrían centralizarse en cuadros automáticos.</p>
             </div>
-
             <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 relative overflow-hidden group">
                 <div class="w-12 h-12 bg-emerald-600/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400 font-bold mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">03</div>
                 <h3 class="text-xl font-bold text-white mb-3">Seguridad e Infraestructura</h3>
@@ -223,7 +224,7 @@
         </div>
         
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group">
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group hover:border-blue-500/50 transition-colors">
                 <div>
                     <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Módulo Interactivo</span>
                     <h3 class="text-xl font-bold text-white mb-3">Coste por Empleado Manual</h3>
@@ -233,7 +234,7 @@
                     Calcular pérdidas →
                 </button>
             </div>
-            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group border-t-2 border-indigo-500">
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group border-t-2 border-indigo-500 hover:border-indigo-500/50 transition-colors">
                 <div>
                     <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Score en Vivo</span>
                     <h3 class="text-xl font-bold text-white mb-3">Madurez de Infraestructura</h3>
@@ -243,7 +244,7 @@
                     Analizar mi sistema →
                 </button>
             </div>
-            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group">
+            <div class="glass-panel tilt-card p-8 rounded-3xl border border-white/5 flex flex-col justify-between group hover:border-cyan-500/50 transition-colors">
                 <div>
                     <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Estimador Tech</span>
                     <h3 class="text-xl font-bold text-white mb-3">Potencial de Automatización</h3>
@@ -258,25 +259,26 @@
 
     <section class="py-20 relative z-10">
         <div class="container mx-auto px-6 max-w-5xl">
-            <div class="glass-panel p-8 md:p-14 rounded-[3rem] border border-blue-500/20 shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative overflow-hidden bg-[#050b14]">
-                <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent"></div>
+            <div class="glass-panel p-8 md:p-14 rounded-[3rem] border border-emerald-500/20 shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative overflow-hidden bg-[#030906]">
+                <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-emerald-500/50 to-transparent"></div>
+                <div class="absolute -top-40 -right-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-[100px] pointer-events-none"></div>
                 
-                <div class="text-center mb-12 max-w-2xl mx-auto">
-                    <span class="bg-blue-500/10 text-blue-400 border border-blue-500/20 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-4 inline-block shadow-inner">
-                        Simulador Financiero Global
+                <div class="text-center mb-12 max-w-2xl mx-auto relative z-10">
+                    <span class="bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-4 py-1.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider mb-4 inline-block shadow-inner">
+                        Simulador Macro-Financiero
                     </span>
                     <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight mt-2">El Impacto Oculto en tu Facturación</h3>
-                    <p class="text-gray-400 mt-4 font-light text-sm md:text-base">Mueve el control para evaluar las fugas financieras generadas por la ineficiencia de datos en tu infraestructura actual a nivel global de empresa.</p>
+                    <p class="text-gray-400 mt-4 font-light text-sm md:text-base">Evalúa la proyección de pérdidas globales generadas por la ineficiencia de tus flujos de datos corporativos.</p>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
                     <div class="lg:col-span-6 space-y-4">
-                        <div class="bg-black/40 border border-white/5 rounded-3xl p-8 shadow-inner">
+                        <div class="bg-black/60 border border-white/5 rounded-3xl p-8 shadow-inner">
                             <div class="flex justify-between items-center text-white font-bold mb-8">
                                 <span class="text-xs text-gray-400 uppercase tracking-widest font-mono">Facturación Mensual</span>
-                                <span id="friccionLabel" class="text-3xl text-blue-400 font-black tracking-tight">50.000 €</span>
+                                <span id="friccionLabel" class="text-3xl text-emerald-400 font-black tracking-tight">50.000 €</span>
                             </div>
-                            <input type="range" id="friccionInput" min="10000" max="500000" step="5000" value="50000" oninput="calcularFriccionData()">
+                            <input type="range" id="friccionInput" min="10000" max="500000" step="5000" value="50000" class="slider-global w-full bg-transparent" oninput="calcularFriccionData()">
                             <div class="flex justify-between text-[10px] text-gray-500 font-mono mt-5">
                                 <span>10K €</span>
                                 <span>500K €</span>
@@ -286,14 +288,20 @@
 
                     <div class="lg:col-span-6 space-y-4">
                         <div class="bg-[#030712] rounded-2xl p-6 border border-white/5 shadow-md flex justify-between items-center transition-transform hover:scale-[1.02]">
-                            <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Capital anual en riesgo<br>por ineficiencia (4%)</p>
+                            <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Capital en riesgo anual<br>por ineficiencia (4%)</p>
                             <p class="text-2xl md:text-4xl font-black text-red-500 tracking-tight" id="lossMétrica">24.000 €</p>
                         </div>
-                        <div class="bg-gradient-to-r from-blue-900/20 to-emerald-900/10 rounded-2xl p-6 border border-blue-500/20 shadow-md flex justify-between items-center transition-transform hover:scale-[1.02]">
-                            <p class="text-blue-300 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Capital recuperable anual<br>con Nexus Analytics</p>
-                            <p class="text-2xl md:text-4xl font-black text-emerald-400 tracking-tight" id="gainMétrica">20.400 €</p>
+                        <div class="bg-gradient-to-r from-emerald-900/20 to-teal-900/10 rounded-2xl p-6 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)] flex justify-between items-center transition-transform hover:scale-[1.02]">
+                            <p class="text-emerald-300 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Capital recuperable anual<br>con Nexus Analytics</p>
+                            <p class="text-2xl md:text-4xl font-black text-emerald-400 tracking-tight drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]" id="gainMétrica">20.400 €</p>
                         </div>
                     </div>
+                </div>
+                
+                <div class="text-center mt-10 relative z-10">
+                    <button onclick="openModal('modal-general')" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] transform hover:-translate-y-1">
+                        Detener estas fugas financieras ahora →
+                    </button>
                 </div>
             </div>
         </div>
@@ -302,7 +310,7 @@
     <footer class="border-t border-white/5 bg-[#010308] pt-20 pb-10 relative z-10">
         <div class="container mx-auto px-6 text-center max-w-4xl">
             <h2 class="text-3xl md:text-5xl font-black mb-10 text-white tracking-tight leading-tight">Visualiza el Rendimiento Real de tus Datos</h2>
-            <button data-tally-open="RGVWPv" data-tally-layout="modal" data-tally-overlay="1" class="inline-flex items-center justify-center bg-white hover:bg-gray-200 text-black font-black py-4.5 px-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base mb-20">
+            <button onclick="openModal('modal-general')" class="inline-flex items-center justify-center bg-white hover:bg-gray-200 text-black font-black py-4.5 px-10 rounded-2xl shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-all duration-300 transform hover:-translate-y-1 text-sm md:text-base mb-20">
                 Agendar Mi Auditoría Gratuita Ahora
             </button>
             <div class="w-full h-px bg-white/5 mb-10"></div>
@@ -315,116 +323,215 @@
         </div>
     </footer>
 
-    <div id="modal-horas" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative">
-            <button onclick="closeModal('modal-horas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
-            <h3 class="text-2xl font-black text-white mb-2">Coste de Ineficiencia</h3>
-            <p class="text-xs text-gray-400 mb-6">Descubre cuánto te cuesta el trabajo manual basándonos en un coste medio de 25€/hora.</p>
+    <div id="modal-general" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
+        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
+            <button onclick="closeModal('modal-general')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
             
-            <label class="block text-sm font-bold text-gray-300 mb-2">Empleados picando datos:</label>
-            <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
-                <input type="range" id="empSlider" min="1" max="20" value="3" class="w-2/3" oninput="calcHoras()">
-                <span id="empVal" class="text-blue-400 font-black text-xl w-1/3 text-right">3</span>
+            <div id="general-step-1">
+                <h3 class="text-2xl font-black text-white mb-2">Auditoría Gratuita</h3>
+                <p class="text-xs text-gray-400 mb-6">Déjanos tus datos. Evaluaremos el potencial de optimización de tu negocio y te contactaremos en menos de 24h.</p>
+                
+                <form onsubmit="submitWeb3Form(event, 'general-step-1', 'general-step-success')" id="formGeneral" class="space-y-4">
+                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                    <input type="hidden" name="subject" value="🔥 NUEVO LEAD: Contacto General Web">
+                    <input type="hidden" name="from_name" value="Nexus Analytics Web">
+                    
+                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors"></div>
+                    <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors"></div>
+                    <div><textarea name="message" rows="3" placeholder="¿Cuál es tu mayor reto con los datos? (Opcional)" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors resize-none"></textarea></div>
+                    
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg transition-all mt-2">
+                        Solicitar Auditoría Ahora
+                    </button>
+                </form>
+            </div>
+            
+            <div id="general-step-success" class="hidden text-center py-6">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">¡Solicitud Enviada!</h3>
+                <p class="text-sm text-gray-400">Revisaremos tu caso y nos pondremos en contacto contigo a la mayor brevedad.</p>
+                <button onclick="closeModal('modal-general')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-horas" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
+        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
+            <button onclick="closeModal('modal-horas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
+            
+            <div id="calc-step-1">
+                <h3 class="text-2xl font-black text-white mb-2">Coste de Ineficiencia</h3>
+                <p class="text-xs text-gray-400 mb-6">Descubre cuánto te cuesta el trabajo manual basándonos en un coste medio de 25€/hora por empleado.</p>
+                
+                <label class="block text-sm font-bold text-gray-300 mb-2">Empleados picando datos:</label>
+                <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
+                    <input type="range" id="empSlider" min="1" max="20" value="3" class="w-2/3" oninput="calcHoras()">
+                    <span id="empVal" class="text-blue-400 font-black text-xl w-1/3 text-right">3</span>
+                </div>
+
+                <label class="block text-sm font-bold text-gray-300 mb-2">Horas perdidas a la semana (c/u):</label>
+                <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
+                    <input type="range" id="hrsSlider" min="1" max="20" value="5" class="w-2/3" oninput="calcHoras()">
+                    <span id="hrsVal" class="text-indigo-400 font-black text-xl w-1/3 text-right">5 h</span>
+                </div>
+
+                <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-center mb-6">
+                    <p class="text-xs text-red-300 uppercase tracking-widest font-mono mb-1">Estás perdiendo al año</p>
+                    <p id="resHoras" class="text-3xl font-black text-red-500">19.500 €</p>
+                </div>
+
+                <button onclick="document.getElementById('calc-step-1').classList.add('hidden'); document.getElementById('calc-step-2').classList.remove('hidden');" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg transition-all">
+                    Obtener solución a este problema →
+                </button>
             </div>
 
-            <label class="block text-sm font-bold text-gray-300 mb-2">Horas perdidas a la semana (por empleado):</label>
-            <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
-                <input type="range" id="hrsSlider" min="1" max="20" value="5" class="w-2/3" oninput="calcHoras()">
-                <span id="hrsVal" class="text-indigo-400 font-black text-xl w-1/3 text-right">5 h</span>
+            <div id="calc-step-2" class="hidden">
+                <h3 class="text-2xl font-black text-white mb-2">Recibir Diagnóstico</h3>
+                <p class="text-xs text-gray-400 mb-6">Te enviaremos el desglose financiero exacto y la propuesta técnica en PDF para detener esta pérdida.</p>
+                
+                <form onsubmit="submitWeb3Form(event, 'calc-step-2', 'calc-step-success', {'Dinero Perdido Anual': document.getElementById('resHoras').innerText})" id="formHoras" class="space-y-4">
+                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                    <input type="hidden" name="subject" value="🔥 LEAD: Calculadora Pérdida Operativa">
+                    
+                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors"></div>
+                    <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors"></div>
+                    
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all mt-4">
+                        Enviar Informe a mi Correo
+                    </button>
+                </form>
             </div>
-
-            <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-center mb-6">
-                <p class="text-xs text-red-300 uppercase tracking-widest font-mono mb-1">Estás perdiendo al año</p>
-                <p id="resHoras" class="text-3xl font-black text-red-500">19.500 €</p>
+            
+            <div id="calc-step-success" class="hidden text-center py-6">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">¡Cálculo Enviado!</h3>
+                <p class="text-sm text-gray-400">Revisaremos tu ineficiencia operativa y te contactaremos en breve.</p>
+                <button onclick="closeModal('modal-horas')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
-
-            <button data-tally-open="RGVWPv" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg">
-                Recibir solución técnica en PDF →
-            </button>
         </div>
     </div>
 
     <div id="modal-seguridad" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative">
-            <button onclick="closeModal('modal-seguridad')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
-            <h3 class="text-2xl font-black text-white mb-2">Test de Madurez</h3>
+        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
+            <button onclick="closeModal('modal-seguridad')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
             
-            <div id="quiz-questions">
-                <div class="mb-5">
+            <div id="quiz-step-1">
+                <h3 class="text-2xl font-black text-white mb-2">Test de Madurez</h3>
+                <div class="mb-5 mt-4">
                     <p class="text-sm font-bold text-gray-300 mb-2">1. ¿Dónde se guardan los datos críticos?</p>
                     <select id="q1" class="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-gray-300 text-sm focus:border-indigo-500 outline-none">
-                        <option value="0">En Excels locales por los ordenadores</option>
-                        <option value="5">En un CRM o ERP básico</option>
-                        <option value="10">Base de datos Cloud centralizada (SQL)</option>
+                        <option value="0">En Excels locales o pendrives</option>
+                        <option value="5">En un CRM/ERP de terceros</option>
+                        <option value="10">Base de datos Cloud Propia (SQL)</option>
                     </select>
                 </div>
                 <div class="mb-5">
-                    <p class="text-sm font-bold text-gray-300 mb-2">2. ¿Cómo se actualizan los reportes financieros?</p>
+                    <p class="text-sm font-bold text-gray-300 mb-2">2. ¿Existen backups automáticos diarios?</p>
                     <select id="q2" class="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-gray-300 text-sm focus:border-indigo-500 outline-none">
-                        <option value="0">Alguien los junta a mano cada mes</option>
-                        <option value="5">Exportamos CSVs a una plantilla</option>
-                        <option value="10">Dashboard automatizado en tiempo real</option>
+                        <option value="0">No, o no lo sé con certeza</option>
+                        <option value="5">Sí, pero los hacemos manualmente</option>
+                        <option value="10">Sí, automáticos y encriptados</option>
                     </select>
                 </div>
-                <button onclick="calcQuiz()" class="w-full py-3 mt-2 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-bold">
-                    Analizar mi puntuación
+                <button onclick="calcQuiz()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-bold text-sm shadow-lg mt-2 transition-all">
+                    Analizar mi puntuación →
                 </button>
             </div>
 
-            <div id="quiz-result" class="hidden text-center mt-4">
-                <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">Nivel de tu Infraestructura</p>
+            <div id="quiz-step-2" class="hidden text-center mt-2">
+                <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">Nivel de Infraestructura</p>
                 <div class="w-full bg-gray-800 rounded-full h-4 mb-2 overflow-hidden border border-white/10">
                     <div id="quiz-bar" class="bg-indigo-500 h-4 rounded-full transition-all duration-1000 w-0"></div>
                 </div>
                 <p id="quiz-score" class="text-4xl font-black text-white mb-1">0%</p>
                 <p id="quiz-text" class="text-sm text-red-400 mb-6 font-bold">Riesgo Crítico de Fuga</p>
                 
-                <button data-tally-open="RGVWPv" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg">
-                    Reclamar Auditoría de Seguridad →
-                </button>
+                <form onsubmit="submitWeb3Form(event, 'quiz-step-2', 'quiz-step-success', {'Puntuación Seguridad': document.getElementById('quiz-score').innerText})" id="formQuiz" class="space-y-4 text-left">
+                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                    <input type="hidden" name="subject" value="🔥 LEAD: Test de Madurez (Infraestructura)">
+                    <div><input type="email" name="email" required placeholder="Tu email para recibir auditoría" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-indigo-500 outline-none transition-colors"></div>
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <button type="submit" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg transition-all">
+                        Reclamar Auditoría Completa
+                    </button>
+                </form>
+            </div>
+
+            <div id="quiz-step-success" class="hidden text-center py-6">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">¡Datos Registrados!</h3>
+                <p class="text-sm text-gray-400">Analizaremos tus vulnerabilidades y te contactaremos por email.</p>
+                <button onclick="closeModal('modal-seguridad')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
         </div>
     </div>
 
     <div id="modal-auto" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative">
-            <button onclick="closeModal('modal-auto')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">✕</button>
-            <h3 class="text-2xl font-black text-white mb-2">Potencial de Automatización</h3>
-            <p class="text-xs text-gray-400 mb-6">Selecciona qué herramientas usas actualmente sin conectar entre sí.</p>
+        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
+            <button onclick="closeModal('modal-auto')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
             
-            <div class="space-y-3 mb-6">
-                <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                    <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="20">
-                    <span class="text-sm text-gray-300 font-bold">Hojas de Excel / Google Sheets</span>
-                </label>
-                <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                    <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="15">
-                    <span class="text-sm text-gray-300 font-bold">FacturaScripts / Holded / ERP</span>
-                </label>
-                <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                    <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="10">
-                    <span class="text-sm text-gray-300 font-bold">Plataformas de Ads (Google/Meta)</span>
-                </label>
+            <div id="auto-step-1">
+                <h3 class="text-2xl font-black text-white mb-2">Potencial de Automatización</h3>
+                <p class="text-xs text-gray-400 mb-6">Selecciona qué herramientas utilizáis de forma desconectada hoy.</p>
+                
+                <div class="space-y-3 mb-6">
+                    <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
+                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="25">
+                        <span class="text-sm text-gray-300 font-bold">Hojas de Excel / Google Sheets</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
+                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="15">
+                        <span class="text-sm text-gray-300 font-bold">ERP Local (FacturaScripts, etc)</span>
+                    </label>
+                    <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
+                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="20">
+                        <span class="text-sm text-gray-300 font-bold">Campañas de Ads (Google/Meta)</span>
+                    </label>
+                </div>
+
+                <button onclick="calcAuto()" class="w-full py-3.5 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white font-bold text-sm shadow-lg transition-all">
+                    Estimar horas liberables →
+                </button>
             </div>
 
-            <button onclick="calcAuto()" id="btn-calc-auto" class="w-full py-3 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white font-bold mb-4 transition-all">
-                Estimar horas liberables
-            </button>
-
-            <div id="auto-result" class="hidden text-center bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-5 mb-6">
-                <p class="text-xs text-cyan-300 uppercase tracking-widest font-mono mb-1">Un pipeline puede ahorrarte</p>
-                <p class="text-3xl font-black text-cyan-400"><span id="auto-hours">0</span> Horas/Mes</p>
+            <div id="auto-step-2" class="hidden text-center mt-2">
+                <div class="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-5 mb-6">
+                    <p class="text-xs text-cyan-300 uppercase tracking-widest font-mono mb-1">Un script Python te ahorraría</p>
+                    <p class="text-3xl font-black text-cyan-400"><span id="auto-hours">0</span> Horas/Mes</p>
+                </div>
+                
+                <form onsubmit="submitWeb3Form(event, 'auto-step-2', 'auto-step-success', {'Horas Ahorradas Estimadas': document.getElementById('auto-hours').innerText})" id="formAuto" class="space-y-4 text-left">
+                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                    <input type="hidden" name="subject" value="🔥 LEAD: Potencial de Automatización">
+                    <div><input type="email" name="email" required placeholder="Email corporativo para Hoja de Ruta" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-cyan-500 outline-none transition-colors"></div>
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <button type="submit" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg transition-all">
+                        Solicitar Hoja de Ruta PDF
+                    </button>
+                </form>
             </div>
 
-            <button id="btn-tally-auto" data-tally-open="RGVWPv" class="hidden w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg">
-                Obtener hoja de ruta técnica PDF →
-            </button>
+            <div id="auto-step-success" class="hidden text-center py-6">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">¡Petición Recibida!</h3>
+                <p class="text-sm text-gray-400">Un ingeniero evaluará tu caso y te enviaremos el reporte por email.</p>
+                <button onclick="closeModal('modal-auto')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
+            </div>
         </div>
     </div>
 
-
     <script>
-        /* ---- LÓGICA CALCULADORA ORIGINAL (GLOBAL) ---- */
+        /* ---- LÓGICA CALCULADORA GLOBAL (SLIDER VERDE) ---- */
         function calcularFriccionData() {
             const inputVal = parseInt(document.getElementById('friccionInput').value);
             document.getElementById('friccionLabel').innerText = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 }).format(inputVal) + " €";
@@ -434,64 +541,99 @@
             document.getElementById('gainMétrica').innerText = formatMoney.format(riesgoAnualizado * 0.85);
         }
 
-        /* ---- LÓGICA EFECTOS VISUALES ---- */
-        const stringsTypewriter = ["lo transformamos en decisiones.", "lo estructuramos de forma segura.", "lo traducimos en beneficio neto."];
-        let stringIdx = 0; let charIdx = 0;
-        const domTarget = document.getElementById("typewriter");
-        function executeTyping() {
-            if(charIdx < stringsTypewriter[stringIdx].length) { domTarget.textContent += stringsTypewriter[stringIdx].charAt(charIdx); charIdx++; setTimeout(executeTyping, 80); }
-            else { setTimeout(executeErasing, 2500); }
-        }
-        function executeErasing() {
-            if(charIdx > 0) { domTarget.textContent = stringsTypewriter[stringIdx].substring(0, charIdx - 1); charIdx--; setTimeout(executeErasing, 40); }
-            else { stringIdx = (stringIdx + 1) % stringsTypewriter.length; setTimeout(executeTyping, 400); }
+        /* ---- GESTIÓN DE ENVÍO DE FORMULARIOS A GMAIL (WEB3FORMS) ---- */
+        function submitWeb3Form(event, containerToHide, containerToShow, extraDataObj = {}) {
+            event.preventDefault(); // Evita recargar página
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            // Añadimos datos calculados invisibles (ej: 19.000€ perdidos) al correo
+            for (const key in extraDataObj) {
+                formData.append(key, extraDataObj[key]);
+            }
+
+            // Cambiamos botón a estado de carga
+            const btn = form.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            btn.innerText = "Enviando..."; btn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
+            .then(async (response) => {
+                if (response.status == 200) {
+                    document.getElementById(containerToHide).classList.add('hidden');
+                    document.getElementById(containerToShow).classList.remove('hidden');
+                    form.reset();
+                } else { alert("Hubo un error de conexión. Inténtalo de nuevo."); }
+            })
+            .catch(error => { alert("Error al enviar. Revisa tu conexión a internet."); })
+            .finally(() => { btn.innerText = originalText; btn.disabled = false; });
         }
 
         /* ---- GESTIÓN DE MODALES ---- */
         function openModal(id) { document.getElementById(id).classList.add('active'); }
-        function closeModal(id) { document.getElementById(id).classList.remove('active'); }
+        function closeModal(id) { 
+            document.getElementById(id).classList.remove('active'); 
+            // Resetear vistas tras cerrarse la animación (300ms)
+            setTimeout(() => {
+                if(id === 'modal-horas') {
+                    document.getElementById('calc-step-1').classList.remove('hidden');
+                    document.getElementById('calc-step-2').classList.add('hidden');
+                    document.getElementById('calc-step-success').classList.add('hidden');
+                } else if(id === 'modal-seguridad') {
+                    document.getElementById('quiz-step-1').classList.remove('hidden');
+                    document.getElementById('quiz-step-2').classList.add('hidden');
+                    document.getElementById('quiz-step-success').classList.add('hidden');
+                    document.getElementById('quiz-bar').style.width = '0%';
+                } else if(id === 'modal-auto') {
+                    document.getElementById('auto-step-1').classList.remove('hidden');
+                    document.getElementById('auto-step-2').classList.add('hidden');
+                    document.getElementById('auto-step-success').classList.add('hidden');
+                    document.getElementById('auto-hours').innerText = '0';
+                } else if(id === 'modal-general') {
+                    document.getElementById('general-step-1').classList.remove('hidden');
+                    document.getElementById('general-step-success').classList.add('hidden');
+                }
+            }, 300);
+        }
 
-        /* ---- MODAL 1: CÁLCULO EMPLEADOS ---- */
+        /* ---- MODAL 1: CÁLCULO EMPLEADOS (INTERACTIVO) ---- */
         function calcHoras() {
             const emp = document.getElementById('empSlider').value;
             const hrs = document.getElementById('hrsSlider').value;
             document.getElementById('empVal').innerText = emp;
             document.getElementById('hrsVal').innerText = hrs + " h";
-            // Empleados * Horas/semana * 52 semanas * 25€/hora
             const costeAnual = emp * hrs * 52 * 25;
             document.getElementById('resHoras').innerText = new Intl.NumberFormat('es-ES').format(costeAnual) + " €";
         }
 
-        /* ---- MODAL 2: QUIZ MADUREZ ---- */
+        /* ---- MODAL 2: QUIZ MADUREZ (INTERACTIVO) ---- */
         function calcQuiz() {
             const v1 = parseInt(document.getElementById('q1').value);
             const v2 = parseInt(document.getElementById('q2').value);
-            const score = ((v1 + v2) / 20) * 100; // Porcentaje sobre 20 ptos max
+            const score = ((v1 + v2) / 20) * 100; 
             
-            document.getElementById('quiz-questions').style.display = 'none';
-            document.getElementById('quiz-result').classList.remove('hidden');
+            document.getElementById('quiz-step-1').classList.add('hidden');
+            document.getElementById('quiz-step-2').classList.remove('hidden');
             
             setTimeout(() => { document.getElementById('quiz-bar').style.width = score + '%'; }, 100);
             document.getElementById('quiz-score').innerText = score + '%';
             
             const textEl = document.getElementById('quiz-text');
             const barEl = document.getElementById('quiz-bar');
-            if(score <= 30) { textEl.innerText = "Riesgo Crítico Operativo"; textEl.className = "text-sm text-red-400 mb-6 font-bold"; barEl.classList.replace('bg-indigo-500', 'bg-red-500'); }
-            else if (score <= 70) { textEl.innerText = "Nivel Promedio (Mejorable)"; textEl.className = "text-sm text-amber-400 mb-6 font-bold"; barEl.classList.replace('bg-indigo-500', 'bg-amber-400'); }
-            else { textEl.innerText = "Infraestructura Optimizada"; textEl.className = "text-sm text-emerald-400 mb-6 font-bold"; barEl.classList.replace('bg-indigo-500', 'bg-emerald-500'); }
+            if(score <= 30) { textEl.innerText = "Riesgo Crítico Operativo"; textEl.className = "text-sm text-red-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-red-500"; }
+            else if (score <= 70) { textEl.innerText = "Nivel Promedio (Mejorable)"; textEl.className = "text-sm text-amber-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-amber-400"; }
+            else { textEl.innerText = "Infraestructura Optimizada"; textEl.className = "text-sm text-emerald-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-emerald-500"; }
         }
 
-        /* ---- MODAL 3: AUTOMATIZACIÓN ---- */
+        /* ---- MODAL 3: AUTOMATIZACIÓN (INTERACTIVO) ---- */
         function calcAuto() {
             let total = 0;
             document.querySelectorAll('.auto-chk').forEach(chk => { if(chk.checked) total += parseInt(chk.value); });
-            if(total === 0) total = 5; // Minimo impacto
+            if(total === 0) total = 5; 
             
-            document.getElementById('btn-calc-auto').style.display = 'none';
-            document.getElementById('auto-result').classList.remove('hidden');
-            document.getElementById('btn-tally-auto').classList.remove('hidden');
+            document.getElementById('auto-step-1').classList.add('hidden');
+            document.getElementById('auto-step-2').classList.remove('hidden');
             
-            // Animación contadora simple
             let curr = 0;
             let interval = setInterval(() => {
                 curr += 2;
@@ -500,7 +642,7 @@
             }, 40);
         }
 
-        // Init general
+        /* ---- TYPEWRITER INICIALIZACIÓN ---- */
         window.addEventListener('DOMContentLoaded', () => {
             calcularFriccionData();
             setTimeout(executeTyping, 800);
