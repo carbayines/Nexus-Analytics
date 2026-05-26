@@ -72,7 +72,7 @@
 
         /* Estilo Exclusivo Calculadora Global Principal */
         .slider-global::-webkit-slider-thumb {
-            background: #10b981 !important; /* Emerald */
+            background: #10b981 !important; 
             box-shadow: 0 0 25px rgba(16, 185, 129, 0.9) !important;
             height: 28px !important; width: 28px !important; margin-top: -10px !important;
         }
@@ -84,11 +84,9 @@
         .modal-content { transform: scale(0.95) translateY(20px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .modal.active .modal-content { transform: scale(1) translateY(0); }
 
-        /* FAQs */
-        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease-in-out; opacity: 0; }
-        .faq-item.active .faq-answer { max-height: 300px; opacity: 1; }
-        .faq-item .faq-icon { transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), color 0.3s ease; }
-        .faq-item.active .faq-icon { transform: rotate(45deg); color: #ef4444; }
+        /* Tarjetas interactivas del Quiz */
+        .quiz-opt { transition: all 0.2s ease; }
+        .quiz-opt.selected { border-color: #6366f1; background-color: rgba(99, 102, 241, 0.15); }
 
         /* Cursor animado */
         .typewriter-cursor::after { content: '|'; animation: blink 0.8s step-end infinite; color: #3b82f6; font-weight: 300; }
@@ -268,7 +266,7 @@
                         Simulador Macro-Financiero
                     </span>
                     <h3 class="text-3xl md:text-5xl font-black text-white tracking-tight mt-2">El Impacto Oculto en tu Facturación</h3>
-                    <p class="text-gray-400 mt-4 font-light text-sm md:text-base">Evalúa la proyección de pérdidas globales generadas por la ineficiencia de tus flujos de datos corporativos.</p>
+                    <p class="text-gray-400 mt-4 font-light text-sm md:text-base">Evalúa la proyección de pérdidas globales generadas por la ineficiencia de tus flujos de datos según el tamaño corporativo.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
@@ -288,18 +286,18 @@
 
                     <div class="lg:col-span-6 space-y-4">
                         <div class="bg-[#030712] rounded-2xl p-6 border border-white/5 shadow-md flex justify-between items-center transition-transform hover:scale-[1.02]">
-                            <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Capital en riesgo anual<br>por ineficiencia (4%)</p>
-                            <p class="text-2xl md:text-4xl font-black text-red-500 tracking-tight" id="lossMétrica">24.000 €</p>
+                            <p class="text-gray-400 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Tasa de ineficiencia<br>estimada para tu tamaño</p>
+                            <p class="text-2xl md:text-4xl font-black text-red-500 tracking-tight" id="lossMétrica">--</p>
                         </div>
                         <div class="bg-gradient-to-r from-emerald-900/20 to-teal-900/10 rounded-2xl p-6 border border-emerald-500/30 shadow-[0_0_30px_rgba(16,185,129,0.15)] flex justify-between items-center transition-transform hover:scale-[1.02]">
                             <p class="text-emerald-300 text-[10px] md:text-xs font-bold uppercase tracking-widest font-mono">Capital recuperable anual<br>con Nexus Analytics</p>
-                            <p class="text-2xl md:text-4xl font-black text-emerald-400 tracking-tight drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]" id="gainMétrica">20.400 €</p>
+                            <p class="text-2xl md:text-4xl font-black text-emerald-400 tracking-tight drop-shadow-[0_0_10px_rgba(16,185,129,0.5)]" id="gainMétrica">--</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="text-center mt-10 relative z-10">
-                    <button onclick="openModal('modal-general')" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] transform hover:-translate-y-1">
+                    <button onclick="openModal('modal-macro')" class="px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold rounded-xl transition-all shadow-[0_0_20px_rgba(16,185,129,0.4)] transform hover:-translate-y-1">
                         Detener estas fugas financieras ahora →
                     </button>
                 </div>
@@ -352,7 +350,7 @@
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <h3 class="text-2xl font-black text-white mb-2">¡Solicitud Enviada!</h3>
-                <p class="text-sm text-gray-400">Revisaremos tu caso y nos pondremos en contacto contigo a la mayor brevedad.</p>
+                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
                 <button onclick="closeModal('modal-general')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
         </div>
@@ -364,44 +362,53 @@
             
             <div id="calc-step-1">
                 <h3 class="text-2xl font-black text-white mb-2">Coste de Ineficiencia</h3>
-                <p class="text-xs text-gray-400 mb-6">Descubre cuánto te cuesta el trabajo manual basándonos en un coste medio de 25€/hora por empleado.</p>
+                <p class="text-xs text-gray-400 mb-6">Calculamos el impacto financiero real computando Seguridad Social (33%), Coste de Oportunidad y Tasa de Retrabajo.</p>
                 
-                <label class="block text-sm font-bold text-gray-300 mb-2">Empleados picando datos:</label>
+                <label class="block text-sm font-bold text-gray-300 mb-2">Perfil del equipo afectado:</label>
+                <select id="roleRate" onchange="calcHoras()" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 mb-6 text-gray-300 text-sm outline-none focus:border-blue-500">
+                    <option value="15">Administrativos / Data Entry (~15€/h)</option>
+                    <option value="25" selected>Analistas / Técnicos (~25€/h)</option>
+                    <option value="40">Managers / Directivos (~40€/h)</option>
+                </select>
+
+                <label class="block text-sm font-bold text-gray-300 mb-2">Empleados picando datos (1-50):</label>
                 <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
-                    <input type="range" id="empSlider" min="1" max="20" value="3" class="w-2/3" oninput="calcHoras()">
+                    <input type="range" id="empSlider" min="1" max="50" value="3" class="w-2/3" oninput="calcHoras()">
                     <span id="empVal" class="text-blue-400 font-black text-xl w-1/3 text-right">3</span>
                 </div>
 
                 <label class="block text-sm font-bold text-gray-300 mb-2">Horas perdidas a la semana (c/u):</label>
                 <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
-                    <input type="range" id="hrsSlider" min="1" max="20" value="5" class="w-2/3" oninput="calcHoras()">
+                    <input type="range" id="hrsSlider" min="1" max="40" value="5" class="w-2/3" oninput="calcHoras()">
                     <span id="hrsVal" class="text-indigo-400 font-black text-xl w-1/3 text-right">5 h</span>
                 </div>
 
                 <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-center mb-6">
+                    <p class="text-xs text-red-300 uppercase tracking-widest font-mono mb-1">Total de horas quemadas al año</p>
+                    <p id="totalHours" class="text-lg font-bold text-white mb-3">780 horas</p>
                     <p class="text-xs text-red-300 uppercase tracking-widest font-mono mb-1">Estás perdiendo al año</p>
-                    <p id="resHoras" class="text-3xl font-black text-red-500">19.500 €</p>
+                    <p id="resHoras" class="text-3xl font-black text-red-500">25.350 €</p>
                 </div>
 
                 <button onclick="document.getElementById('calc-step-1').classList.add('hidden'); document.getElementById('calc-step-2').classList.remove('hidden');" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg transition-all">
-                    Obtener solución a este problema →
+                    Recibir solución técnica en PDF →
                 </button>
             </div>
 
             <div id="calc-step-2" class="hidden">
                 <h3 class="text-2xl font-black text-white mb-2">Recibir Diagnóstico</h3>
-                <p class="text-xs text-gray-400 mb-6">Te enviaremos el desglose financiero exacto y la propuesta técnica en PDF para detener esta pérdida.</p>
+                <p class="text-xs text-gray-400 mb-6">Deja tu email. Un ingeniero diseñará una solución a medida basada en tus pérdidas y te enviará el PDF técnico directamente a tu correo.</p>
                 
-                <form onsubmit="submitWeb3Form(event, 'calc-step-2', 'calc-step-success', {'Dinero Perdido Anual': document.getElementById('resHoras').innerText})" id="formHoras" class="space-y-4">
+                <form onsubmit="submitWeb3Form(event, 'calc-step-2', 'calc-step-success', {'Dinero Perdido Anual': document.getElementById('resHoras').innerText, 'Horas Totales Perdidas': document.getElementById('totalHours').innerText})" id="formHoras" class="space-y-4">
                     <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                    <input type="hidden" name="subject" value="🔥 LEAD: Calculadora Pérdida Operativa">
+                    <input type="hidden" name="subject" value="🔥 LEAD: Calculadora Pérdida Operativa (Realista)">
                     
                     <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors"></div>
                     <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none transition-colors"></div>
                     
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                     <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] transition-all mt-4">
-                        Enviar Informe a mi Correo
+                        Solicitar mi PDF Personalizado
                     </button>
                 </form>
             </div>
@@ -410,8 +417,8 @@
                 <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                <h3 class="text-2xl font-black text-white mb-2">¡Cálculo Enviado!</h3>
-                <p class="text-sm text-gray-400">Revisaremos tu ineficiencia operativa y te contactaremos en breve.</p>
+                <h3 class="text-2xl font-black text-white mb-2">¡Datos Recibidos!</h3>
+                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
                 <button onclick="closeModal('modal-horas')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
         </div>
@@ -422,25 +429,27 @@
             <button onclick="closeModal('modal-seguridad')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
             
             <div id="quiz-step-1">
-                <h3 class="text-2xl font-black text-white mb-2">Test de Madurez</h3>
-                <div class="mb-5 mt-4">
-                    <p class="text-sm font-bold text-gray-300 mb-2">1. ¿Dónde se guardan los datos críticos?</p>
-                    <select id="q1" class="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-gray-300 text-sm focus:border-indigo-500 outline-none">
-                        <option value="0">En Excels locales o pendrives</option>
-                        <option value="5">En un CRM/ERP de terceros</option>
-                        <option value="10">Base de datos Cloud Propia (SQL)</option>
-                    </select>
+                <h3 class="text-2xl font-black text-white mb-2">Test de Madurez Técnica</h3>
+                <p class="text-xs text-gray-400 mb-6">Selecciona la opción que mejor describa la infraestructura actual de tu organización.</p>
+                
+                <div class="mb-5">
+                    <p class="text-sm font-bold text-gray-300 mb-2">1. ¿Dónde se almacenan los datos de negocio?</p>
+                    <div class="space-y-2 mb-4" id="q1-group">
+                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(1, 0, this)">A) Excels locales y archivos dispersos</div>
+                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(1, 5, this)">B) Un software ERP comercial estándar</div>
+                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(1, 10, this)">C) Data Warehouse Cloud centralizado (SQL)</div>
+                    </div>
                 </div>
                 <div class="mb-5">
-                    <p class="text-sm font-bold text-gray-300 mb-2">2. ¿Existen backups automáticos diarios?</p>
-                    <select id="q2" class="w-full bg-black/50 border border-white/10 rounded-lg p-2.5 text-gray-300 text-sm focus:border-indigo-500 outline-none">
-                        <option value="0">No, o no lo sé con certeza</option>
-                        <option value="5">Sí, pero los hacemos manualmente</option>
-                        <option value="10">Sí, automáticos y encriptados</option>
-                    </select>
+                    <p class="text-sm font-bold text-gray-300 mb-2">2. Cumplimiento de Privacidad y LOPD:</p>
+                    <div class="space-y-2 mb-4" id="q2-group">
+                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(2, 0, this)">A) No tenemos control de quién accede a qué Excel</div>
+                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(2, 5, this)">B) Hacemos backups manuales cada cierto tiempo</div>
+                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(2, 10, this)">C) Permisos cifrados y backups diarios automáticos</div>
+                    </div>
                 </div>
                 <button onclick="calcQuiz()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-bold text-sm shadow-lg mt-2 transition-all">
-                    Analizar mi puntuación →
+                    Analizar infraestructura →
                 </button>
             </div>
 
@@ -450,15 +459,16 @@
                     <div id="quiz-bar" class="bg-indigo-500 h-4 rounded-full transition-all duration-1000 w-0"></div>
                 </div>
                 <p id="quiz-score" class="text-4xl font-black text-white mb-1">0%</p>
-                <p id="quiz-text" class="text-sm text-red-400 mb-6 font-bold">Riesgo Crítico de Fuga</p>
+                <p id="quiz-text" class="text-sm text-red-400 mb-6 font-bold">Riesgo Crítico Operativo</p>
                 
-                <form onsubmit="submitWeb3Form(event, 'quiz-step-2', 'quiz-step-success', {'Puntuación Seguridad': document.getElementById('quiz-score').innerText})" id="formQuiz" class="space-y-4 text-left">
+                <form onsubmit="submitWeb3Form(event, 'quiz-step-2', 'quiz-step-success', {'Puntuación Seguridad': document.getElementById('quiz-score').innerText, 'Diagnostico': document.getElementById('quiz-text').innerText})" id="formQuiz" class="space-y-4 text-left">
                     <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
                     <input type="hidden" name="subject" value="🔥 LEAD: Test de Madurez (Infraestructura)">
+                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-indigo-500 outline-none transition-colors"></div>
                     <div><input type="email" name="email" required placeholder="Tu email para recibir auditoría" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-indigo-500 outline-none transition-colors"></div>
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                     <button type="submit" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg transition-all">
-                        Reclamar Auditoría Completa
+                        Recibir solución técnica en PDF →
                     </button>
                 </form>
             </div>
@@ -467,8 +477,8 @@
                 <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
-                <h3 class="text-2xl font-black text-white mb-2">¡Datos Registrados!</h3>
-                <p class="text-sm text-gray-400">Analizaremos tus vulnerabilidades y te contactaremos por email.</p>
+                <h3 class="text-2xl font-black text-white mb-2">¡Petición Registrada!</h3>
+                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
                 <button onclick="closeModal('modal-seguridad')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
         </div>
@@ -479,42 +489,44 @@
             <button onclick="closeModal('modal-auto')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
             
             <div id="auto-step-1">
-                <h3 class="text-2xl font-black text-white mb-2">Potencial de Automatización</h3>
-                <p class="text-xs text-gray-400 mb-6">Selecciona qué herramientas utilizáis de forma desconectada hoy.</p>
+                <h3 class="text-2xl font-black text-white mb-2">Auditoría de Sistemas</h3>
+                <p class="text-xs text-gray-400 mb-6">Selecciona las fuentes de datos que tu equipo está intentando conectar manualmente hoy.</p>
                 
                 <div class="space-y-3 mb-6">
-                    <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="25">
-                        <span class="text-sm text-gray-300 font-bold">Hojas de Excel / Google Sheets</span>
+                    <label class="flex items-center gap-3 p-4 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5 transition-colors">
+                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500">
+                        <span class="text-sm text-gray-300 font-bold">Hojas de Excel / CSVs exportados</span>
                     </label>
-                    <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="15">
-                        <span class="text-sm text-gray-300 font-bold">ERP Local (FacturaScripts, etc)</span>
+                    <label class="flex items-center gap-3 p-4 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5 transition-colors">
+                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500">
+                        <span class="text-sm text-gray-300 font-bold">ERP (Holded, FacturaScripts, etc)</span>
                     </label>
-                    <label class="flex items-center gap-3 p-3 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500" value="20">
-                        <span class="text-sm text-gray-300 font-bold">Campañas de Ads (Google/Meta)</span>
+                    <label class="flex items-center gap-3 p-4 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5 transition-colors">
+                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500">
+                        <span class="text-sm text-gray-300 font-bold">Plataformas de Ads o Pasarelas (Stripe)</span>
                     </label>
                 </div>
 
                 <button onclick="calcAuto()" class="w-full py-3.5 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white font-bold text-sm shadow-lg transition-all">
-                    Estimar horas liberables →
+                    Calcular ROI de Integración →
                 </button>
             </div>
 
             <div id="auto-step-2" class="hidden text-center mt-2">
                 <div class="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-5 mb-6">
-                    <p class="text-xs text-cyan-300 uppercase tracking-widest font-mono mb-1">Un script Python te ahorraría</p>
+                    <p class="text-xs text-cyan-300 uppercase tracking-widest font-mono mb-1">Un pipeline de datos te ahorraría</p>
                     <p class="text-3xl font-black text-cyan-400"><span id="auto-hours">0</span> Horas/Mes</p>
+                    <p class="text-xs text-gray-400 mt-2">El cruce de múltiples sistemas incrementa el riesgo de error exponencialmente.</p>
                 </div>
                 
                 <form onsubmit="submitWeb3Form(event, 'auto-step-2', 'auto-step-success', {'Horas Ahorradas Estimadas': document.getElementById('auto-hours').innerText})" id="formAuto" class="space-y-4 text-left">
                     <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
                     <input type="hidden" name="subject" value="🔥 LEAD: Potencial de Automatización">
+                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-cyan-500 outline-none transition-colors"></div>
                     <div><input type="email" name="email" required placeholder="Email corporativo para Hoja de Ruta" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-cyan-500 outline-none transition-colors"></div>
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                     <button type="submit" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg transition-all">
-                        Solicitar Hoja de Ruta PDF
+                        Recibir solución técnica en PDF →
                     </button>
                 </form>
             </div>
@@ -524,38 +536,76 @@
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <h3 class="text-2xl font-black text-white mb-2">¡Petición Recibida!</h3>
-                <p class="text-sm text-gray-400">Un ingeniero evaluará tu caso y te enviaremos el reporte por email.</p>
+                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
                 <button onclick="closeModal('modal-auto')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
         </div>
     </div>
 
+    <div id="modal-macro" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
+        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden border border-emerald-500/30">
+            <button onclick="closeModal('modal-macro')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
+            
+            <div id="macro-step-1">
+                <h3 class="text-2xl font-black text-white mb-2">Detén las fugas financieras</h3>
+                <p class="text-xs text-gray-400 mb-6">Hemos calculado la proyección de pérdidas para tu tramo de facturación. Déjanos tus datos para enviarte la propuesta de blindaje de infraestructura.</p>
+                
+                <form onsubmit="submitWeb3Form(event, 'macro-step-1', 'macro-step-success', {'Pérdida Global Simulada': window.currentMacroLoss})" id="formMacro" class="space-y-4">
+                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                    <input type="hidden" name="subject" value="🔥 LEAD MACRO: Simulador Financiero">
+                    
+                    <div><input type="text" name="name" required placeholder="Nombre del Responsable / Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-emerald-500 outline-none transition-colors"></div>
+                    <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-emerald-500 outline-none transition-colors"></div>
+                    
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.4)] transition-all mt-2">
+                        Recibir solución técnica en PDF →
+                    </button>
+                </form>
+            </div>
+            
+            <div id="macro-step-success" class="hidden text-center py-6">
+                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                </div>
+                <h3 class="text-2xl font-black text-white mb-2">¡Petición Prioritaria Recibida!</h3>
+                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
+                <button onclick="closeModal('modal-macro')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        /* ---- LÓGICA CALCULADORA GLOBAL (SLIDER VERDE) ---- */
+        /* ---- LÓGICA CALCULADORA GLOBAL (ESCALA PROGRESIVA DECRECIENTE) ---- */
+        window.currentMacroLoss = "0 €";
         function calcularFriccionData() {
             const inputVal = parseInt(document.getElementById('friccionInput').value);
-            document.getElementById('friccionLabel').innerText = new Intl.NumberFormat('es-ES', { maximumFractionDigits: 0 }).format(inputVal) + " €";
-            const riesgoAnualizado = (inputVal * 12) * 0.04;
+            document.getElementById('friccionLabel').innerText = new Intl.NumberFormat('es-ES').format(inputVal) + " €";
+            
+            // Fórmula progresiva: Empresas de 10k pierden un 10%, empresas de 500k pierden un 3%
+            const minVal = 10000; const maxVal = 500000;
+            const maxRate = 0.10; const minRate = 0.03;
+            let rate = maxRate - ((inputVal - minVal) / (maxVal - minVal)) * (maxRate - minRate);
+
+            const riesgoAnualizado = (inputVal * 12) * rate;
             const formatMoney = new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 });
-            document.getElementById('lossMétrica').innerText = formatMoney.format(riesgoAnualizado);
-            document.getElementById('gainMétrica').innerText = formatMoney.format(riesgoAnualizado * 0.85);
+            
+            window.currentMacroLoss = formatMoney.format(riesgoAnualizado);
+            document.getElementById('lossMétrica').innerText = window.currentMacroLoss;
+            document.getElementById('gainMétrica').innerText = formatMoney.format(riesgoAnualizado * 0.85); // Recuperación del 85%
         }
 
-        /* ---- GESTIÓN DE ENVÍO DE FORMULARIOS A GMAIL (WEB3FORMS) ---- */
+        /* ---- GESTIÓN DE ENVÍO DE FORMULARIOS (WEB3FORMS) ---- */
         function submitWeb3Form(event, containerToHide, containerToShow, extraDataObj = {}) {
-            event.preventDefault(); // Evita recargar página
+            event.preventDefault(); 
             const form = event.target;
             const formData = new FormData(form);
             
-            // Añadimos datos calculados invisibles (ej: 19.000€ perdidos) al correo
-            for (const key in extraDataObj) {
-                formData.append(key, extraDataObj[key]);
-            }
+            for (const key in extraDataObj) { formData.append(key, extraDataObj[key]); }
 
-            // Cambiamos botón a estado de carga
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerText;
-            btn.innerText = "Enviando..."; btn.disabled = true;
+            btn.innerText = "Procesando..."; btn.disabled = true;
 
             fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
             .then(async (response) => {
@@ -573,7 +623,6 @@
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
-            // Resetear vistas tras cerrarse la animación (300ms)
             setTimeout(() => {
                 if(id === 'modal-horas') {
                     document.getElementById('calc-step-1').classList.remove('hidden');
@@ -583,34 +632,58 @@
                     document.getElementById('quiz-step-1').classList.remove('hidden');
                     document.getElementById('quiz-step-2').classList.add('hidden');
                     document.getElementById('quiz-step-success').classList.add('hidden');
-                    document.getElementById('quiz-bar').style.width = '0%';
+                    // Resetear tarjetas Quiz
+                    quizScores = {1: null, 2: null};
+                    document.querySelectorAll('.quiz-opt').forEach(el => el.classList.remove('selected'));
                 } else if(id === 'modal-auto') {
                     document.getElementById('auto-step-1').classList.remove('hidden');
                     document.getElementById('auto-step-2').classList.add('hidden');
                     document.getElementById('auto-step-success').classList.add('hidden');
-                    document.getElementById('auto-hours').innerText = '0';
+                    document.querySelectorAll('.auto-chk').forEach(chk => chk.checked = false);
                 } else if(id === 'modal-general') {
                     document.getElementById('general-step-1').classList.remove('hidden');
                     document.getElementById('general-step-success').classList.add('hidden');
+                } else if(id === 'modal-macro') {
+                    document.getElementById('macro-step-1').classList.remove('hidden');
+                    document.getElementById('macro-step-success').classList.add('hidden');
                 }
             }, 300);
         }
 
-        /* ---- MODAL 1: CÁLCULO EMPLEADOS (INTERACTIVO) ---- */
+        /* ---- MODAL 1: CÁLCULO EMPLEADOS (FÓRMULA FINANCIERA REAL) ---- */
         function calcHoras() {
-            const emp = document.getElementById('empSlider').value;
-            const hrs = document.getElementById('hrsSlider').value;
+            const emp = parseInt(document.getElementById('empSlider').value);
+            const hrs = parseInt(document.getElementById('hrsSlider').value);
+            const salarioBrutoHora = parseInt(document.getElementById('roleRate').value); 
+            
+            const cargasSociales = 1.33; // 33% SS
+            const margenOportunidad = 20; // 20€/h de valor no facturado
+            const margenError = 1.10; // 10% retrabajo
+            
             document.getElementById('empVal').innerText = emp;
             document.getElementById('hrsVal').innerText = hrs + " h";
-            const costeAnual = emp * hrs * 52 * 25;
-            document.getElementById('resHoras').innerText = new Intl.NumberFormat('es-ES').format(costeAnual) + " €";
+            
+            const sueldoRealHora = salarioBrutoHora * cargasSociales;
+            const costeHoraTotal = sueldoRealHora + margenOportunidad;
+            const horasAnualesBase = emp * hrs * 52;
+            const costeTotalIneficiencia = horasAnualesBase * costeHoraTotal * margenError;
+            
+            document.getElementById('totalHours').innerText = new Intl.NumberFormat('es-ES').format(horasAnualesBase * margenError) + " horas";
+            document.getElementById('resHoras').innerText = new Intl.NumberFormat('es-ES', {maximumFractionDigits: 0}).format(costeTotalIneficiencia) + " €";
         }
 
-        /* ---- MODAL 2: QUIZ MADUREZ (INTERACTIVO) ---- */
+        /* ---- MODAL 2: QUIZ MADUREZ TÉCNICA (TARJETAS CLICKABLES) ---- */
+        let quizScores = {1: null, 2: null};
+        function selectQuiz(question, score, element) {
+            quizScores[question] = score;
+            const siblings = element.parentElement.children;
+            for(let i=0; i<siblings.length; i++) { siblings[i].classList.remove('selected'); }
+            element.classList.add('selected');
+        }
+
         function calcQuiz() {
-            const v1 = parseInt(document.getElementById('q1').value);
-            const v2 = parseInt(document.getElementById('q2').value);
-            const score = ((v1 + v2) / 20) * 100; 
+            if(quizScores[1] === null || quizScores[2] === null) { alert("Por favor, responde ambas preguntas seleccionando una tarjeta."); return; }
+            const score = ((quizScores[1] + quizScores[2]) / 20) * 100; 
             
             document.getElementById('quiz-step-1').classList.add('hidden');
             document.getElementById('quiz-step-2').classList.remove('hidden');
@@ -620,31 +693,37 @@
             
             const textEl = document.getElementById('quiz-text');
             const barEl = document.getElementById('quiz-bar');
-            if(score <= 30) { textEl.innerText = "Riesgo Crítico Operativo"; textEl.className = "text-sm text-red-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-red-500"; }
-            else if (score <= 70) { textEl.innerText = "Nivel Promedio (Mejorable)"; textEl.className = "text-sm text-amber-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-amber-400"; }
-            else { textEl.innerText = "Infraestructura Optimizada"; textEl.className = "text-sm text-emerald-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-emerald-500"; }
+            if(score <= 40) { textEl.innerText = "Nivel Crítico (Riesgo LOPD)"; textEl.className = "text-sm text-red-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-red-500"; }
+            else if (score <= 75) { textEl.innerText = "Nivel Vulnerable (Lento)"; textEl.className = "text-sm text-amber-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-amber-400"; }
+            else { textEl.innerText = "Nivel Optimizado"; textEl.className = "text-sm text-emerald-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-emerald-500"; }
         }
 
-        /* ---- MODAL 3: AUTOMATIZACIÓN (INTERACTIVO) ---- */
+        /* ---- MODAL 3: AUTOMATIZACIÓN (EXPONENCIAL) ---- */
         function calcAuto() {
-            let total = 0;
-            document.querySelectorAll('.auto-chk').forEach(chk => { if(chk.checked) total += parseInt(chk.value); });
-            if(total === 0) total = 5; 
+            let count = 0;
+            document.querySelectorAll('.auto-chk').forEach(chk => { if(chk.checked) count++; });
+            
+            let finalHours = 0;
+            if(count === 1) finalHours = 18; // Lineal
+            else if(count === 2) finalHours = 45; // Exponencial (Sistemas cruzados)
+            else if(count === 3) finalHours = 110; // Exponencial máximo
+            else finalHours = 5; // Mínimo
             
             document.getElementById('auto-step-1').classList.add('hidden');
             document.getElementById('auto-step-2').classList.remove('hidden');
             
             let curr = 0;
             let interval = setInterval(() => {
-                curr += 2;
-                if(curr >= total) { curr = total; clearInterval(interval); }
+                curr += 3;
+                if(curr >= finalHours) { curr = finalHours; clearInterval(interval); }
                 document.getElementById('auto-hours').innerText = curr;
-            }, 40);
+            }, 30);
         }
 
-        /* ---- TYPEWRITER INICIALIZACIÓN ---- */
+        /* ---- INICIALIZACIÓN GENERAL ---- */
         window.addEventListener('DOMContentLoaded', () => {
             calcularFriccionData();
+            calcHoras(); 
             setTimeout(executeTyping, 800);
         });
     </script>
