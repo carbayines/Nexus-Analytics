@@ -20,19 +20,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&family=JetBrains+Mono&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
         
         html { scroll-behavior: smooth; }
         body { background-color: #030712; color: #e5e7eb; font-family: 'Inter', sans-serif; overflow-x: hidden; } 
 
         /* Malla de fondo dot-grid cibernética */
         .dot-grid {
-            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-image: radial-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
             background-size: 24px 24px;
             background-position: center center;
         }
 
-        /* Paneles Glassmorphic premium */
+        /* Paneles Glassmorphic premium superior */
         .glass-panel {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
             backdrop-filter: blur(20px);
@@ -51,28 +51,26 @@
         }
         .animate-glow { animation: orbit 14s ease-in-out infinite; }
 
-        /* Range slider customizado base y Enterprise */
+        /* Sliders base mejorados (Cards) */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 4px;
-            background: #fff; cursor: pointer; margin-top: -8px;
-            border: 1px solid #3b82f6; box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
-            transition: all 0.2s ease;
+            -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%;
+            background: #ffffff; cursor: pointer; margin-top: -6px;
+            border: 2px solid #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+            transition: transform 0.1s ease;
         }
-        input[type=range]:focus { outline: none; }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); background: #3b82f6; }
+        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
         input[type=range]::-webkit-slider-runnable-track {
             width: 100%; height: 6px; cursor: pointer; background: rgba(255, 255, 255, 0.1);
-            border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
-        /* Estilo Exclusivo Calculadora Global Principal */
+        /* Slider Macro Simulador (Verde) */
         .slider-global::-webkit-slider-thumb {
-            background: #10b981 !important; border: none !important;
-            box-shadow: 0 0 25px rgba(16, 185, 129, 0.9) !important;
-            height: 28px !important; width: 28px !important; margin-top: -11px !important; border-radius: 50% !important;
+            border: 2px solid #10b981 !important;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.8) !important;
+            height: 22px !important; width: 22px !important; margin-top: -8px !important;
         }
-        .slider-global::-webkit-slider-thumb:hover { transform: scale(1.2); background: #34d399 !important; }
 
         /* Modal custom CSS */
         .modal { opacity: 0; pointer-events: none; transition: all 0.3s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
@@ -84,7 +82,7 @@
         .typewriter-cursor::after { content: '|'; animation: blink 0.8s step-end infinite; color: #3b82f6; font-weight: 300; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Chart Bar Animation para el simulador Macro */
+        /* Gráfico Macro */
         .chart-bar { transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
 
         /* Scrollbar custom */
@@ -124,18 +122,15 @@
     <header class="container mx-auto px-6 py-6 mt-2 relative z-10">
         <div class="glass-panel rounded-2xl px-5 py-3.5 flex justify-between items-center bg-white/[0.02]">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-[#0b0f19] rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] text-white flex items-center justify-center font-black text-xl border border-blue-500/30 relative overflow-hidden">
-                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-transparent"></div>
-                    <span class="relative z-10">N</span>
-                </div>
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] text-white flex items-center justify-center font-black text-xl border border-blue-500/30">N</div>
                 <div class="flex flex-col">
                     <span class="text-base md:text-lg font-black tracking-widest text-white leading-none">NEXUS ANALYTICS</span>
-                    <span class="text-[9px] md:text-[10px] text-gray-500 font-mono font-bold uppercase tracking-widest mt-1">Data Analytics & Consulting</span>
+                    <span class="text-[9px] md:text-[10px] text-gray-400 font-mono font-bold uppercase tracking-widest mt-1">Data & Infrastructure</span>
                 </div>
             </div>
             <div>
-                <button onclick="openModal('modal-general')" class="inline-flex items-center justify-center px-5 py-2 border border-white/10 hover:border-blue-500/50 bg-white/5 hover:bg-blue-600 text-white rounded-xl transition-all duration-300 font-bold text-xs tracking-wide shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.4)] transform hover:-translate-y-0.5">
-                    Solicitar Auditoría
+                <button onclick="openModal('modal-general')" class="inline-flex items-center justify-center px-6 py-2.5 bg-white text-black hover:bg-gray-200 rounded-xl transition-all duration-300 font-black text-xs tracking-wide shadow-[0_0_15px_rgba(255,255,255,0.2)] transform hover:-translate-y-0.5 uppercase">
+                    Auditoría
                 </button>
             </div>
         </div>
@@ -151,9 +146,9 @@
         </p>
         
         <div class="flex flex-col items-center gap-4 max-w-xl mx-auto">
-            <button onclick="openModal('modal-general')" class="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-black py-4.5 px-10 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.4)] hover:shadow-[0_0_50px_rgba(79,70,229,0.6)] transition-all duration-300 transform hover:-translate-y-1 text-base md:text-lg flex items-center justify-center gap-3 group border border-blue-400/30">
-                Analizar las pérdidas de mi negocio gratis
-                <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            <button onclick="openModal('modal-general')" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-500 text-white font-black py-4.5 px-10 rounded-2xl shadow-[0_0_30px_rgba(59,130,246,0.4)] transition-all duration-300 transform hover:-translate-y-1 text-base md:text-lg flex items-center justify-center gap-3 border border-blue-400/30 uppercase tracking-wide">
+                Analizar Pérdidas Gratis
+                <svg class="w-5 h-5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
             
             <div class="flex flex-wrap justify-center items-center gap-6 mt-4 text-[11px] font-mono text-gray-400 tracking-wide uppercase bg-white/[0.02] border border-white/5 px-6 py-2 rounded-full backdrop-blur-sm">
@@ -173,21 +168,17 @@
     <section class="container mx-auto px-6 py-12 border-y border-white/5 bg-white/[0.01] relative z-10">
         <p class="text-center text-xs font-mono tracking-widest text-gray-500 uppercase mb-8">Especialistas en la infraestructura líder del sector</p>
         <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-white transition-colors duration-300">
                 <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M14.25.18c.9 0 1.66.73 1.66 1.65v2.89h2.9c.91 0 1.64.74 1.64 1.63v4.33c0 .91-.73 1.64-1.64 1.64h-1.1v-1.47c0-1.8-1.46-3.27-3.27-3.27H9.72V5.19c0-.92.73-1.65 1.65-1.65h2.88V1.83c0-.92-.74-1.65-1.65-1.65H8.38c-.9 0-1.64.73-1.64 1.65v1.1h1.47c1.8 0 3.27 1.45 3.27 3.26v4.72H6.76c-.92 0-1.65-.73-1.65-1.64V5c0-.91.73-1.64 1.65-1.64h2.89v-1.1a1.64 1.64 0 0 0-1.65-1.64H4.37c-.9 0-1.64.73-1.64 1.64v4.34c0 .9.74 1.64 1.64 1.64h1.1v1.47c0 1.8 1.46 3.27 3.27 3.27h4.72v2.18c0 .91-.73 1.64-1.64 1.64H8.94c-.9 0-1.64-.73-1.64-1.64v-2.89H4.4c-.91 0-1.64-.74-1.64-1.63V9.12c0-.91.73-1.64 1.64-1.64h1.1v1.47c0 1.8 1.46 3.27 3.27 3.27h4.72v2.18c0 .91-.73 1.64-1.64 1.64H8.94c-.9 0-1.64-.73-1.64-1.64v-2.89H4.4c-.91 0-1.64-.74-1.64-1.63V9.12c0-.91.73-1.64 1.64-1.64H7.3V4.4c0-.92-.73-1.65-1.65-1.65H2.76c-.9 0-1.64.73-1.64 1.65v4.34c0 .91.74 1.64 1.64 1.64h1.1v1.47c0 1.8 1.46 3.27 3.27 3.27h4.72v2.18c0 .91-.73 1.64-1.64 1.64H8.94c-.9 0-1.64-.73-1.64-1.64v-2.89H4.4c-.91 0-1.64-.74-1.64-1.63V9.12c0-.91.73-1.64 1.64-1.64h2.9v-2.9c0-.9-.74-1.64-1.64-1.64H2.76A1.64 1.64 0 0 0 1.12 4.4v4.34c0 .9.74 1.64 1.64 1.64h1.1v-1.47c0-1.8 1.46-3.27 3.27-3.27h4.72V2.8c0-.91.73-1.64 1.64-1.64h2.88z"/></svg>
                 <span class="font-bold text-xs tracking-wider font-mono">PYTHON</span>
             </div>
-            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-white transition-colors duration-300">
                 <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm-1 5.5v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2z"/></svg>
                 <span class="font-bold text-xs tracking-wider font-mono">POSTGRESQL</span>
             </div>
-            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
-                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19.35 10.04A7.49 7.49 0 0012 4C9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95A5.469 5.469 0 0112 6c2.63 0 4.89 1.86 5.39 4.43l.3 1.5 1.53.11c1.56.1 2.78 1.41 2.78 2.96 0 1.65-1.35 3-3 3z"/></svg>
-                <span class="font-bold text-xs tracking-wider font-mono">GOOGLE CLOUD</span>
-            </div>
-            <div class="flex items-center gap-2.5 text-gray-500 hover:text-blue-400 transition-colors duration-300">
+            <div class="flex items-center gap-2.5 text-gray-500 hover:text-white transition-colors duration-300">
                 <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"/></svg>
-                <span class="font-bold text-xs tracking-wider font-mono">LOOKER STUDIO</span>
+                <span class="font-bold text-xs tracking-wider font-mono">GOOGLE CLOUD</span>
             </div>
         </div>
     </section>
@@ -202,220 +193,206 @@
             <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-red-500/50 transition-colors">
                 <div class="w-12 h-12 bg-red-600/10 border border-red-500/30 rounded-xl flex items-center justify-center text-red-400 font-bold mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">01</div>
                 <h3 class="text-xl font-bold text-white mb-3">Fugas de Presupuesto</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero en campañas de marketing digital mal rastreadas, atribuciones duplicadas o métricas fantasma.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero en campañas de marketing digital mal rastreadas o atribuciones duplicadas.</p>
             </div>
             <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-amber-500/50 transition-colors">
                 <div class="w-12 h-12 bg-amber-600/10 border border-amber-500/30 rounded-xl flex items-center justify-center text-amber-400 font-bold mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">02</div>
                 <h3 class="text-xl font-bold text-white mb-3">Caos Operativo</h3>
-                <p class="text-sm text-gray-400 leading-relaxed">Analizamos cuántas horas pierde tu equipo consolidando datos de forma manual que podrían centralizarse en cuadros automáticos.</p>
+                <p class="text-sm text-gray-400 leading-relaxed">Analizamos cuántas horas pierde tu equipo consolidando datos de forma manual que podrían centralizarse automáticamente.</p>
             </div>
             <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
                 <div class="w-12 h-12 bg-emerald-600/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400 font-bold mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">03</div>
-                <h3 class="text-xl font-bold text-white mb-3">Seguridad e Infraestructura</h3>
+                <h3 class="text-xl font-bold text-white mb-3">Seguridad y Normativa</h3>
                 <p class="text-sm text-gray-400 leading-relaxed">Validamos que el almacenamiento de tus bases de datos cumpla normativas internacionales para blindarte ante multas LOPD.</p>
             </div>
         </div>
     </section>
 
-    <section id="diagnosticos" class="container mx-auto px-6 py-28 max-w-6xl relative z-10 font-sans border-t border-white/5">
-        <div class="text-center mb-20">
-            <span class="text-[10px] font-mono tracking-widest text-blue-500 bg-blue-500/10 px-3 py-1 rounded-full uppercase font-bold">Diagnóstico Avanzado de Sistemas</span>
-            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tighter mt-4 mb-4">Motores de Simulación Operativa</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Ejecute auditorías locales simulando el impacto de la entropía de datos en su estructura de costes corporativos e infraestructura legal.</p>
+    <section id="diagnosticos" class="container mx-auto px-6 py-24 max-w-6xl relative z-10 border-t border-white/5">
+        <div class="text-center mb-16">
+            <p class="text-xs font-mono tracking-widest text-blue-400 uppercase mb-3 font-bold">Diagnósticos Interactivos Locales</p>
+            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">Motores de Simulación Operativa</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm leading-relaxed">Interactúa directamente con nuestros motores de cálculo locales para evaluar el rendimiento financiero y la seguridad de tu empresa.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch w-full mb-20">
             
-            <div class="bg-[#0b0f19] p-7 rounded-2xl border border-white/5 flex flex-col justify-between hover:border-blue-500/30 transition-all duration-300 shadow-2xl relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-blue-600/5 rounded-full blur-3xl group-hover:bg-blue-600/10 transition-colors pointer-events-none"></div>
-                
-                <div class="relative z-10">
-                    <div class="flex justify-between items-center mb-6 font-mono text-[10px] text-gray-500 border-b border-white/5 pb-2">
-                        <span class="text-blue-400 font-bold uppercase">> engine_loss_labor</span>
-                        <span>01_</span>
+            <div class="bg-[#0b0f19] p-8 rounded-3xl border border-blue-500/20 flex flex-col justify-between hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-[10px] font-mono tracking-wider bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-full font-bold uppercase">Módulo Financiero</span>
+                        <span class="text-xs font-mono text-gray-500 font-bold">01 / 03</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-1 tracking-tight">Fricción Salarial</h3>
-                    <p class="text-[11px] text-gray-500 font-mono mb-8 leading-relaxed">Mapeo de costes reales (Salario Base 25€/h + Carga SS Empresa 33%) por procesamiento manual.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">Fricción Salarial</h3>
+                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Costes de ineficiencia por tareas manuales (Calculado a 25€/h).</p>
                     
-                    <div class="space-y-6 font-mono">
+                    <div class="space-y-4 mb-6">
                         <div>
-                            <div class="flex justify-between text-[11px] mb-2 text-gray-400">
-                                <span>[Nº OPERARIOS]</span>
-                                <span id="h1-emp-text" class="text-white font-bold bg-white/10 px-2 py-0.5 rounded">3</span>
+                            <div class="flex justify-between text-[11px] font-mono mb-1 text-gray-300">
+                                <span>Nº Empleados:</span>
+                                <span id="h1-emp-text" class="text-blue-400 font-bold text-sm bg-blue-900/30 px-2 py-0.5 rounded">3</span>
                             </div>
-                            <input id="h1-slider-emp" type="range" min="1" max="20" step="1" value="3" oninput="calcH1()">
+                            <input id="h1-slider-emp" type="range" min="1" max="20" step="1" value="3" class="w-full" oninput="calcH1()">
                         </div>
                         <div>
-                            <div class="flex justify-between text-[11px] mb-2 text-gray-400">
-                                <span>[HORAS SEMANA / C.U]</span>
-                                <span id="h1-hours-text" class="text-white font-bold bg-white/10 px-2 py-0.5 rounded">5h</span>
+                            <div class="flex justify-between text-[11px] font-mono mb-1 text-gray-300">
+                                <span>Horas/Semana (c/u):</span>
+                                <span id="h1-hours-text" class="text-blue-400 font-bold text-sm bg-blue-900/30 px-2 py-0.5 rounded">5h</span>
                             </div>
-                            <input id="h1-slider-hours" type="range" min="1" max="40" step="1" value="5" oninput="calcH1()">
+                            <input id="h1-slider-hours" type="range" min="1" max="40" step="1" value="5" class="w-full" oninput="calcH1()">
                         </div>
                     </div>
                 </div>
                 
-                <div class="mt-8 relative z-10 border-t border-white/5 pt-6">
-                    <div class="space-y-2 text-left mb-6 font-mono">
-                        <div class="flex justify-between text-[10px] text-gray-500"><span>Coste Bruto Anual:</span><span id="h1-raw-labor" class="text-gray-300">0 €</span></div>
-                        <div class="flex justify-between text-[10px] text-gray-500"><span>Seg. Social (33%):</span><span id="h1-ss-tax" class="text-gray-300">0 €</span></div>
-                        <div class="flex justify-between text-[11px] text-gray-300 font-bold bg-red-500/10 border border-red-500/20 p-2 rounded mt-2">
-                            <span class="text-red-400/80">Pérdida Compuesta:</span><span id="h1-result" class="text-red-400">0 €</span>
-                        </div>
+                <div>
+                    <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center mb-5">
+                        <p class="text-[10px] text-gray-400 font-mono uppercase tracking-wider font-bold">Pérdida Anualizada Mínima</p>
+                        <p id="h1-result" class="text-2xl font-black text-red-400 font-mono mt-1">0 €</p>
                     </div>
-                    <form onsubmit="submitWeb3Form(event, 'h1-btn', {'Auditoria Laboral': document.getElementById('h1-result').innerText})">
+                    <form onsubmit="submitEngineForm(event, 'h1-btn', {'Pérdida Calculada': document.getElementById('h1-result').innerText})" class="space-y-2">
                         <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" name="subject" value="🔥 LEAD TERMINAL: Fricción Salarial">
-                        <input type="email" name="Email" placeholder="Correo corporativo..." required class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2.5 text-[11px] text-white font-mono focus:outline-none focus:border-blue-500 mb-2 transition-colors">
-                        <button id="h1-btn" type="submit" class="w-full py-2.5 bg-blue-600/20 hover:bg-blue-600 border border-blue-500/50 text-blue-400 hover:text-white font-bold text-[11px] rounded-lg font-mono tracking-wider transition-all">DEPLOY_MITIGATION_PDF</button>
+                        <input type="hidden" name="subject" value="🔥 LEAD MOTOR: Fricción Salarial">
+                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 bg-slate-900/50 transition-colors">
+                        <button id="h1-btn" type="submit" class="w-full text-center py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(59,130,246,0.3)] uppercase tracking-wider">Detener Pérdidas</button>
                     </form>
                 </div>
             </div>
 
-            <div class="bg-[#0b0f19] p-7 rounded-2xl border border-white/5 flex flex-col justify-between hover:border-indigo-500/30 transition-all duration-300 shadow-2xl relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-600/5 rounded-full blur-3xl group-hover:bg-indigo-600/10 transition-colors pointer-events-none"></div>
-                
-                <div class="relative z-10">
-                    <div class="flex justify-between items-center mb-6 font-mono text-[10px] text-gray-500 border-b border-white/5 pb-2">
-                        <span class="text-indigo-400 font-bold uppercase">> sec_compliance_rgpd</span>
-                        <span>02_</span>
+            <div class="bg-[#0b0f19] p-8 rounded-3xl border border-indigo-500/20 flex flex-col justify-between hover:border-indigo-500/50 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-[10px] font-mono tracking-wider bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full font-bold uppercase">Seguridad LOPD</span>
+                        <span class="text-xs font-mono text-gray-500 font-bold">02 / 03</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-1 tracking-tight">Riesgo de Exposición</h3>
-                    <p class="text-[11px] text-gray-500 font-mono mb-8 leading-relaxed">Matriz de vulnerabilidad algorítmica ante brechas de datos e inspecciones de la AEPD.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-indigo-400 transition-colors">Riesgo de Exposición</h3>
+                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Nivel de vulnerabilidad en almacenamiento de datos.</p>
                     
-                    <div class="space-y-2.5 font-mono">
-                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-2">[ARQUITECTURA DE DATOS]</p>
-                        <button type="button" onclick="setH2Score(85, this)" class="h2-opt w-full text-left p-3 rounded-lg border border-white/5 bg-white/5 text-[11px] text-gray-400 hover:bg-white/10 transition-all flex justify-between items-center group/btn">
-                            <span>Excels desprotegidos</span><div class="w-1.5 h-1.5 rounded-full bg-red-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
-                        </button>
-                        <button type="button" onclick="setH2Score(45, this)" class="h2-opt w-full text-left p-3 rounded-lg border border-white/5 bg-white/5 text-[11px] text-gray-400 hover:bg-white/10 transition-all flex justify-between items-center group/btn">
-                            <span>Drive / Sharepoint estándar</span><div class="w-1.5 h-1.5 rounded-full bg-amber-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
-                        </button>
-                        <button type="button" onclick="setH2Score(5, this)" class="h2-opt w-full text-left p-3 rounded-lg border border-white/5 bg-white/5 text-[11px] text-gray-400 hover:bg-white/10 transition-all flex justify-between items-center group/btn">
-                            <span>Data Warehouse SQL Cifrado</span><div class="w-1.5 h-1.5 rounded-full bg-emerald-500 opacity-0 group-hover/btn:opacity-100 transition-opacity"></div>
-                        </button>
+                    <div class="space-y-2 mb-6">
+                        <p class="text-[11px] font-mono text-gray-300 uppercase mb-2 font-bold tracking-wide">¿Dónde guardas tus datos?</p>
+                        <button type="button" onclick="setH2Score('Crítico', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium">Excels locales en PCs desprotegidos</button>
+                        <button type="button" onclick="setH2Score('Medio', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium">Drive / Sharepoint compartido</button>
+                        <button type="button" onclick="setH2Score('Bajo', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium">Bases de datos en la nube (SQL)</button>
                     </div>
                 </div>
 
-                <div class="mt-8 relative z-10 border-t border-white/5 pt-6">
-                    <div class="p-3 rounded-lg text-center mb-6 border font-mono transition-all duration-300 bg-black/50 border-white/5" id="h2-result-bg">
-                        <p class="text-[9px] text-gray-500 uppercase tracking-wider">Probabilidad Sanción (Max. 20M€)</p>
-                        <p id="h2-result-text" class="text-lg font-black text-gray-400 mt-0.5">-- %</p>
+                <div>
+                    <div class="p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-white/[0.01] border-white/10" id="h2-result-bg">
+                        <p class="text-[9px] text-gray-400 font-mono uppercase tracking-wider">Dictamen de Riesgo Legal</p>
+                        <p id="h2-result-text" class="text-sm font-black text-gray-400 mt-1 uppercase tracking-wide">Selecciona opción</p>
                     </div>
-                    <form onsubmit="submitWeb3Form(event, 'h2-btn', {'Riesgo LOPD': document.getElementById('h2-result-text').innerText})">
+                    <form onsubmit="submitEngineForm(event, 'h2-btn', {'Riesgo LOPD Seleccionado': document.getElementById('h2-result-text').innerText})" class="space-y-2">
                         <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" name="subject" value="🔥 LEAD TERMINAL: Matriz Legal">
-                        <input type="email" name="Email" placeholder="Correo corporativo..." required class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2.5 text-[11px] text-white font-mono focus:outline-none focus:border-indigo-500 mb-2 transition-colors">
-                        <button id="h2-btn" type="submit" class="w-full py-2.5 bg-indigo-600/20 hover:bg-indigo-600 border border-indigo-500/50 text-indigo-400 hover:text-white font-bold text-[11px] rounded-lg font-mono tracking-wider transition-all">EXEC_SECURITY_SHIELD</button>
+                        <input type="hidden" name="subject" value="🔥 LEAD MOTOR: Test Seguridad">
+                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 bg-slate-900/50 transition-colors">
+                        <button id="h2-btn" type="submit" class="w-full text-center py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(99,102,241,0.3)] uppercase tracking-wider">Solicitar Auditoría</button>
                     </form>
                 </div>
             </div>
 
-            <div class="bg-[#0b0f19] p-7 rounded-2xl border border-white/5 flex flex-col justify-between hover:border-cyan-500/30 transition-all duration-300 shadow-2xl relative overflow-hidden group">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-cyan-600/5 rounded-full blur-3xl group-hover:bg-cyan-600/10 transition-colors pointer-events-none"></div>
-                
-                <div class="relative z-10">
-                    <div class="flex justify-between items-center mb-6 font-mono text-[10px] text-gray-500 border-b border-white/5 pb-2">
-                        <span class="text-cyan-400 font-bold uppercase">> pipeline_efficiency</span>
-                        <span>03_</span>
+            <div class="bg-[#0b0f19] p-8 rounded-3xl border border-cyan-500/20 flex flex-col justify-between hover:border-cyan-500/50 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
+                <div>
+                    <div class="flex justify-between items-center mb-6">
+                        <span class="text-[10px] font-mono tracking-wider bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-full font-bold uppercase">Optimización</span>
+                        <span class="text-xs font-mono text-gray-500 font-bold">03 / 03</span>
                     </div>
-                    <h3 class="text-lg font-bold text-white mb-1 tracking-tight">Entropía de Sistemas</h3>
-                    <p class="text-[11px] text-gray-500 font-mono mb-8 leading-relaxed">Recorte estructural de tiempos mediante consolidación API y pipelines automatizados.</p>
+                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-cyan-400 transition-colors">Entradas de Sistemas</h3>
+                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Potencial de automatización vía Data Pipelines.</p>
                     
-                    <div class="space-y-2.5 font-mono">
-                        <p class="text-[10px] text-gray-500 uppercase font-bold tracking-wider mb-2">[SELECCIONE NODOS AISLADOS]</p>
-                        <div onclick="toggleH3('crm', this)" class="h3-opt flex items-center justify-between p-3 rounded-lg border border-white/5 bg-white/5 cursor-pointer text-[11px] text-gray-400 transition-all hover:bg-white/10">
-                            <span>Aislamiento Operativo (CRM)</span>
-                            <div class="chk-box w-3.5 h-3.5 rounded border border-white/20 flex items-center justify-center text-[9px] text-transparent transition-all">&#10003;</div>
+                    <div class="space-y-2 mb-6">
+                        <p class="text-[11px] font-mono text-gray-300 uppercase mb-2 font-bold tracking-wide">Selecciona tus nodos desconectados:</p>
+                        
+                        <div onclick="toggleH3('crm', this)" class="h3-opt flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-medium">
+                            <div class="chk-box w-4 h-4 rounded border border-white/30 flex items-center justify-center text-[10px] text-transparent transition-all select-none">&#10003;</div>
+                            Datos aislados (CRM / ERP)
                         </div>
-                        <div onclick="toggleH3('ads', this)" class="h3-opt flex items-center justify-between p-3 rounded-lg border border-white/5 bg-white/5 cursor-pointer text-[11px] text-gray-400 transition-all hover:bg-white/10">
-                            <span>Atribución MKT (Ads / Web)</span>
-                            <div class="chk-box w-3.5 h-3.5 rounded border border-white/20 flex items-center justify-center text-[9px] text-transparent transition-all">&#10003;</div>
+                        <div onclick="toggleH3('ads', this)" class="h3-opt flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-medium">
+                            <div class="chk-box w-4 h-4 rounded border border-white/30 flex items-center justify-center text-[10px] text-transparent transition-all select-none">&#10003;</div>
+                            Atribución MKT (Google Ads)
                         </div>
-                        <div onclick="toggleH3('pay', this)" class="h3-opt flex items-center justify-between p-3 rounded-lg border border-white/5 bg-white/5 cursor-pointer text-[11px] text-gray-400 transition-all hover:bg-white/10">
-                            <span>Pasarelas Financieras (Stripe)</span>
-                            <div class="chk-box w-3.5 h-3.5 rounded border border-white/20 flex items-center justify-center text-[9px] text-transparent transition-all">&#10003;</div>
+                        <div onclick="toggleH3('pay', this)" class="h3-opt flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-medium">
+                            <div class="chk-box w-4 h-4 rounded border border-white/30 flex items-center justify-center text-[10px] text-transparent transition-all select-none">&#10003;</div>
+                            Pasarelas Financieras (Stripe)
                         </div>
                     </div>
                 </div>
 
-                <div class="mt-8 relative z-10 border-t border-white/5 pt-6">
-                    <div class="p-3 rounded-lg text-center mb-6 border border-cyan-500/10 bg-cyan-900/10 font-mono transition-all duration-300">
-                        <p class="text-[9px] text-cyan-500/70 uppercase tracking-wider">Ahorro de Procesamiento / Mes</p>
-                        <p class="text-lg font-black text-cyan-400 mt-0.5"><span id="h3-result-text">0</span> <span class="text-[10px]">Horas</span></p>
+                <div>
+                    <div class="p-4 rounded-xl text-center mb-5 border border-cyan-500/20 bg-cyan-900/10 transition-all duration-300">
+                        <p class="text-[9px] text-cyan-500 font-mono uppercase tracking-wider font-bold">Ahorro de Procesamiento</p>
+                        <p class="text-2xl font-black text-cyan-400 font-mono mt-1"><span id="h3-result-text">0</span> <span class="text-sm">Horas/Mes</span></p>
                     </div>
-                    <form onsubmit="submitWeb3Form(event, 'h3-btn', {'Horas Libres Estimadas': document.getElementById('h3-result-text').innerText})">
+                    <form onsubmit="submitEngineForm(event, 'h3-btn', {'Horas Libres Estimadas': document.getElementById('h3-result-text').innerText})" class="space-y-2">
                         <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" name="subject" value="🔥 LEAD TERMINAL: Automatización">
-                        <input type="email" name="Email" placeholder="Correo corporativo..." required class="w-full bg-black/50 border border-white/10 rounded-lg px-3 py-2.5 text-[11px] text-white font-mono focus:outline-none focus:border-cyan-500 mb-2 transition-colors">
-                        <button id="h3-btn" type="submit" class="w-full py-2.5 bg-cyan-600/20 hover:bg-cyan-600 border border-cyan-500/50 text-cyan-400 hover:text-white font-bold text-[11px] rounded-lg font-mono tracking-wider transition-all">INIT_API_INTEGRATION</button>
+                        <input type="hidden" name="subject" value="🔥 LEAD MOTOR: Automatización">
+                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 bg-slate-900/50 transition-colors">
+                        <button id="h3-btn" type="submit" class="w-full text-center py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(6,182,212,0.3)] uppercase tracking-wider">Unificar Sistemas</button>
                     </form>
                 </div>
             </div>
         </div>
 
-        <div class="bg-[#0b0f19] border border-white/5 rounded-3xl p-8 lg:p-12 shadow-[0_30px_60px_rgba(0,0,0,0.6)] relative overflow-hidden">
+        <div class="bg-[#0b0f19] border border-white/5 rounded-[2.5rem] p-8 lg:p-14 shadow-[0_30px_60px_rgba(0,0,0,0.6)] relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/10 via-transparent to-transparent pointer-events-none"></div>
             
-            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+            <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-5 space-y-8">
                     <div>
-                        <div class="flex items-center gap-2 mb-2">
-                            <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                            <h3 class="text-xl md:text-2xl font-bold text-white tracking-tight">Macro-Proyección de Pérdidas</h3>
+                        <div class="flex items-center gap-2 mb-3">
+                            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                            <h3 class="text-2xl font-bold text-white tracking-tight">Macro-Proyección</h3>
                         </div>
-                        <p class="text-xs text-gray-500 font-mono leading-relaxed">Calculadora de impacto financiero a 5 años basada en el Efecto de Arrastre Operacional (Operational Drag).</p>
+                        <p class="text-sm text-gray-400 font-mono leading-relaxed">Simulador de impacto financiero a 5 años basado en el Efecto de Arrastre Operacional (Operational Drag).</p>
                     </div>
 
-                    <div class="bg-black/40 border border-white/5 rounded-2xl p-6">
-                        <div class="flex justify-between items-end mb-4 font-mono">
-                            <span class="text-[10px] text-gray-400 uppercase tracking-widest font-bold">Volumen Facturación Mensual</span>
-                            <span id="macro-revenue-label" class="text-2xl text-emerald-400 font-black tracking-tighter">50.000 €</span>
+                    <div class="bg-black/50 border border-white/5 rounded-2xl p-6 shadow-inner">
+                        <div class="flex justify-between items-end mb-6 font-mono">
+                            <span class="text-[11px] text-gray-400 uppercase tracking-widest font-bold">Facturación Mensual</span>
+                            <span id="macro-revenue-label" class="text-3xl text-emerald-400 font-black tracking-tighter">50.000 €</span>
                         </div>
                         <input type="range" id="macro-slider" min="10000" max="1000000" step="10000" value="50000" class="w-full slider-global" oninput="calcMacro()">
-                        <div class="flex justify-between text-[9px] text-gray-600 font-mono mt-3">
+                        <div class="flex justify-between text-[10px] text-gray-600 font-mono mt-4">
                             <span>10K EUR</span>
                             <span>1M EUR</span>
                         </div>
                     </div>
 
-                    <div class="space-y-3 font-mono bg-black/20 p-5 rounded-xl border border-white/5">
-                        <div class="flex justify-between text-xs pb-3 border-b border-white/5">
-                            <span class="text-gray-500">Tasa de Entropía Estándar:</span>
-                            <span class="text-gray-300">5.4% - 12%</span>
+                    <div class="space-y-4 font-mono bg-black/30 p-6 rounded-2xl border border-white/5">
+                        <div class="flex justify-between text-xs pb-4 border-b border-white/5">
+                            <span class="text-gray-400">Tasa de Entropía:</span>
+                            <span class="text-gray-200 font-bold">5.4% - 12%</span>
                         </div>
-                        <div class="flex justify-between text-xs pt-1">
-                            <span class="text-gray-500">Capital Recuperable (ROI):</span>
-                            <span class="text-emerald-400 font-bold" id="macro-roi">--</span>
+                        <div class="flex justify-between text-xs pt-1 items-center">
+                            <span class="text-gray-400">Capital Recuperable:</span>
+                            <span class="text-emerald-400 font-black text-lg" id="macro-roi">--</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-7">
-                    <div class="bg-black/20 border border-white/5 rounded-2xl p-6 lg:p-8">
-                        <p class="text-[10px] text-gray-500 font-mono uppercase tracking-widest mb-8 font-bold">Crecimiento de la Hemorragia (Proyección Acumulada)</p>
+                    <div class="bg-black/30 border border-white/5 rounded-3xl p-8 lg:p-10">
+                        <p class="text-xs text-gray-400 font-mono uppercase tracking-widest mb-10 font-bold text-center">Crecimiento de la Hemorragia (Proyección Acumulada)</p>
                         
-                        <div class="relative h-56 border-b border-l border-white/10 flex items-end justify-around px-2 pb-0 pt-4 font-mono">
+                        <div class="relative h-64 border-b border-l border-white/10 flex items-end justify-around px-4 pb-0 pt-6 font-mono">
                             
                             <div class="flex flex-col items-center group w-1/4 relative">
-                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-8 text-[10px] text-red-400 font-bold bg-black border border-red-500/30 px-2 py-1 rounded whitespace-nowrap z-20" id="bar-val-1">0 €</div>
-                                <div id="bar-1" class="w-full max-w-[40px] bg-gradient-to-t from-red-900/50 to-red-500/80 rounded-t-sm chart-bar relative z-10" style="height: 20%;"></div>
-                                <span class="text-[10px] text-gray-500 mt-3 absolute -bottom-6">AÑO 1</span>
+                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg" id="bar-val-1">0 €</div>
+                                <div id="bar-1" class="w-full max-w-[50px] bg-gradient-to-t from-red-900/50 to-red-500/80 rounded-t-md chart-bar relative z-10" style="height: 20%;"></div>
+                                <span class="text-xs text-gray-500 mt-4 absolute -bottom-8 font-bold">AÑO 1</span>
                             </div>
 
                             <div class="flex flex-col items-center group w-1/4 relative">
-                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-8 text-[10px] text-red-400 font-bold bg-black border border-red-500/30 px-2 py-1 rounded whitespace-nowrap z-20" id="bar-val-3">0 €</div>
-                                <div id="bar-3" class="w-full max-w-[40px] bg-gradient-to-t from-red-900/50 to-red-500/90 rounded-t-sm chart-bar relative z-10" style="height: 50%;"></div>
-                                <span class="text-[10px] text-gray-500 mt-3 absolute -bottom-6">AÑO 3</span>
+                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg" id="bar-val-3">0 €</div>
+                                <div id="bar-3" class="w-full max-w-[50px] bg-gradient-to-t from-red-900/50 to-red-500/90 rounded-t-md chart-bar relative z-10" style="height: 50%;"></div>
+                                <span class="text-xs text-gray-500 mt-4 absolute -bottom-8 font-bold">AÑO 3</span>
                             </div>
 
                             <div class="flex flex-col items-center group w-1/4 relative">
-                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-8 text-[10px] text-red-400 font-bold bg-black border border-red-500/30 px-2 py-1 rounded whitespace-nowrap z-20" id="bar-val-5">0 €</div>
-                                <div id="bar-5" class="w-full max-w-[40px] bg-gradient-to-t from-red-900/50 to-red-500 rounded-t-sm chart-bar shadow-[0_0_15px_rgba(239,68,68,0.4)] relative z-10" style="height: 90%;">
-                                    <div class="absolute -top-1 left-0 right-0 h-1 bg-red-400 blur-sm"></div>
+                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg" id="bar-val-5">0 €</div>
+                                <div id="bar-5" class="w-full max-w-[50px] bg-gradient-to-t from-red-900/50 to-red-500 rounded-t-md chart-bar shadow-[0_0_20px_rgba(239,68,68,0.5)] relative z-10" style="height: 90%;">
+                                    <div class="absolute -top-1 left-0 right-0 h-1.5 bg-red-400 blur-sm rounded-t-md"></div>
                                 </div>
-                                <span class="text-[10px] text-gray-500 mt-3 absolute -bottom-6">AÑO 5</span>
+                                <span class="text-xs text-emerald-500 mt-4 absolute -bottom-8 font-bold">AÑO 5</span>
                             </div>
 
                             <div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
@@ -426,12 +403,12 @@
                             </div>
                         </div>
 
-                        <div class="mt-16 pt-6 border-t border-white/5">
-                            <form onsubmit="submitWeb3Form(event, 'macro-btn', {'Pérdida 5 Años': document.getElementById('bar-val-5').innerText})" class="flex flex-col sm:flex-row gap-3">
+                        <div class="mt-20 border-t border-white/5 pt-8">
+                            <form onsubmit="submitEngineForm(event, 'macro-btn', {'Pérdida 5 Años': document.getElementById('bar-val-5').innerText})" class="flex flex-col sm:flex-row gap-4">
                                 <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
                                 <input type="hidden" name="subject" value="🔥 LEAD ENTERPRISE: Simulación Macro">
-                                <input type="email" name="Email" placeholder="Correo de Gerencia / CEO..." required class="flex-grow bg-black border border-white/10 rounded-lg px-4 py-3 text-xs text-white font-mono focus:outline-none focus:border-emerald-500 transition-colors">
-                                <button id="macro-btn" type="submit" class="sm:w-auto px-6 py-3 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg font-mono tracking-wider transition-colors shadow-[0_0_15px_rgba(16,185,129,0.3)]">SOLICITAR_AUDITORÍA</button>
+                                <input type="email" name="Email" placeholder="Correo corporativo del directivo..." required class="flex-grow bg-black border border-white/10 rounded-xl px-5 py-4 text-sm text-white font-mono focus:outline-none focus:border-emerald-500 transition-colors">
+                                <button id="macro-btn" type="submit" class="sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl font-mono tracking-wider transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] uppercase">Frenar Pérdidas</button>
                             </form>
                         </div>
                     </div>
@@ -445,37 +422,40 @@
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-left mb-12">
             <div class="md:col-span-6 space-y-3 text-center md:text-left">
                 <div class="flex items-center gap-3 justify-center md:justify-start">
-                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg text-white flex items-center justify-center font-black text-base border border-blue-500/30">N</div>
+                    <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded border border-white/10 text-white flex items-center justify-center font-black text-base">N</div>
                     <span class="text-sm font-black tracking-widest text-white uppercase font-sans">NEXUS ANALYTICS</span>
                 </div>
-                <p class="text-xs text-gray-500 max-w-sm leading-relaxed mx-auto md:mr-auto md:ml-0 mt-3">
-                    Sustituimos el caos operativo por arquitecturas de datos e infraestructura automatizada de alto rendimiento técnico bajo estándares europeos.
+                <p class="text-xs text-gray-500 max-w-sm leading-relaxed mx-auto md:mr-auto md:ml-0 mt-4 font-mono">
+                    Arquitecturas de datos e infraestructura automatizada de alto rendimiento técnico bajo estándares europeos.
                 </p>
                 
-                <div class="flex flex-col md:flex-row items-center gap-4 mt-8 mb-4 justify-center md:justify-start">
-                    <a href="mailto:nexusalanalytics011@gmail.com" class="text-blue-400 hover:text-blue-300 font-bold text-base md:text-lg transition-colors flex items-center gap-2">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                <div class="flex flex-col md:flex-row items-center gap-4 mt-8 mb-4 justify-center md:justify-start font-mono">
+                    <a href="mailto:nexusalanalytics011@gmail.com" class="text-blue-400 hover:text-blue-300 font-bold text-sm transition-colors flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
                         nexusalanalytics011@gmail.com
                     </a>
-                    <button onclick="navigator.clipboard.writeText('nexusalanalytics011@gmail.com'); alert('¡Email copiado al portapapeles!');" class="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer">
-                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                    <button onclick="navigator.clipboard.writeText('nexusalanalytics011@gmail.com'); alert('¡Email copiado al portapapeles!');" class="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all flex items-center gap-1.5 cursor-pointer uppercase tracking-wider">
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
                         Copiar
                     </button>
                 </div>
             </div>
             
-            <div class="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-xs font-mono text-gray-400">
-                <button onclick="openLegalModal('aviso')" class="hover:text-blue-400 transition-colors">Aviso Legal</button>
+            <div class="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-[11px] font-mono text-gray-500 uppercase tracking-wider font-bold">
+                <button onclick="openLegalModal('aviso')" class="hover:text-white transition-colors">Aviso Legal</button>
                 <span class="text-gray-700">|</span>
-                <button onclick="openLegalModal('privacidad')" class="hover:text-blue-400 transition-colors">Política de Privacidad (RGPD)</button>
+                <button onclick="openLegalModal('privacidad')" class="hover:text-white transition-colors">Privacidad</button>
                 <span class="text-gray-700">|</span>
-                <button onclick="openLegalModal('cookies')" class="hover:text-blue-400 transition-colors">Cookies</button>
+                <button onclick="openLegalModal('cookies')" class="hover:text-white transition-colors">Cookies</button>
             </div>
         </div>
 
-        <div class="pt-8 border-t border-white/[0.02] flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono text-gray-500">
+        <div class="pt-8 border-t border-white/[0.05] flex flex-col sm:flex-row justify-between items-center gap-4 text-[10px] font-mono text-gray-600">
             <p>NEXUS ANALYTICS &copy; 2026 • TODOS LOS DERECHOS RESERVADOS.</p>
-            <p class="text-gray-600">Desplegado de forma segura en Vercel Edge Network</p>
+            <p class="flex items-center gap-1.5 font-bold tracking-widest text-gray-500">
+                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 
+                SISTEMAS OPERATIVOS
+            </p>
         </div>
     </footer>
 
@@ -486,15 +466,14 @@
             <div id="general-step-1">
                 <h3 class="text-2xl font-black text-white mb-2">Auditoría Gratuita</h3>
                 <p class="text-xs text-gray-400 mb-6">Déjanos tus datos. Evaluaremos el potencial de optimización de tu negocio y te contactaremos en menos de 24h.</p>
-                <form onsubmit="submitWeb3FormModal(event, 'general-step-1', 'general-step-success')" id="formGeneral" class="space-y-4">
+                <form onsubmit="submitModalForm(event, 'general-step-1', 'general-step-success')" id="formGeneral" class="space-y-4">
                     <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
                     <input type="hidden" name="subject" value="🔥 NUEVO LEAD: Contacto General Web">
-                    <input type="hidden" name="from_name" value="Nexus Analytics Web">
                     <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none"></div>
                     <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none"></div>
                     <div><textarea name="message" rows="3" placeholder="¿Cuál es tu mayor reto con los datos? (Opcional)" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none resize-none"></textarea></div>
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg mt-2 transition-colors">Solicitar Auditoría Ahora</button>
+                    <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] mt-2 transition-colors">Solicitar Auditoría Ahora</button>
                 </form>
             </div>
             
@@ -511,30 +490,40 @@
 
     <div id="legal-modal" class="fixed inset-0 w-full h-full bg-[#030712]/80 backdrop-blur-md z-[100] hidden items-center justify-center p-4">
         <div class="glass-panel w-full max-w-2xl p-6 md:p-8 rounded-2xl border border-white/10 max-h-[80vh] overflow-y-auto relative text-left">
-            <button onclick="closeLegalModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white text-lg font-mono">&times;</button>
-            <div id="legal-modal-content" class="space-y-4 text-xs md:text-sm text-gray-400 leading-relaxed font-sans"></div>
+            <button onclick="closeLegalModal()" class="absolute top-4 right-4 text-gray-500 hover:text-white text-2xl font-mono leading-none">&times;</button>
+            <div id="legal-modal-content" class="space-y-4 text-xs md:text-sm text-gray-400 leading-relaxed font-sans mt-2"></div>
         </div>
     </div>
 
     <script>
+        // Formateador EUR
         const formatEur = (num) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(num);
 
-        /* --- EFECTO TYPEWRITER --- */
+        /* --- ANIMACIÓN TYPEWRITER (HERO) --- */
         const stringsTypewriter = ["lo transformamos en decisiones.", "lo estructuramos de forma segura.", "lo traducimos en beneficio neto."];
         let stringIdx = 0; let charIdx = 0;
         const domTarget = document.getElementById("typewriter");
         
         function executeTyping() {
-            if(charIdx < stringsTypewriter[stringIdx].length) { domTarget.textContent += stringsTypewriter[stringIdx].charAt(charIdx); charIdx++; setTimeout(executeTyping, 80); }
+            if(charIdx < stringsTypewriter[stringIdx].length) { 
+                domTarget.textContent += stringsTypewriter[stringIdx].charAt(charIdx); 
+                charIdx++; setTimeout(executeTyping, 80); 
+            }
             else { setTimeout(executeErasing, 2500); }
         }
         
         function executeErasing() {
-            if(charIdx > 0) { domTarget.textContent = stringsTypewriter[stringIdx].substring(0, charIdx - 1); charIdx--; setTimeout(executeErasing, 40); }
-            else { stringIdx = (stringIdx + 1) % stringsTypewriter.length; setTimeout(executeTyping, 400); }
+            if(charIdx > 0) { 
+                domTarget.textContent = stringsTypewriter[stringIdx].substring(0, charIdx - 1); 
+                charIdx--; setTimeout(executeErasing, 40); 
+            }
+            else { 
+                stringIdx = (stringIdx + 1) % stringsTypewriter.length; 
+                setTimeout(executeTyping, 400); 
+            }
         }
 
-        /* --- T1: LÓGICA LABORAL --- */
+        /* --- LÓGICA TARJETA 1 (LABORAL) --- */
         function calcH1() {
             const emp = parseInt(document.getElementById('h1-slider-emp').value);
             const hrs = parseInt(document.getElementById('h1-slider-hours').value);
@@ -542,57 +531,62 @@
             document.getElementById('h1-emp-text').innerText = emp;
             document.getElementById('h1-hours-text').innerText = hrs + "h";
             
+            // Salario a 25€ + 33% SS
             const rawLabor = emp * hrs * 52 * 25; 
             const ssTax = rawLabor * 0.33;
             const total = rawLabor + ssTax;
 
-            document.getElementById('h1-raw-labor').innerText = formatEur(rawLabor);
-            document.getElementById('h1-ss-tax').innerText = formatEur(ssTax);
             document.getElementById('h1-result').innerText = formatEur(total);
         }
 
-        /* --- T2: LÓGICA DE RIESGO LEGAL --- */
-        function setH2Score(score, el) {
+        /* --- LÓGICA TARJETA 2 (RIESGO LEGAL) --- */
+        function setH2Score(level, el) {
             document.querySelectorAll('.h2-opt').forEach(btn => {
-                btn.classList.remove('border-indigo-500', 'bg-indigo-900/20');
-                btn.classList.add('border-white/5', 'bg-white/5');
+                btn.classList.remove('border-indigo-500', 'bg-indigo-900/20', 'text-indigo-300');
+                btn.classList.add('border-white/10', 'bg-white/[0.02]', 'text-gray-300');
             });
-            el.classList.remove('border-white/5', 'bg-white/5');
-            el.classList.add('border-indigo-500', 'bg-indigo-900/20');
+            el.classList.remove('border-white/10', 'bg-white/[0.02]', 'text-gray-300');
+            el.classList.add('border-indigo-500', 'bg-indigo-900/20', 'text-indigo-300');
 
             const resultBg = document.getElementById('h2-result-bg');
             const resultText = document.getElementById('h2-result-text');
-            resultText.innerText = score + " %";
+            resultText.innerText = "Riesgo " + level;
 
-            resultBg.className = "p-3 rounded-lg text-center mb-6 border font-mono transition-all duration-300 " + 
-                (score > 50 ? "bg-red-900/20 border-red-500/30 text-red-400" : 
-                 score > 20 ? "bg-amber-900/20 border-amber-500/30 text-amber-400" : 
-                 "bg-emerald-900/20 border-emerald-500/30 text-emerald-400");
+            if(level === 'Crítico') {
+                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-red-900/20 border-red-500/30";
+                resultText.className = "text-sm font-black text-red-400 mt-1 uppercase tracking-wide";
+            } else if (level === 'Medio') {
+                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-amber-900/20 border-amber-500/30";
+                resultText.className = "text-sm font-black text-amber-400 mt-1 uppercase tracking-wide";
+            } else {
+                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-emerald-900/20 border-emerald-500/30";
+                resultText.className = "text-sm font-black text-emerald-400 mt-1 uppercase tracking-wide";
+            }
         }
 
-        /* --- T3: LÓGICA DE PIPELINES --- */
+        /* --- LÓGICA TARJETA 3 (AUTOMATIZACIÓN) --- */
         const h3State = { crm: false, ads: false, pay: false };
         function toggleH3(key, el) {
             h3State[key] = !h3State[key];
             const chkBox = el.querySelector('.chk-box');
             
             if(h3State[key]) {
-                el.classList.replace('border-white/5', 'border-cyan-500');
-                el.classList.replace('bg-white/5', 'bg-cyan-900/20');
+                el.classList.replace('border-white/10', 'border-cyan-500');
+                el.classList.replace('bg-white/[0.02]', 'bg-cyan-900/20');
                 chkBox.classList.replace('text-transparent', 'text-cyan-400');
-                chkBox.classList.replace('border-white/20', 'border-cyan-400');
+                chkBox.classList.replace('border-white/30', 'border-cyan-400');
             } else {
-                el.classList.replace('border-cyan-500', 'border-white/5');
-                el.classList.replace('bg-cyan-900/20', 'bg-white/5');
+                el.classList.replace('border-cyan-500', 'border-white/10');
+                el.classList.replace('bg-cyan-900/20', 'bg-white/[0.02]');
                 chkBox.classList.replace('text-cyan-400', 'text-transparent');
-                chkBox.classList.replace('border-cyan-400', 'border-white/20');
+                chkBox.classList.replace('border-cyan-400', 'border-white/30');
             }
 
             let count = Object.values(h3State).filter(v => v).length;
             let hours = 0;
-            if(count === 1) hours = 28;
-            else if(count === 2) hours = 75;
-            else if(count === 3) hours = 145;
+            if(count === 1) hours = 32;
+            else if(count === 2) hours = 84;
+            else if(count === 3) hours = 150;
 
             let curr = 0;
             let step = Math.ceil(hours / 15) || 1;
@@ -605,7 +599,7 @@
             if(hours === 0) document.getElementById('h3-result-text').innerText = 0;
         }
 
-        /* --- MACRO SIMULADOR: GRÁFICO STRIPE STYLE --- */
+        /* --- LÓGICA SIMULADOR MACRO (STRIPE STYLE) --- */
         function calcMacro() {
             const rev = parseInt(document.getElementById('macro-slider').value);
             document.getElementById('macro-revenue-label').innerText = formatEur(rev);
@@ -631,8 +625,8 @@
             document.getElementById('bar-5').style.height = '90%';
         }
 
-        /* --- GESTIÓN DE ENVÍOS (TERMINALES ENTERPRISE) --- */
-        function submitWeb3Form(event, btnId, extraDataObj = {}) {
+        /* --- ENVÍO DE FORMULARIOS: MOTORES Y MACRO --- */
+        function submitEngineForm(event, btnId, extraDataObj = {}) {
             event.preventDefault(); 
             const form = event.target;
             const formData = new FormData(form);
@@ -642,56 +636,51 @@
             const originalText = btn.innerText;
             btn.innerText = "PROCESANDO..."; 
             btn.disabled = true;
-            btn.classList.add('opacity-50', 'cursor-not-allowed');
+            btn.classList.add('opacity-75', 'cursor-not-allowed');
 
             fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
             .then(async (response) => {
                 if (response.status == 200) {
-                    btn.innerText = "¡ENVIADO CORRECTAMENTE!";
-                    btn.classList.replace('bg-blue-600/20', 'bg-emerald-600/20');
-                    btn.classList.replace('bg-indigo-600/20', 'bg-emerald-600/20');
-                    btn.classList.replace('bg-cyan-600/20', 'bg-emerald-600/20');
-                    btn.classList.replace('text-blue-400', 'text-emerald-400');
-                    btn.classList.replace('text-indigo-400', 'text-emerald-400');
-                    btn.classList.replace('text-cyan-400', 'text-emerald-400');
+                    btn.innerText = "¡ENVIADO!";
+                    btn.classList.add('bg-emerald-600');
                     form.reset();
                     setTimeout(() => { 
                         btn.innerText = originalText; 
-                        btn.className = btn.className.replace(/emerald/g, btnId.includes('h1') ? 'blue' : btnId.includes('h2') ? 'indigo' : 'cyan');
+                        btn.classList.remove('bg-emerald-600');
                         btn.disabled = false; 
-                        btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                        btn.classList.remove('opacity-75', 'cursor-not-allowed');
                     }, 4000);
                 } else { 
-                    alert("Error de conexión. Intente nuevamente."); 
-                    btn.innerText = originalText; btn.disabled = false; btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    alert("Error. Intenta de nuevo."); 
+                    btn.innerText = originalText; btn.disabled = false; btn.classList.remove('opacity-75', 'cursor-not-allowed');
                 }
             }).catch(error => { 
                 alert("Error de red."); 
-                btn.innerText = originalText; btn.disabled = false; btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                btn.innerText = originalText; btn.disabled = false; btn.classList.remove('opacity-75', 'cursor-not-allowed');
             });
         }
 
-        /* --- GESTIÓN DE ENVÍO (MODAL GENERAL VIEJO) --- */
-        function submitWeb3FormModal(event, containerToHide, containerToShow) {
+        /* --- ENVÍO DE FORMULARIO: MODAL GENERAL --- */
+        function submitModalForm(event, containerToHide, containerToShow) {
             event.preventDefault(); 
             const form = event.target;
             const formData = new FormData(form);
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerText;
-            btn.innerText = "Procesando..."; btn.disabled = true;
+            btn.innerText = "Enviando..."; btn.disabled = true;
             fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
             .then(async (response) => {
                 if (response.status == 200) {
                     document.getElementById(containerToHide).classList.add('hidden');
                     document.getElementById(containerToShow).classList.remove('hidden');
                     form.reset();
-                } else { alert("Hubo un error de conexión."); }
+                } else { alert("Error de servidor."); }
             })
-            .catch(error => { alert("Error al enviar. Revisa tu conexión a internet."); })
+            .catch(error => { alert("Error de red."); })
             .finally(() => { btn.innerText = originalText; btn.disabled = false; });
         }
 
-        /* --- GESTIÓN DE MODALES GENERAL Y LEGALES --- */
+        /* --- CONTROL DE MODALES GENERAL Y LEGALES --- */
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
@@ -729,7 +718,7 @@
             if (e.target === this) closeLegalModal();
         });
 
-        // INIT GLOBAL
+        // INICIALIZACIÓN GLOBAL
         window.addEventListener('DOMContentLoaded', () => {
             calcH1();
             calcMacro();
