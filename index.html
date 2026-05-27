@@ -54,9 +54,9 @@
         /* Range slider customizado base */
         input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
         input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; height: 24px; width: 24px; border-radius: 50%;
-            background: #3b82f6; cursor: pointer; margin-top: -8px;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8); transition: transform 0.15s ease, background-color 0.15s ease;
+            -webkit-appearance: none; height: 20px; width: 20px; border-radius: 50%;
+            background: #3b82f6; cursor: pointer; margin-top: -6px;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.8); transition: transform 0.15s ease, background-color 0.15s ease;
         }
         input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); background: #60a5fa; }
         input[type=range]::-webkit-slider-runnable-track {
@@ -78,13 +78,15 @@
         .modal-content { transform: scale(0.95) translateY(20px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .modal.active .modal-content { transform: scale(1) translateY(0); }
 
-        /* Tarjetas interactivas del Quiz */
-        .quiz-opt { transition: all 0.2s ease; }
-        .quiz-opt.selected { border-color: #6366f1; background-color: rgba(99, 102, 241, 0.15); }
-
         /* Cursor animado Typewriter */
         .typewriter-cursor::after { content: '|'; animation: blink 0.8s step-end infinite; color: #3b82f6; font-weight: 300; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+        /* Scrollbar custom */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #030712; }
+        ::-webkit-scrollbar-thumb { background: #1f2937; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #374151; }
     </style>
 </head>
 <body class="font-sans antialiased relative z-0 dot-grid pt-12 selection:bg-blue-600 selection:text-white">
@@ -182,144 +184,233 @@
         </div>
     </section>
 
-  <section id="diagnosticos" class="container mx-auto px-6 py-24 max-w-5xl relative z-10 border-t border-white/5">
+    <section class="container mx-auto px-6 py-20 max-w-6xl relative z-10">
         <div class="text-center mb-16">
-            <p class="text-xs font-mono tracking-widest text-blue-400 uppercase mb-3 font-bold">Diagnósticos Interactivos Locales</p>
-            <h2 class="text-4xl font-black text-white tracking-tight mb-4">Cuantifica tus Oportunidades</h2>
-            <p class="text-gray-400 max-w-xl mx-auto text-sm leading-relaxed">Prueba nuestras herramientas avanzadas de simulación técnica para medir las fugas y evaluar tu infraestructura en vivo.</p>
+            <div class="text-xs font-bold text-amber-500 font-mono tracking-widest uppercase mb-2">Diagnóstico Gratuito</div>
+            <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">¿Qué analizamos en tu Auditoría Gratuita?</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">No necesitas prepararnos informes complejos. Nosotros identificamos las fugas de dinero evaluando los síntomas reales de tu negocio.</p>
         </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
-            
-            <!-- TARJETA 1: CALCULA TU COSTE POR EMPLEADO -->
-            <div class="bg-[#030712] p-8 rounded-3xl border border-white/5 flex flex-col justify-between hover:border-blue-500/40 hover:shadow-[0_0_50px_rgba(59,130,246,0.15)] transition-all duration-500 group relative overflow-hidden">
-                <div class="absolute -top-20 -right-20 w-40 h-40 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div>
-                    <div class="flex justify-between items-center mb-6 relative z-10">
-                        <span class="text-[10px] font-mono tracking-wider bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-full font-bold uppercase">Calculadora</span>
-                        <span class="text-xs font-mono text-gray-600 font-bold">01 / 03</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors relative z-10">Coste por Empleado Manual</h3>
-                    <p class="text-xs text-gray-500 mb-6 font-mono relative z-10">Costes laborales reales en España</p>
-                    <div class="space-y-4 mb-6 relative z-10">
-                        <div>
-                            <div class="flex justify-between text-[11px] font-mono mb-1 text-gray-400">
-                                <span>Nº Empleados:</span>
-                                <span id="h1-emp-text" class="text-blue-400 font-bold">3</span>
-                            </div>
-                            <input id="h1-slider-emp" type="range" min="1" max="20" step="1" value="3" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-[11px] font-mono mb-1 text-gray-400">
-                                <span>Horas/Semana:</span>
-                                <span id="h1-hours-text" class="text-blue-400 font-bold">5h</span>
-                            </div>
-                            <input id="h1-slider-hours" type="range" min="1" max="40" step="1" value="5" class="w-full">
-                        </div>
-                    </div>
-                </div>
-                <div class="relative z-10">
-                    <div class="p-4 rounded-xl bg-red-500/5 border border-red-500/10 text-center mb-4">
-                        <p class="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Pérdida anualizada</p>
-                        <p id="h1-result" class="text-2xl font-black text-red-400 font-mono mt-1">0 €</p>
-                    </div>
-                    <form action="https://web3forms.com" method="POST" class="space-y-2">
-                        <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" id="h1-meta" name="Detalle Calculadora Core" value="">
-                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-blue-500">
-                        <button type="submit" class="w-full text-center py-2.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all duration-300">Detener Pérdidas &rarr;</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- TARJETA 2: TEST DE INFRAESTRUCTURA -->
-            <div class="bg-[#030712] p-8 rounded-3xl border border-white/5 flex flex-col justify-between hover:border-indigo-500/40 hover:shadow-[0_0_50px_rgba(99,102,241,0.15)] transition-all duration-500 group relative overflow-hidden">
-                <div class="absolute -top-20 -right-20 w-40 h-40 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div>
-                    <div class="flex justify-between items-center mb-6 relative z-10">
-                        <span class="text-[10px] font-mono tracking-wider bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full font-bold uppercase">Auditoría LOPD</span>
-                        <span class="text-xs font-mono text-gray-600 font-bold">02 / 03</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-indigo-400 transition-colors relative z-10">Madurez de Infraestructura</h3>
-                    <p class="text-xs text-gray-500 mb-6 font-mono relative z-10">Vulnerabilidad de almacenamiento</p>
-                    <div class="space-y-2 mb-6 relative z-10" id="h2-quiz-box">
-                        <p class="text-[11px] font-mono text-gray-400 uppercase mb-2">¿Dónde guardas tus datos?</p>
-                        <button type="button" onclick="setH2Score(10, this)" class="h2-opt w-full text-left p-3 rounded-xl border border-white/5 bg-white/[0.02] text-xs text-gray-400 hover:bg-white/5 hover:text-white transition-all">Excels locales en PCs</button>
-                        <button type="button" onclick="setH2Score(25, this)" class="h2-opt w-full text-left p-3 rounded-xl border border-white/5 bg-white/[0.02] text-xs text-gray-400 hover:bg-white/5 hover:text-white transition-all">Drive / Sharepoint compartido</button>
-                        <button type="button" onclick="setH2Score(40, this)" class="h2-opt w-full text-left p-3 rounded-xl border border-white/5 bg-white/[0.02] text-xs text-gray-400 hover:bg-white/5 hover:text-white transition-all">Bases de datos en la nube</button>
-                    </div>
-                </div>
-                <div class="relative z-10">
-                    <div class="p-4 rounded-xl text-center mb-4 border transition-all duration-300" id="h2-result-bg" style="background: rgba(255,255,255,0.01); border-color: rgba(255,255,255,0.05);">
-                        <p class="text-[9px] text-gray-500 font-mono uppercase tracking-wider">Estado de Seguridad</p>
-                        <p id="h2-result-text" class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-wide">Selecciona una opción</p>
-                    </div>
-                    <form action="https://web3forms.com" method="POST" class="space-y-2">
-                        <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" id="h2-meta" name="Resultado Test Seguridad" value="">
-                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2.5 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-indigo-500">
-                        <button type="submit" class="w-full text-center py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(99,102,241,0.3)]">Solicitar Certificación &rarr;</button>
-                    </form>
-                </div>
-            </div>
-
-            <!-- TARJETA 3: POTENCIAL DE AUTOMATIZACIÓN -->
-            <div class="bg-[#030712] p-8 rounded-3xl border border-white/5 flex flex-col justify-between hover:border-cyan-500/40 hover:shadow-[0_0_50px_rgba(6,182,212,0.15)] transition-all duration-500 group relative overflow-hidden">
-                <div class="absolute -top-20 -right-20 w-40 h-40 bg-cyan-600/10 rounded-full blur-3xl pointer-events-none"></div>
-                <div>
-                    <div class="flex justify-between items-center mb-6 relative z-10">
-                        <span class="text-[10px] font-mono tracking-wider bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-full font-bold uppercase">Optimización</span>
-                        <span class="text-xs font-mono text-gray-600 font-bold">03 / 03</span>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-cyan-400 transition-colors relative z-10">Potencial de Automatización</h3>
-                    <p class="text-xs text-gray-500 mb-6 font-mono relative z-10">Automatización mediante Python</p>
-                    <div class="space-y-2 mb-6 relative z-10">
-                        <p class="text-[11px] font-mono text-gray-400 uppercase mb-2">Entornos desconectados:</p>
-                        <div onclick="clickH3('crm')" class="h3-lbl flex items-center gap-3 p-3 rounded-xl border border-white/5 bg-white/[0.02] cursor-pointer text-xs text-gray-400 transition-all hover:bg-white/5 hover:text-white">
-                            <div id="h3-box-crm" class="w-4 h-4 rounded border border-white/20 flex items-center justify-center text-[10px] text-transparent transition-all font-bold">&#10003;</div>
-                            Datos aislados (CRM / ERP)
-                        </div>
-    <section id="herramientas" class="container mx-auto px-6 py-12 relative z-10 max-w-5xl">
-        <div class="text-center mb-16">
-            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-2">Herramientas Diagnósticas Nativas</div>
-            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">Cuantifica tus Oportunidades</h2>
-            <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Tests rápidos integrados. Evalúa la madurez de tus datos reales y descubre pérdidas invisibles en tu organización al instante.</p>
-        </div>
-        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between group hover:border-blue-500/50 transition-colors">
-                <div>
-                    <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Módulo Interactivo</span>
-                    <h3 class="text-xl font-bold text-white mb-3">Coste por Empleado Manual</h3>
-                    <p class="text-sm text-gray-400 mb-6">Calcula el dinero exacto que quemas al año pagando a tu equipo por picar datos en Excel a mano.</p>
-                </div>
-                <button onclick="openModal('modal-horas')" class="w-full py-3 bg-white/5 hover:bg-blue-600 border border-white/10 rounded-xl text-white font-bold text-sm transition-all duration-300 shadow-lg">
-                    Calcular pérdidas →
-                </button>
+            <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-red-500/50 transition-colors">
+                <div class="w-12 h-12 bg-red-600/10 border border-red-500/30 rounded-xl flex items-center justify-center text-red-400 font-bold mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">01</div>
+                <h3 class="text-xl font-bold text-white mb-3">Fugas de Presupuesto</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero en campañas de marketing digital mal rastreadas, atribuciones duplicadas o métricas fantasma.</p>
             </div>
-            <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between group border-t-2 border-indigo-500 hover:border-indigo-500/50 transition-colors">
-                <div>
-                    <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Score en Vivo</span>
-                    <h3 class="text-xl font-bold text-white mb-3">Madurez de Infraestructura</h3>
-                    <p class="text-sm text-gray-400 mb-6">Mide en porcentaje el nivel de seguridad y agilidad de tus bases de datos frente a la competencia.</p>
-                </div>
-                <button onclick="openModal('modal-seguridad')" class="w-full py-3 bg-indigo-600 hover:bg-indigo-500 border border-transparent rounded-xl text-white font-bold text-sm transition-all duration-300 shadow-[0_0_20px_rgba(79,70,229,0.3)]">
-                    Analizar mi sistema →
-                </button>
+            <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-amber-500/50 transition-colors">
+                <div class="w-12 h-12 bg-amber-600/10 border border-amber-500/30 rounded-xl flex items-center justify-center text-amber-400 font-bold mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">02</div>
+                <h3 class="text-xl font-bold text-white mb-3">Caos Operativo</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Analizamos cuántas horas pierde tu equipo consolidando datos de forma manual que podrían centralizarse en cuadros automáticos.</p>
             </div>
-            <div class="glass-panel p-8 rounded-3xl border border-white/5 flex flex-col justify-between group hover:border-cyan-500/50 transition-colors">
-                <div>
-                    <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md uppercase mb-4 inline-block">Estimador Tech</span>
-                    <h3 class="text-xl font-bold text-white mb-3">Potencial de Automatización</h3>
-                    <p class="text-sm text-gray-400 mb-6">Selecciona el software que usas y descubre cuántas horas al mes te puede liberar un algoritmo.</p>
-                </div>
-                <button onclick="openModal('modal-auto')" class="w-full py-3 bg-white/5 hover:bg-cyan-600 border border-white/10 rounded-xl text-white font-bold text-sm transition-all duration-300 shadow-lg">
-                    Ver horas liberables →
-                </button>
+            <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
+                <div class="w-12 h-12 bg-emerald-600/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400 font-bold mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">03</div>
+                <h3 class="text-xl font-bold text-white mb-3">Seguridad e Infraestructura</h3>
+                <p class="text-sm text-gray-400 leading-relaxed">Validamos que el almacenamiento de tus bases de datos cumpla normativas internacionales para blindarte ante multas LOPD.</p>
             </div>
         </div>
     </section>
 
+    <section id="herramientas" class="container mx-auto px-6 py-12 relative z-10 max-w-6xl">
+        <div class="text-center mb-16">
+            <div class="text-xs font-bold text-blue-500 font-mono tracking-widest uppercase mb-2">Herramientas Diagnósticas Nativas</div>
+            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight">Cuantifica tus Oportunidades</h2>
+            <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Tests rápidos integrados. Evalúa la madurez de tus datos reales y descubre pérdidas invisibles en tu organización al instante y sin ventanas emergentes.</p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+            
+            <div class="relative group h-full">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-700 pointer-events-none"></div>
+                <div class="bg-[#030712] p-8 rounded-[2rem] border border-white/5 group-hover:border-blue-500/40 transition-all duration-500 relative z-10 flex flex-col h-full overflow-hidden shadow-2xl">
+                    
+                    <div id="inline-calc-step-1" class="flex-grow flex flex-col h-full">
+                        <span class="text-[10px] font-mono text-blue-400 bg-blue-500/10 px-2.5 py-1 rounded-md uppercase mb-5 self-start border border-blue-500/20">Módulo Interactivo</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Coste de Ineficiencia</h3>
+                        <p class="text-[13px] text-gray-400 mb-6 line-clamp-2">Calcula el coste real de tener a tu equipo procesando Excels a mano.</p>
+                        
+                        <div class="space-y-5 mb-6 flex-grow">
+                            <div>
+                                <label class="block text-[11px] font-bold text-gray-400 uppercase tracking-wide mb-1.5">Perfil del equipo:</label>
+                                <select id="roleRateInline" onchange="calcHorasInline()" class="w-full bg-black/80 border border-white/10 rounded-xl p-3 text-gray-300 text-sm outline-none focus:border-blue-500 transition-colors shadow-inner">
+                                    <option value="15">Administrativos (~15€/h)</option>
+                                    <option value="25" selected>Analistas/Técnicos (~25€/h)</option>
+                                    <option value="40">Managers/Directivos (~40€/h)</option>
+                                </select>
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+                                <label class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-wide mb-3">
+                                    <span>Empleados:</span>
+                                    <span id="empValInline" class="text-blue-400 font-black text-sm">3</span>
+                                </label>
+                                <input type="range" id="empSliderInline" min="1" max="50" value="3" class="w-full" oninput="calcHorasInline()">
+                            </div>
+                            <div class="bg-black/40 p-4 rounded-xl border border-white/5">
+                                <label class="flex justify-between text-[11px] font-bold text-gray-400 uppercase tracking-wide mb-3">
+                                    <span>Horas perdidas/semana:</span>
+                                    <span id="hrsValInline" class="text-blue-400 font-black text-sm">5 h</span>
+                                </label>
+                                <input type="range" id="hrsSliderInline" min="1" max="40" value="5" class="w-full" oninput="calcHorasInline()">
+                            </div>
+                        </div>
+
+                        <div class="bg-blue-900/10 border border-blue-500/30 rounded-xl p-5 text-center mt-auto shadow-[0_0_15px_rgba(59,130,246,0.1)]">
+                            <p class="text-[10px] text-blue-300 uppercase tracking-widest font-mono mb-1.5">Pérdida Anual Estimada</p>
+                            <p id="resHorasInline" class="text-3xl font-black text-white tracking-tight">-- €</p>
+                        </div>
+
+                        <button onclick="document.getElementById('inline-calc-step-1').classList.add('hidden'); document.getElementById('inline-calc-step-2').classList.remove('hidden');" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg mt-5 transition-transform transform hover:-translate-y-0.5">
+                            Detener pérdidas →
+                        </button>
+                    </div>
+
+                    <div id="inline-calc-step-2" class="hidden flex-grow flex flex-col justify-center h-full">
+                        <button onclick="document.getElementById('inline-calc-step-2').classList.add('hidden'); document.getElementById('inline-calc-step-1').classList.remove('hidden');" class="text-xs text-gray-500 hover:text-white mb-6 text-left flex items-center gap-1 font-mono uppercase tracking-widest transition-colors"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Volver</button>
+                        <h3 class="text-2xl font-black text-white mb-2">Solución Técnica</h3>
+                        <p class="text-[13px] text-gray-400 mb-8">Nuestros ingenieros generarán un PDF analizando cómo automatizar este flujo para recuperar ese capital.</p>
+                        
+                        <form onsubmit="submitWeb3Form(event, 'inline-calc-step-2', 'inline-calc-success', {'Dinero Perdido Anual': document.getElementById('resHorasInline').innerText})" class="space-y-4">
+                            <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                            <input type="hidden" name="subject" value="🔥 LEAD: Calculadora Pérdida (Inline)">
+                            <input type="text" name="name" required placeholder="Nombre o Empresa" class="w-full bg-black/80 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none focus:border-blue-500 transition-colors shadow-inner">
+                            <input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/80 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none focus:border-blue-500 transition-colors shadow-inner">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                            <button type="submit" class="w-full py-4 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-black text-sm shadow-[0_0_20px_rgba(59,130,246,0.3)] mt-2 transition-transform transform hover:-translate-y-0.5">Enviar PDF a mi correo</button>
+                        </form>
+                    </div>
+
+                    <div id="inline-calc-success" class="hidden flex-grow flex flex-col justify-center items-center text-center h-full">
+                        <div class="w-16 h-16 bg-blue-500/20 text-blue-400 rounded-full flex items-center justify-center mb-6 border border-blue-500/30 animate-pulse">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-3">¡Solicitud Registrada!</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">Tu caso ha entrado en la cola de ingeniería. Recibirás tu propuesta técnica en las próximas 24 horas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group h-full">
+                <div class="absolute -inset-1 bg-gradient-to-r from-indigo-600 to-purple-600 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-700 pointer-events-none"></div>
+                <div class="bg-[#030712] p-8 rounded-[2rem] border border-white/5 group-hover:border-indigo-500/40 transition-all duration-500 relative z-10 flex flex-col h-full overflow-hidden shadow-2xl">
+                    
+                    <div id="inline-quiz-step-1" class="flex-grow flex flex-col h-full">
+                        <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md uppercase mb-5 self-start border border-indigo-500/20">Score en Vivo</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Madurez de Infraestructura</h3>
+                        <p class="text-[13px] text-gray-400 mb-6 line-clamp-2">Mide el nivel de seguridad y agilidad de tus bases de datos frente a la competencia.</p>
+                        
+                        <div class="space-y-6 mb-6 flex-grow">
+                            <div>
+                                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wide mb-3">1. Almacenamiento Principal:</p>
+                                <div class="space-y-2" id="q1-group-inline">
+                                    <div class="p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-indigo-900/30 transition-colors text-xs text-gray-300 font-medium" onclick="selectQuizInline(1, 0, this)">A) Excels locales dispersos</div>
+                                    <div class="p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-indigo-900/30 transition-colors text-xs text-gray-300 font-medium" onclick="selectQuizInline(1, 5, this)">B) ERP comercial estándar</div>
+                                    <div class="p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-indigo-900/30 transition-colors text-xs text-gray-300 font-medium" onclick="selectQuizInline(1, 10, this)">C) Data Warehouse SQL</div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="text-[11px] font-bold text-gray-400 uppercase tracking-wide mb-3">2. Cumplimiento LOPD:</p>
+                                <div class="space-y-2" id="q2-group-inline">
+                                    <div class="p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-indigo-900/30 transition-colors text-xs text-gray-300 font-medium" onclick="selectQuizInline(2, 0, this)">A) Sin control de accesos real</div>
+                                    <div class="p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-indigo-900/30 transition-colors text-xs text-gray-300 font-medium" onclick="selectQuizInline(2, 10, this)">B) Cifrado y backups diarios</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <button onclick="calcQuizInline()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-bold text-sm shadow-[0_0_15px_rgba(79,70,229,0.2)] mt-auto transition-transform transform hover:-translate-y-0.5">Analizar sistema →</button>
+                    </div>
+
+                    <div id="inline-quiz-step-2" class="hidden flex-grow flex flex-col justify-center text-center h-full">
+                        <button onclick="document.getElementById('inline-quiz-step-2').classList.add('hidden'); document.getElementById('inline-quiz-step-1').classList.remove('hidden');" class="text-xs text-gray-500 hover:text-white mb-6 text-left flex items-center gap-1 font-mono uppercase tracking-widest transition-colors"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Volver</button>
+                        
+                        <div class="bg-indigo-900/10 border border-indigo-500/20 rounded-2xl p-6 mb-8 shadow-inner">
+                            <p class="text-[10px] text-gray-400 uppercase tracking-widest mb-3">Nivel de Infraestructura</p>
+                            <div class="w-full bg-gray-800 rounded-full h-3 mb-4 overflow-hidden border border-white/10">
+                                <div id="quiz-bar-inline" class="bg-indigo-500 h-3 rounded-full transition-all duration-1000 w-0"></div>
+                            </div>
+                            <p id="quiz-score-inline" class="text-5xl font-black text-white mb-2 tracking-tighter">0%</p>
+                            <p id="quiz-text-inline" class="text-sm text-red-400 font-bold uppercase tracking-wider">Riesgo Crítico</p>
+                        </div>
+
+                        <form onsubmit="submitWeb3Form(event, 'inline-quiz-step-2', 'inline-quiz-success', {'Puntuación': document.getElementById('quiz-score-inline').innerText, 'Diagnostico': document.getElementById('quiz-text-inline').innerText})" class="space-y-4 text-left">
+                            <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                            <input type="hidden" name="subject" value="🔥 LEAD: Test Madurez (Inline)">
+                            <input type="text" name="name" required placeholder="Tu Empresa" class="w-full bg-black/80 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none focus:border-indigo-500 transition-colors shadow-inner">
+                            <input type="email" name="email" required placeholder="Email corporativo" class="w-full bg-black/80 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none focus:border-indigo-500 transition-colors shadow-inner">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                            <button type="submit" class="w-full py-4 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-[0_0_20px_rgba(255,255,255,0.2)] transition-transform transform hover:-translate-y-0.5">Recibir Diagnóstico PDF</button>
+                        </form>
+                    </div>
+
+                    <div id="inline-quiz-success" class="hidden flex-grow flex flex-col justify-center items-center text-center h-full">
+                        <div class="w-16 h-16 bg-indigo-500/20 text-indigo-400 rounded-full flex items-center justify-center mb-6 border border-indigo-500/30 animate-pulse">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-3">¡Test Completado!</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">Tus métricas han sido registradas. En breve te enviaremos el plan de acción seguro a tu correo.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative group h-full">
+                <div class="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-teal-600 rounded-[2rem] blur opacity-0 group-hover:opacity-30 transition duration-700 pointer-events-none"></div>
+                <div class="bg-[#030712] p-8 rounded-[2rem] border border-white/5 group-hover:border-cyan-500/40 transition-all duration-500 relative z-10 flex flex-col h-full overflow-hidden shadow-2xl">
+                    
+                    <div id="inline-auto-step-1" class="flex-grow flex flex-col h-full">
+                        <span class="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-2.5 py-1 rounded-md uppercase mb-5 self-start border border-cyan-500/20">Estimador Tech</span>
+                        <h3 class="text-xl font-bold text-white mb-2">Potencial Automático</h3>
+                        <p class="text-[13px] text-gray-400 mb-6 line-clamp-2">Selecciona las fuentes que tu equipo conecta copiando y pegando datos.</p>
+                        
+                        <div class="space-y-3.5 mb-6 flex-grow">
+                            <label class="flex items-center gap-4 p-4 bg-black/40 border border-white/10 rounded-xl cursor-pointer hover:bg-cyan-900/20 transition-colors group/chk">
+                                <input type="checkbox" class="auto-chk-inline w-5 h-5 accent-cyan-500 rounded bg-black border-white/20">
+                                <span class="text-xs text-gray-300 font-bold group-hover/chk:text-white transition-colors">Excels / CSVs sueltos</span>
+                            </label>
+                            <label class="flex items-center gap-4 p-4 bg-black/40 border border-white/10 rounded-xl cursor-pointer hover:bg-cyan-900/20 transition-colors group/chk">
+                                <input type="checkbox" class="auto-chk-inline w-5 h-5 accent-cyan-500 rounded bg-black border-white/20">
+                                <span class="text-xs text-gray-300 font-bold group-hover/chk:text-white transition-colors">ERP (Holded, FacturaScripts)</span>
+                            </label>
+                            <label class="flex items-center gap-4 p-4 bg-black/40 border border-white/10 rounded-xl cursor-pointer hover:bg-cyan-900/20 transition-colors group/chk">
+                                <input type="checkbox" class="auto-chk-inline w-5 h-5 accent-cyan-500 rounded bg-black border-white/20">
+                                <span class="text-xs text-gray-300 font-bold group-hover/chk:text-white transition-colors">Ads / Pasarelas (Stripe)</span>
+                            </label>
+                            <label class="flex items-center gap-4 p-4 bg-black/40 border border-white/10 rounded-xl cursor-pointer hover:bg-cyan-900/20 transition-colors group/chk">
+                                <input type="checkbox" class="auto-chk-inline w-5 h-5 accent-cyan-500 rounded bg-black border-white/20">
+                                <span class="text-xs text-gray-300 font-bold group-hover/chk:text-white transition-colors">CRM (Hubspot, Salesforce)</span>
+                            </label>
+                        </div>
+
+                        <button onclick="calcAutoInline()" class="w-full py-3.5 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white font-bold text-sm shadow-[0_0_15px_rgba(6,182,212,0.2)] mt-auto transition-transform transform hover:-translate-y-0.5">Calcular Horas Libres →</button>
+                    </div>
+
+                    <div id="inline-auto-step-2" class="hidden flex-grow flex flex-col justify-center text-center h-full">
+                        <button onclick="document.getElementById('inline-auto-step-2').classList.add('hidden'); document.getElementById('inline-auto-step-1').classList.remove('hidden');" class="text-xs text-gray-500 hover:text-white mb-6 text-left flex items-center gap-1 font-mono uppercase tracking-widest transition-colors"><svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg> Volver</button>
+                        
+                        <div class="bg-cyan-900/10 border border-cyan-500/30 rounded-2xl p-6 mb-8 shadow-inner">
+                            <p class="text-[10px] text-cyan-300 uppercase tracking-widest font-mono mb-2">Un Data Pipeline te ahorraría</p>
+                            <p class="text-5xl font-black text-cyan-400 tracking-tighter"><span id="auto-hours-inline">0</span> <span class="text-2xl">h/mes</span></p>
+                            <p class="text-[11px] text-gray-500 mt-3 leading-tight">Reduciendo la tasa de error humano a cero (0%).</p>
+                        </div>
+
+                        <form onsubmit="submitWeb3Form(event, 'inline-auto-step-2', 'inline-auto-success', {'Horas Ahorradas': document.getElementById('auto-hours-inline').innerText})" class="space-y-4 text-left">
+                            <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
+                            <input type="hidden" name="subject" value="🔥 LEAD: Potencial Auto (Inline)">
+                            <input type="text" name="name" required placeholder="Nombre de Contacto" class="w-full bg-black/80 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none focus:border-cyan-500 transition-colors shadow-inner">
+                            <input type="email" name="email" required placeholder="Email corporativo" class="w-full bg-black/80 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none focus:border-cyan-500 transition-colors shadow-inner">
+                            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                            <button type="submit" class="w-full py-4 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white font-black text-sm shadow-[0_0_20px_rgba(6,182,212,0.3)] transition-transform transform hover:-translate-y-0.5">Automatizar Procesos</button>
+                        </form>
+                    </div>
+
+                    <div id="inline-auto-success" class="hidden flex-grow flex flex-col justify-center items-center text-center h-full">
+                        <div class="w-16 h-16 bg-cyan-500/20 text-cyan-400 rounded-full flex items-center justify-center mb-6 border border-cyan-500/30 animate-pulse">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-3">¡Recibido!</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">Evaluaremos la viabilidad de la integración y te contactaremos de inmediato.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
     <section class="py-20 relative z-10">
         <div class="container mx-auto px-6 max-w-5xl">
             <div class="glass-panel p-8 md:p-14 rounded-[3rem] border border-emerald-500/20 shadow-[0_20px_60px_rgba(0,0,0,0.6)] relative overflow-hidden bg-[#030906]">
@@ -367,6 +458,7 @@
             </div>
         </div>
     </section>
+
     <footer class="container mx-auto px-6 pt-24 pb-12 text-center relative z-10 border-t border-white/5 max-w-5xl mt-16">
         <div class="grid grid-cols-1 md:grid-cols-12 gap-8 items-center text-left mb-12">
             <div class="md:col-span-6 space-y-3 text-center md:text-left">
@@ -374,9 +466,20 @@
                     <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-lg text-white flex items-center justify-center font-black text-base border border-blue-500/30">N</div>
                     <span class="text-sm font-black tracking-widest text-white uppercase font-sans">NEXUS ANALYTICS</span>
                 </div>
-                <p class="text-xs text-gray-500 max-w-sm leading-relaxed mx-auto md:mr-auto md:ml-0">
+                <p class="text-xs text-gray-500 max-w-sm leading-relaxed mx-auto md:mr-auto md:ml-0 mt-3">
                     Sustituimos el caos operativo por arquitecturas de datos e infraestructura automatizada de alto rendimiento técnico bajo estándares europeos.
                 </p>
+                
+                <div class="flex flex-col md:flex-row items-center gap-4 mt-8 mb-4 justify-center md:justify-start">
+                    <a href="mailto:nexusalanalytics011@gmail.com" class="text-blue-400 hover:text-blue-300 font-bold text-base md:text-lg transition-colors flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        nexusalanalytics011@gmail.com
+                    </a>
+                    <button onclick="navigator.clipboard.writeText('nexusalanalytics011@gmail.com'); alert('¡Email copiado al portapapeles!');" class="bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 border border-blue-500/30 px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all flex items-center gap-1.5 cursor-pointer">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"></path></svg>
+                        Copiar
+                    </button>
+                </div>
             </div>
             
             <div class="md:col-span-6 flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-xs font-mono text-gray-400">
@@ -388,16 +491,6 @@
             </div>
         </div>
 
-        <div class="w-full flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-gray-400 font-sans pb-6 border-b border-white/5 mb-6">
-            <div>
-                <span class="text-[10px] font-mono tracking-widest text-blue-400 uppercase font-bold block mb-1">Contacto Corporativo</span>
-                Soporte de Sistemas: <a href="mailto:nexusalanalytics011@gmail.com" class="text-blue-400 hover:text-blue-300 font-bold font-mono transition-colors">nexusalanalytics011@gmail.com</a>
-            </div>
-            <div class="text-right flex items-center gap-2 text-[10px] font-mono text-emerald-400 uppercase tracking-wider">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shadow-[0_0_8px_#10b981]"></span>
-                Conexión Segura LOPD Activa
-            </div>
-        </div>
         <div class="pt-8 border-t border-white/[0.02] flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] font-mono text-gray-500">
             <p>NEXUS ANALYTICS &copy; 2026 • TODOS LOS DERECHOS RESERVADOS.</p>
             <p class="text-gray-600">Desplegado de forma segura en Vercel Edge Network</p>
@@ -405,7 +498,7 @@
     </footer>
 
     <div id="modal-general" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
+        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden border border-blue-500/30">
             <button onclick="closeModal('modal-general')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
             
             <div id="general-step-1">
@@ -428,179 +521,8 @@
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                 </div>
                 <h3 class="text-2xl font-black text-white mb-2">¡Solicitud Enviada!</h3>
-                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
+                <p class="text-sm text-gray-400">Un ingeniero evaluará tus datos y te contactará a tu correo en las próximas 24h.</p>
                 <button onclick="closeModal('modal-general')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-horas" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
-            <button onclick="closeModal('modal-horas')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
-            
-            <div id="calc-step-1">
-                <h3 class="text-2xl font-black text-white mb-2">Coste de Ineficiencia</h3>
-                <p class="text-xs text-gray-400 mb-6">Calculamos el impacto financiero real computando Seguridad Social (33%), Coste de Oportunidad y Tasa de Retrabajo.</p>
-                
-                <label class="block text-sm font-bold text-gray-300 mb-2">Perfil del equipo afectado:</label>
-                <select id="roleRate" onchange="calcHoras()" class="w-full bg-black/50 border border-white/10 rounded-xl p-3 mb-6 text-gray-300 text-sm outline-none focus:border-blue-500">
-                    <option value="15">Administrativos / Data Entry (~15€/h)</option>
-                    <option value="25" selected>Analistas / Técnicos (~25€/h)</option>
-                    <option value="40">Managers / Directivos (~40€/h)</option>
-                </select>
-
-                <label class="block text-sm font-bold text-gray-300 mb-2">Empleados picando datos (1-50):</label>
-                <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
-                    <input type="range" id="empSlider" min="1" max="50" value="3" class="w-2/3" oninput="calcHoras()">
-                    <span id="empVal" class="text-blue-400 font-black text-xl w-1/3 text-right">3</span>
-                </div>
-
-                <label class="block text-sm font-bold text-gray-300 mb-2">Horas perdidas a la semana (c/u):</label>
-                <div class="flex items-center justify-between bg-black/50 rounded-xl p-3 mb-6 border border-white/5">
-                    <input type="range" id="hrsSlider" min="1" max="40" value="5" class="w-2/3" oninput="calcHoras()">
-                    <span id="hrsVal" class="text-indigo-400 font-black text-xl w-1/3 text-right">5 h</span>
-                </div>
-
-                <div class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 text-center mb-6">
-                    <p class="text-xs text-red-300 uppercase tracking-widest font-mono mb-1">Total de horas quemadas al año</p>
-                    <p id="totalHours" class="text-lg font-bold text-white mb-3">780 horas</p>
-                    <p class="text-xs text-red-300 uppercase tracking-widest font-mono mb-1">Estás perdiendo al año</p>
-                    <p id="resHoras" class="text-3xl font-black text-red-500">25.350 €</p>
-                </div>
-                <button onclick="document.getElementById('calc-step-1').classList.add('hidden'); document.getElementById('calc-step-2').classList.remove('hidden');" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-lg">
-                    Recibir solución técnica en PDF →
-                </button>
-            </div>
-
-            <div id="calc-step-2" class="hidden">
-                <h3 class="text-2xl font-black text-white mb-2">Recibir Diagnóstico</h3>
-                <p class="text-xs text-gray-400 mb-6">Deja tu email. Un ingeniero diseñará una solución a medida basada en tus pérdidas y te enviará el PDF técnico.</p>
-                <form onsubmit="submitWeb3Form(event, 'calc-step-2', 'calc-step-success', {'Dinero Perdido Anual': document.getElementById('resHoras').innerText, 'Horas Totales Perdidas': document.getElementById('totalHours').innerText})" id="formHoras" class="space-y-4">
-                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                    <input type="hidden" name="subject" value="🔥 LEAD: Calculadora Pérdida Operativa (Realista)">
-                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none"></div>
-                    <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none"></div>
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    <button type="submit" class="w-full py-3.5 bg-emerald-600 hover:bg-emerald-500 rounded-xl text-white font-bold text-sm shadow-[0_0_20px_rgba(16,185,129,0.3)] mt-4">Solicitar mi PDF Personalizado</button>
-                </form>
-            </div>
-            
-            <div id="calc-step-success" class="hidden text-center py-6">
-                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <h3 class="text-2xl font-black text-white mb-2">¡Datos Recibidos!</h3>
-                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
-                <button onclick="closeModal('modal-horas')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-seguridad" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
-            <button onclick="closeModal('modal-seguridad')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
-            
-            <div id="quiz-step-1">
-                <h3 class="text-2xl font-black text-white mb-2">Test de Madurez Técnica</h3>
-                <p class="text-xs text-gray-400 mb-6">Selecciona la opción que mejor describa tu infraestructura.</p>
-                
-                <div class="mb-5">
-                    <p class="text-sm font-bold text-gray-300 mb-2">1. ¿Dónde se almacenan los datos de negocio?</p>
-                    <div class="space-y-2 mb-4" id="q1-group">
-                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(1, 0, this)">A) Excels locales y archivos dispersos</div>
-                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(1, 5, this)">B) Un software ERP comercial estándar</div>
-                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(1, 10, this)">C) Data Warehouse Cloud centralizado (SQL)</div>
-                    </div>
-                </div>
-                <div class="mb-5">
-                    <p class="text-sm font-bold text-gray-300 mb-2">2. Cumplimiento de Privacidad y LOPD:</p>
-                    <div class="space-y-2 mb-4" id="q2-group">
-                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(2, 0, this)">A) No tenemos control de quién accede</div>
-                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(2, 5, this)">B) Hacemos backups manuales a veces</div>
-                        <div class="quiz-opt p-3 border border-white/10 rounded-xl cursor-pointer hover:bg-white/5 text-sm text-gray-300" onclick="selectQuiz(2, 10, this)">C) Permisos cifrados y backups diarios</div>
-                    </div>
-                </div>
-                <button onclick="calcQuiz()" class="w-full py-3.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-bold text-sm shadow-lg mt-2">Analizar infraestructura →</button>
-            </div>
-
-            <div id="quiz-step-2" class="hidden text-center mt-2">
-                <p class="text-xs text-gray-400 uppercase tracking-widest mb-2">Nivel de Infraestructura</p>
-                <div class="w-full bg-gray-800 rounded-full h-4 mb-2 overflow-hidden border border-white/10">
-                    <div id="quiz-bar" class="bg-indigo-500 h-4 rounded-full transition-all duration-1000 w-0"></div>
-                </div>
-                <p id="quiz-score" class="text-4xl font-black text-white mb-1">0%</p>
-                <p id="quiz-text" class="text-sm text-red-400 mb-6 font-bold">Riesgo Crítico Operativo</p>
-                
-                <form onsubmit="submitWeb3Form(event, 'quiz-step-2', 'quiz-step-success', {'Puntuación Seguridad': document.getElementById('quiz-score').innerText, 'Diagnostico': document.getElementById('quiz-text').innerText})" id="formQuiz" class="space-y-4 text-left">
-                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                    <input type="hidden" name="subject" value="🔥 LEAD: Test de Madurez (Infraestructura)">
-                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none"></div>
-                    <div><input type="email" name="email" required placeholder="Tu email para recibir auditoría" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none"></div>
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    <button type="submit" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg">Recibir solución técnica en PDF →</button>
-                </form>
-            </div>
-
-            <div id="quiz-step-success" class="hidden text-center py-6">
-                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <h3 class="text-2xl font-black text-white mb-2">¡Petición Registrada!</h3>
-                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
-                <button onclick="closeModal('modal-seguridad')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="modal-auto" class="modal fixed inset-0 z-[100] flex items-center justify-center bg-black/80 px-4">
-        <div class="modal-content glass-panel w-full max-w-md rounded-3xl p-8 relative overflow-hidden">
-            <button onclick="closeModal('modal-auto')" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl z-10">✕</button>
-            
-            <div id="auto-step-1">
-                <h3 class="text-2xl font-black text-white mb-2">Auditoría de Sistemas</h3>
-                <p class="text-xs text-gray-400 mb-6">Selecciona las fuentes de datos que tu equipo conecta manualmente hoy.</p>
-                
-                <div class="space-y-3 mb-6">
-                    <label class="flex items-center gap-3 p-4 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500">
-                        <span class="text-sm text-gray-300 font-bold">Hojas de Excel / CSVs exportados</span>
-                    </label>
-                    <label class="flex items-center gap-3 p-4 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500">
-                        <span class="text-sm text-gray-300 font-bold">ERP (Holded, FacturaScripts, etc)</span>
-                    </label>
-                    <label class="flex items-center gap-3 p-4 bg-black/40 border border-white/5 rounded-xl cursor-pointer hover:bg-white/5">
-                        <input type="checkbox" class="auto-chk w-5 h-5 accent-cyan-500">
-                        <span class="text-sm text-gray-300 font-bold">Ads o Pasarelas (Google/Stripe)</span>
-                    </label>
-                </div>
-                <button onclick="calcAuto()" class="w-full py-3.5 bg-cyan-600 hover:bg-cyan-500 rounded-xl text-white font-bold text-sm shadow-lg">Calcular ROI de Integración →</button>
-            </div>
-
-            <div id="auto-step-2" class="hidden text-center mt-2">
-                <div class="bg-cyan-900/20 border border-cyan-500/30 rounded-xl p-5 mb-6">
-                    <p class="text-xs text-cyan-300 uppercase tracking-widest font-mono mb-1">Un pipeline de datos te ahorraría</p>
-                    <p class="text-3xl font-black text-cyan-400"><span id="auto-hours">0</span> Horas/Mes</p>
-                    <p class="text-xs text-gray-400 mt-2">El cruce de múltiples sistemas incrementa el riesgo de error exponencialmente.</p>
-                </div>
-                
-                <form onsubmit="submitWeb3Form(event, 'auto-step-2', 'auto-step-success', {'Horas Ahorradas Estimadas': document.getElementById('auto-hours').innerText})" id="formAuto" class="space-y-4 text-left">
-                    <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                    <input type="hidden" name="subject" value="🔥 LEAD: Potencial de Automatización">
-                    <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none"></div>
-                    <div><input type="email" name="email" required placeholder="Email corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm outline-none"></div>
-                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
-                    <button type="submit" class="w-full py-3.5 bg-white text-black hover:bg-gray-200 rounded-xl font-black text-sm shadow-lg">Recibir solución técnica en PDF →</button>
-                </form>
-            </div>
-
-            <div id="auto-step-success" class="hidden text-center py-6">
-                <div class="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/30">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                </div>
-                <h3 class="text-2xl font-black text-white mb-2">¡Petición Recibida!</h3>
-                <p class="text-sm text-gray-400">Un ingeniero está generando tu reporte personalizado en PDF y te lo enviaremos a tu correo en las próximas 24h.</p>
-                <button onclick="closeModal('modal-auto')" class="mt-6 px-6 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-white font-bold text-sm">Cerrar ventana</button>
             </div>
         </div>
     </div>
@@ -611,7 +533,7 @@
             
             <div id="macro-step-1">
                 <h3 class="text-2xl font-black text-white mb-2">Detén las fugas financieras</h3>
-                <p class="text-xs text-gray-400 mb-6">Hemos calculado la proyección de pérdidas para tu tramo de facturación. Déjanos tus datos para enviarte la propuesta de blindaje de infraestructura.</p>
+                <p class="text-xs text-gray-400 mb-6">Hemos calculado la proyección de pérdidas para tu tramo de facturación. Déjanos tus datos para enviarte la propuesta de blindaje.</p>
                 
                 <form onsubmit="submitWeb3Form(event, 'macro-step-1', 'macro-step-success', {'Pérdida Global Simulada': window.currentMacroLoss})" id="formMacro" class="space-y-4">
                     <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
@@ -643,7 +565,7 @@
     </div>
 
     <script>
-        /* ---- LÓGICA CALCULADORA GLOBAL ---- */
+        /* ---- LÓGICA CALCULADORA MACRO GLOBAL ---- */
         window.currentMacroLoss = "0 €";
         function calcularFriccionData() {
             const inputVal = parseInt(document.getElementById('friccionInput').value);
@@ -679,27 +601,12 @@
             .finally(() => { btn.innerText = originalText; btn.disabled = false; });
         }
 
-        /* ---- GESTIÓN DE MODALES ---- */
+        /* ---- MODALES CLÁSICOS ---- */
         function openModal(id) { document.getElementById(id).classList.add('active'); }
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
             setTimeout(() => {
-                if(id === 'modal-horas') {
-                    document.getElementById('calc-step-1').classList.remove('hidden');
-                    document.getElementById('calc-step-2').classList.add('hidden');
-                    document.getElementById('calc-step-success').classList.add('hidden');
-                } else if(id === 'modal-seguridad') {
-                    document.getElementById('quiz-step-1').classList.remove('hidden');
-                    document.getElementById('quiz-step-2').classList.add('hidden');
-                    document.getElementById('quiz-step-success').classList.add('hidden');
-                    quizScores = {1: null, 2: null};
-                    document.querySelectorAll('.quiz-opt').forEach(el => el.classList.remove('selected'));
-                } else if(id === 'modal-auto') {
-                    document.getElementById('auto-step-1').classList.remove('hidden');
-                    document.getElementById('auto-step-2').classList.add('hidden');
-                    document.getElementById('auto-step-success').classList.add('hidden');
-                    document.querySelectorAll('.auto-chk').forEach(chk => chk.checked = false);
-                } else if(id === 'modal-general') {
+                if(id === 'modal-general') {
                     document.getElementById('general-step-1').classList.remove('hidden');
                     document.getElementById('general-step-success').classList.add('hidden');
                 } else if(id === 'modal-macro') {
@@ -709,89 +616,101 @@
             }, 300);
         }
 
-        /* ---- MODAL 1: CÁLCULO EMPLEADOS ---- */
-        function calcHoras() {
-            const emp = parseInt(document.getElementById('empSlider').value);
-            const hrs = parseInt(document.getElementById('hrsSlider').value);
-            const salarioBrutoHora = parseInt(document.getElementById('roleRate').value); 
-            const cargasSociales = 1.33; 
-            const margenOportunidad = 20; 
-            const margenError = 1.10; 
+        /* ---- NUEVO: LÓGICAS INLINE BENTO GRID ---- */
+        
+        // 1. Calculadora Coste Ineficiencia (Azul)
+        function calcHorasInline() {
+            const emp = parseInt(document.getElementById('empSliderInline').value);
+            const hrs = parseInt(document.getElementById('hrsSliderInline').value);
+            const salarioBrutoHora = parseInt(document.getElementById('roleRateInline').value); 
             
-            document.getElementById('empVal').innerText = emp;
-            document.getElementById('hrsVal').innerText = hrs + " h";
+            document.getElementById('empValInline').innerText = emp;
+            document.getElementById('hrsValInline').innerText = hrs + " h";
             
-            const sueldoRealHora = salarioBrutoHora * cargasSociales;
-            const costeHoraTotal = sueldoRealHora + margenOportunidad;
-            const horasAnualesBase = emp * hrs * 52;
-            const costeTotalIneficiencia = horasAnualesBase * costeHoraTotal * margenError;
+            const sueldoRealHora = salarioBrutoHora * 1.33; // Cargas sociales
+            const costeHoraTotal = sueldoRealHora + 20; // Margen oportunidad
+            const total = emp * hrs * 52 * costeHoraTotal * 1.10; // Margen error
             
-            document.getElementById('totalHours').innerText = new Intl.NumberFormat('es-ES').format(horasAnualesBase * margenError) + " horas";
-            document.getElementById('resHoras').innerText = new Intl.NumberFormat('es-ES', {maximumFractionDigits: 0}).format(costeTotalIneficiencia) + " €";
+            document.getElementById('resHorasInline').innerText = new Intl.NumberFormat('es-ES', {maximumFractionDigits: 0}).format(total) + " €";
         }
 
-        /* ---- MODAL 2: QUIZ MADUREZ ---- */
-        let quizScores = {1: null, 2: null};
-        function selectQuiz(question, score, element) {
-            quizScores[question] = score;
+        // 2. Test Madurez (Índigo)
+        let quizScoresInline = {1: null, 2: null};
+        function selectQuizInline(question, score, element) {
+            quizScoresInline[question] = score;
             const siblings = element.parentElement.children;
-            for(let i=0; i<siblings.length; i++) { siblings[i].classList.remove('selected'); }
-            element.classList.add('selected');
+            for(let i=0; i<siblings.length; i++) { 
+                siblings[i].classList.remove('border-indigo-500', 'bg-indigo-900/40'); 
+            }
+            element.classList.add('border-indigo-500', 'bg-indigo-900/40');
         }
 
-        function calcQuiz() {
-            if(quizScores[1] === null || quizScores[2] === null) { alert("Responde ambas preguntas."); return; }
-            const score = ((quizScores[1] + quizScores[2]) / 20) * 100; 
-            document.getElementById('quiz-step-1').classList.add('hidden');
-            document.getElementById('quiz-step-2').classList.remove('hidden');
-            setTimeout(() => { document.getElementById('quiz-bar').style.width = score + '%'; }, 100);
-            document.getElementById('quiz-score').innerText = score + '%';
+        function calcQuizInline() {
+            if(quizScoresInline[1] === null || quizScoresInline[2] === null) { alert("Por favor, selecciona una opción en ambas preguntas."); return; }
+            const score = ((quizScoresInline[1] + quizScoresInline[2]) / 20) * 100; 
             
-            const textEl = document.getElementById('quiz-text');
-            const barEl = document.getElementById('quiz-bar');
-            if(score <= 40) { textEl.innerText = "Nivel Crítico (Riesgo LOPD)"; textEl.className = "text-sm text-red-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-red-500"; }
-            else if (score <= 75) { textEl.innerText = "Nivel Vulnerable (Lento)"; textEl.className = "text-sm text-amber-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-amber-400"; }
-            else { textEl.innerText = "Nivel Optimizado"; textEl.className = "text-sm text-emerald-400 mb-6 font-bold"; barEl.className = "h-4 rounded-full transition-all duration-1000 bg-emerald-500"; }
+            document.getElementById('inline-quiz-step-1').classList.add('hidden');
+            document.getElementById('inline-quiz-step-2').classList.remove('hidden');
+            
+            setTimeout(() => { document.getElementById('quiz-bar-inline').style.width = score + '%'; }, 100);
+            
+            // Animación de números
+            let currScore = 0;
+            let anim = setInterval(() => {
+                currScore += 2;
+                if(currScore >= score) { currScore = score; clearInterval(anim); }
+                document.getElementById('quiz-score-inline').innerText = currScore + '%';
+            }, 20);
+            
+            const textEl = document.getElementById('quiz-text-inline');
+            const barEl = document.getElementById('quiz-bar-inline');
+            if(score <= 40) { textEl.innerText = "Riesgo Crítico LOPD"; textEl.className = "text-sm text-red-500 font-bold uppercase tracking-wider"; barEl.className = "h-3 rounded-full transition-all duration-1000 bg-red-500 shadow-[0_0_10px_#ef4444]"; }
+            else if (score <= 75) { textEl.innerText = "Infraestructura Lenta"; textEl.className = "text-sm text-amber-400 font-bold uppercase tracking-wider"; barEl.className = "h-3 rounded-full transition-all duration-1000 bg-amber-400 shadow-[0_0_10px_#fbbf24]"; }
+            else { textEl.innerText = "Sistema Optimizado"; textEl.className = "text-sm text-emerald-400 font-bold uppercase tracking-wider"; barEl.className = "h-3 rounded-full transition-all duration-1000 bg-emerald-500 shadow-[0_0_10px_#10b981]"; }
         }
 
-        /* ---- MODAL 3: AUTOMATIZACIÓN ---- */
-        function calcAuto() {
+        // 3. Potencial Automatización (Cyan)
+        function calcAutoInline() {
             let count = 0;
-            document.querySelectorAll('.auto-chk').forEach(chk => { if(chk.checked) count++; });
-            let finalHours = 0;
-            if(count === 1) finalHours = 18; else if(count === 2) finalHours = 45; else if(count === 3) finalHours = 110; else finalHours = 5; 
+            document.querySelectorAll('.auto-chk-inline').forEach(chk => { if(chk.checked) count++; });
             
-            document.getElementById('auto-step-1').classList.add('hidden');
-            document.getElementById('auto-step-2').classList.remove('hidden');
+            let finalHours = 0;
+            if(count === 1) finalHours = 25; 
+            else if(count === 2) finalHours = 65; 
+            else if(count === 3) finalHours = 140; 
+            else if(count === 4) finalHours = 220;
+            else { alert("Selecciona al menos un origen de datos."); return; }
+            
+            document.getElementById('inline-auto-step-1').classList.add('hidden');
+            document.getElementById('inline-auto-step-2').classList.remove('hidden');
             
             let curr = 0;
+            let step = Math.ceil(finalHours / 25);
             let interval = setInterval(() => {
-                curr += 3;
+                curr += step;
                 if(curr >= finalHours) { curr = finalHours; clearInterval(interval); }
-                document.getElementById('auto-hours').innerText = curr;
+                document.getElementById('auto-hours-inline').innerText = curr;
             }, 30);
         }
 
         /* ---- LEGAL MODALS ---- */
         const legalTexts = {
-            aviso: `<h3 class="text-lg font-black text-white font-mono uppercase tracking-wider mb-2">1. Aviso Legal</h3><p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa que este sitio web es gestionado bajo la marca comercial <strong>NEXUS ANALYTICS</strong>.</p><p><strong>Contacto Principal de Infraestructura:</strong> nexusalanalytics011@gmail.com</p><p>El acceso y uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso, los Términos de Uso aquí reflejados. Los contenidos analíticos y simuladores de este sitio son herramientas de carácter meramente informativo y estimativo.</p>`,
-            privacidad: `<h3 class="text-lg font-black text-white font-mono uppercase tracking-wider mb-2">2. Política de Privacidad (Cumplimiento RGPD / LOPDGDD)</h3><p>De conformidad con el Reglamento (UE) 2016/679 (RGPD) y la Ley Orgánica 3/2018 (LOPDGDD), te informamos de cómo tratamos tus datos personales recogidos en nuestros simuladores:</p><p><strong>Responsable del Tratamiento:</strong> Nexus Analytics Security Team</p><p><strong>Finalidad:</strong> Envío del reporte técnico personalizado en PDF y gestión de la solicitud de auditoría de datos solicitada por el usuario.</p><p><strong>Legitimación:</strong> Consentimiento explícito del interesado al enviar sus datos mediante nuestros formularios nativos.</p><p><strong>Destinatarios:</strong> Los datos se transmiten de forma cifrada (protocolo HTTPS SSL de extremo a extremo) exclusivamente a través del procesador Web3Forms hacia nuestra bandeja de correo segura de Google Workspace, sin almacenamiento en servidores intermedios de terceros.</p><p><strong>Derechos:</strong> Puedes ejercer tus derechos de acceso, rectificación, supresión y oposición escribiendo a nexusalanalytics011@gmail.com.</p>`,
-            cookies: `<h3 class="text-lg font-black text-white font-mono uppercase tracking-wider mb-2">3. Política de Cookies</h3><p>Este sitio web utiliza cookies técnicas estrictamente necesarias para el correcto funcionamiento de las lógicas interactivas del lenguaje JavaScript (procesamiento de cálculos del Simulador Financiero, Test de Madurez y animaciones del Hero).</p><p>Al no utilizar scripts de rastreo publicitario intrusivo (Third-Party Tracking Pixels), este dominio opera de manera limpia y óptima respetando de manera absoluta la privacidad del navegador del usuario.</p>`
+            aviso: `<h3 class="text-lg font-black text-white font-mono uppercase tracking-wider mb-2">1. Aviso Legal</h3><p>En cumplimiento del artículo 10 de la Ley 34/2002, de 11 de julio, de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa que este sitio web es gestionado bajo la marca comercial <strong>NEXUS ANALYTICS</strong>.</p><p><strong>Contacto Principal de Infraestructura:</strong> nexusalanalytics011@gmail.com</p><p>El acceso y uso de este portal atribuye la condición de USUARIO, que acepta, desde dicho acceso, los Términos de Uso aquí reflejados.</p>`,
+            privacidad: `<h3 class="text-lg font-black text-white font-mono uppercase tracking-wider mb-2">2. Política de Privacidad (RGPD)</h3><p>De conformidad con el Reglamento (UE) 2016/679 (RGPD), te informamos:</p><p><strong>Responsable:</strong> Nexus Analytics Security Team</p><p><strong>Finalidad:</strong> Envío del reporte técnico personalizado. Los datos se transmiten de forma cifrada exclusivamente a través de Web3Forms hacia nuestra bandeja segura.</p><p>Puedes ejercer tus derechos escribiendo a nexusalanalytics011@gmail.com.</p>`,
+            cookies: `<h3 class="text-lg font-black text-white font-mono uppercase tracking-wider mb-2">3. Política de Cookies</h3><p>Este sitio web utiliza cookies técnicas estrictamente necesarias para el correcto funcionamiento de las lógicas interactivas del lenguaje JavaScript (procesamiento de cálculos del Simulador Financiero, Test de Madurez y animaciones del Hero).</p><p>No utilizamos scripts de rastreo publicitario intrusivo (Third-Party Tracking Pixels).</p>`
         };
 
         function openLegalModal(type) {
             const modal = document.getElementById('legal-modal');
             const content = document.getElementById('legal-modal-content');
             content.innerHTML = legalTexts[type];
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
+            modal.classList.remove('hidden'); modal.classList.add('flex');
             document.body.style.overflow = 'hidden'; 
         }
 
         function closeLegalModal() {
             const modal = document.getElementById('legal-modal');
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            modal.classList.remove('flex'); modal.classList.add('hidden');
             document.body.style.overflow = 'auto'; 
         }
 
@@ -816,7 +735,7 @@
 
         window.addEventListener('DOMContentLoaded', () => {
             calcularFriccionData();
-            calcHoras(); 
+            calcHorasInline(); // Inicializar tarjeta azul Bento
             setTimeout(executeTyping, 800);
         });
     </script>
