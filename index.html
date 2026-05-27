@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title>NEXUS ANALYTICS | Data Analytics & Infrastructure Consulting</title>
+    <title>NEXUS ANALYTICS | Enterprise Data Infrastructure</title>
     <meta name="description" content="Sustituimos el caos operativo por soluciones técnicas de alto rendimiento. Obtén una auditoría de datos gratuita y optimiza la infraestructura de tu negocio.">
     <meta name="keywords" content="Nexus Analytics, consultoría de datos, data analytics, auditoría de datos gratis, infraestructura de datos, optimización de datos">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://nexus-analytics-kappa.vercel.app/">
 
     <meta property="og:type" content="website">
-    <meta property="og:title" content="NEXUS ANALYTICS | Data Analytics & Infrastructure Consulting">
+    <meta property="og:title" content="NEXUS ANALYTICS | Enterprise Data Infrastructure">
     <meta property="og:description" content="Sustituimos el caos operativo por soluciones de alto rendimiento. Solicita tu auditoría de datos gratuita.">
     <meta property="og:url" content="https://nexus-analytics-kappa.vercel.app/">
     <meta property="og:site_name" content="Nexus Analytics">
@@ -23,7 +23,13 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
         
         html { scroll-behavior: smooth; }
-        body { background-color: #030712; color: #e5e7eb; font-family: 'Inter', sans-serif; overflow-x: hidden; } 
+        
+        body { 
+            background-color: #030712; 
+            color: #e5e7eb; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden; 
+        } 
 
         /* Malla de fondo dot-grid cibernética */
         .dot-grid {
@@ -42,7 +48,7 @@
             transform-style: preserve-3d;
         }
 
-        /* Animación orbes */
+        /* Animación orbes de fondo */
         @keyframes orbit {
             0% { transform: translate(0px, 0px) scale(1); }
             33% { transform: translate(40px, -60px) scale(1.1); }
@@ -51,39 +57,95 @@
         }
         .animate-glow { animation: orbit 14s ease-in-out infinite; }
 
-        /* Sliders base mejorados (Cards) */
-        input[type=range] { -webkit-appearance: none; width: 100%; background: transparent; }
+        /* Sliders base mejorados (Para las Tarjetas Enterprise) */
+        input[type=range] { 
+            -webkit-appearance: none; 
+            width: 100%; 
+            background: transparent; 
+        }
+        
         input[type=range]::-webkit-slider-thumb {
-            -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%;
-            background: #ffffff; cursor: pointer; margin-top: -6px;
-            border: 2px solid #3b82f6; box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+            -webkit-appearance: none; 
+            height: 18px; 
+            width: 18px; 
+            border-radius: 50%;
+            background: #ffffff; 
+            cursor: pointer; 
+            margin-top: -6px;
+            border: 2px solid #3b82f6; 
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
             transition: transform 0.1s ease;
         }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.2); }
+        
+        input[type=range]::-webkit-slider-thumb:hover { 
+            transform: scale(1.2); 
+        }
+        
         input[type=range]::-webkit-slider-runnable-track {
-            width: 100%; height: 6px; cursor: pointer; background: rgba(255, 255, 255, 0.1);
-            border-radius: 9999px; border: 1px solid rgba(255, 255, 255, 0.02);
+            width: 100%; 
+            height: 6px; 
+            cursor: pointer; 
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px; 
+            border: 1px solid rgba(255, 255, 255, 0.02);
         }
 
         /* Slider Macro Simulador (Verde) */
         .slider-global::-webkit-slider-thumb {
             border: 2px solid #10b981 !important;
             box-shadow: 0 0 15px rgba(16, 185, 129, 0.8) !important;
-            height: 22px !important; width: 22px !important; margin-top: -8px !important;
+            height: 22px !important; 
+            width: 22px !important; 
+            margin-top: -8px !important; 
+            border-radius: 50% !important;
+        }
+        
+        .slider-global::-webkit-slider-thumb:hover { 
+            transform: scale(1.2); 
+            background: #34d399 !important; 
         }
 
         /* Modal custom CSS */
-        .modal { opacity: 0; pointer-events: none; transition: all 0.3s ease; backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
-        .modal.active { opacity: 1; pointer-events: auto; z-index: 1000; }
-        .modal-content { transform: scale(0.95) translateY(20px); transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
-        .modal.active .modal-content { transform: scale(1) translateY(0); }
+        .modal { 
+            opacity: 0; 
+            pointer-events: none; 
+            transition: all 0.3s ease; 
+            backdrop-filter: blur(12px); 
+            -webkit-backdrop-filter: blur(12px); 
+        }
+        
+        .modal.active { 
+            opacity: 1; 
+            pointer-events: auto; 
+            z-index: 1000; 
+        }
+        
+        .modal-content { 
+            transform: scale(0.95) translateY(20px); 
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        
+        .modal.active .modal-content { 
+            transform: scale(1) translateY(0); 
+        }
 
         /* Cursor animado Typewriter */
-        .typewriter-cursor::after { content: '|'; animation: blink 0.8s step-end infinite; color: #3b82f6; font-weight: 300; }
-        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+        .typewriter-cursor::after { 
+            content: '|'; 
+            animation: blink 0.8s step-end infinite; 
+            color: #3b82f6; 
+            font-weight: 300; 
+        }
+        
+        @keyframes blink { 
+            0%, 100% { opacity: 1; } 
+            50% { opacity: 0; } 
+        }
 
-        /* Gráfico Macro */
-        .chart-bar { transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+        /* Gráfico Macro (Transiciones CSS) */
+        .chart-bar { 
+            transition: height 0.8s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
 
         /* Scrollbar custom */
         ::-webkit-scrollbar { width: 8px; }
@@ -122,7 +184,10 @@
     <header class="container mx-auto px-6 py-6 mt-2 relative z-10">
         <div class="glass-panel rounded-2xl px-5 py-3.5 flex justify-between items-center bg-white/[0.02]">
             <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] text-white flex items-center justify-center font-black text-xl border border-blue-500/30">N</div>
+                <div class="w-10 h-10 bg-gradient-to-br from-blue-600 to-indigo-600 rounded-xl shadow-[0_0_20px_rgba(59,130,246,0.3)] text-white flex items-center justify-center font-black text-xl border border-blue-500/30 relative overflow-hidden">
+                    <div class="absolute inset-0 bg-gradient-to-br from-blue-600/30 to-transparent"></div>
+                    <span class="relative z-10">N</span>
+                </div>
                 <div class="flex flex-col">
                     <span class="text-base md:text-lg font-black tracking-widest text-white leading-none">NEXUS ANALYTICS</span>
                     <span class="text-[9px] md:text-[10px] text-gray-400 font-mono font-bold uppercase tracking-widest mt-1">Data & Infrastructure</span>
@@ -189,17 +254,20 @@
             <h2 class="text-3xl md:text-4xl font-black text-white mb-4 tracking-tight">¿Qué analizamos en tu Auditoría Gratuita?</h2>
             <p class="text-gray-400 max-w-2xl mx-auto text-base md:text-lg">No necesitas prepararnos informes complejos. Nosotros identificamos las fugas de dinero evaluando los síntomas reales de tu negocio.</p>
         </div>
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-red-500/50 transition-colors">
                 <div class="w-12 h-12 bg-red-600/10 border border-red-500/30 rounded-xl flex items-center justify-center text-red-400 font-bold mb-6 group-hover:bg-red-600 group-hover:text-white transition-all duration-300">01</div>
                 <h3 class="text-xl font-bold text-white mb-3">Fugas de Presupuesto</h3>
                 <p class="text-sm text-gray-400 leading-relaxed">Detectamos si estás perdiendo dinero en campañas de marketing digital mal rastreadas o atribuciones duplicadas.</p>
             </div>
+            
             <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-amber-500/50 transition-colors">
                 <div class="w-12 h-12 bg-amber-600/10 border border-amber-500/30 rounded-xl flex items-center justify-center text-amber-400 font-bold mb-6 group-hover:bg-amber-600 group-hover:text-white transition-all duration-300">02</div>
                 <h3 class="text-xl font-bold text-white mb-3">Caos Operativo</h3>
                 <p class="text-sm text-gray-400 leading-relaxed">Analizamos cuántas horas pierde tu equipo consolidando datos de forma manual que podrían centralizarse automáticamente.</p>
             </div>
+            
             <div class="glass-panel p-8 rounded-3xl relative overflow-hidden group hover:border-emerald-500/50 transition-colors">
                 <div class="w-12 h-12 bg-emerald-600/10 border border-emerald-500/30 rounded-xl flex items-center justify-center text-emerald-400 font-bold mb-6 group-hover:bg-emerald-600 group-hover:text-white transition-all duration-300">03</div>
                 <h3 class="text-xl font-bold text-white mb-3">Seguridad y Normativa</h3>
@@ -210,122 +278,143 @@
 
     <section id="diagnosticos" class="container mx-auto px-6 py-24 max-w-6xl relative z-10 border-t border-white/5">
         <div class="text-center mb-16">
-            <p class="text-xs font-mono tracking-widest text-blue-400 uppercase mb-3 font-bold">Diagnósticos Interactivos Locales</p>
-            <h2 class="text-3xl md:text-5xl font-black text-white tracking-tight mb-4">Motores de Simulación Operativa</h2>
-            <p class="text-gray-400 max-w-2xl mx-auto text-sm leading-relaxed">Interactúa directamente con nuestros motores de cálculo locales para evaluar el rendimiento financiero y la seguridad de tu empresa.</p>
+            <span class="text-[10px] font-mono tracking-widest text-blue-400 bg-blue-500/10 px-3 py-1 rounded-full uppercase inline-block mb-3 font-bold border border-blue-500/20">Nexus Analytics Core Engine v2.6</span>
+            <h2 class="text-4xl md:text-5xl font-black text-white tracking-tight mb-4 font-sans">Consola de Simulación Avanzada</h2>
+            <p class="text-gray-400 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">Ejecute diagnósticos complejos de infraestructura y proyecciones de fricción financiera en entornos corporativos simulados.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch w-full mb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch w-full mb-16">
             
-            <div class="bg-[#0b0f19] p-8 rounded-3xl border border-blue-500/20 flex flex-col justify-between hover:border-blue-500/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
-                <div>
+            <div class="lg:col-span-4 bg-[#090f1d] p-8 rounded-3xl border border-blue-500/20 flex flex-col justify-between hover:border-blue-500/50 hover:shadow-[0_0_50px_rgba(59,130,246,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-blue-600/5 rounded-full blur-3xl pointer-events-none group-hover:bg-blue-600/10 transition-colors"></div>
+                <div class="relative z-10">
                     <div class="flex justify-between items-center mb-6">
                         <span class="text-[10px] font-mono tracking-wider bg-blue-500/10 text-blue-400 px-2.5 py-1 rounded-full font-bold uppercase">Módulo Financiero</span>
-                        <span class="text-xs font-mono text-gray-500 font-bold">01 / 03</span>
+                        <span class="text-xs font-mono text-gray-600 font-bold">01 / 03</span>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">Fricción Salarial</h3>
-                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Costes de ineficiencia por tareas manuales (Calculado a 25€/h).</p>
+                    <h3 class="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-blue-400 transition-colors">Fricción Salarial</h3>
+                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Cuantificación matemática del impacto por reprocesamiento manual de datos.</p>
                     
-                    <div class="space-y-4 mb-6">
+                    <div class="space-y-5 mb-6">
                         <div>
-                            <div class="flex justify-between text-[11px] font-mono mb-1 text-gray-300">
-                                <span>Nº Empleados:</span>
-                                <span id="h1-emp-text" class="text-blue-400 font-bold text-sm bg-blue-900/30 px-2 py-0.5 rounded">3</span>
+                            <div class="flex justify-between text-xs font-mono mb-1.5 text-gray-300">
+                                <span>Volumen de Operarios:</span>
+                                <span id="h1-emp-text" class="text-blue-400 font-bold text-sm bg-blue-900/30 px-2 rounded">3</span>
                             </div>
-                            <input id="h1-slider-emp" type="range" min="1" max="20" step="1" value="3" class="w-full" oninput="calcH1()">
+                            <input id="h1-slider-emp" type="range" min="1" max="30" step="1" value="3" class="w-full cursor-pointer accent-blue-500" oninput="calcH1()">
                         </div>
                         <div>
-                            <div class="flex justify-between text-[11px] font-mono mb-1 text-gray-300">
-                                <span>Horas/Semana (c/u):</span>
-                                <span id="h1-hours-text" class="text-blue-400 font-bold text-sm bg-blue-900/30 px-2 py-0.5 rounded">5h</span>
+                            <div class="flex justify-between text-xs font-mono mb-1.5 text-gray-300">
+                                <span>Carga Horaria Semanal:</span>
+                                <span id="h1-hours-text" class="text-blue-400 font-bold text-sm bg-blue-900/30 px-2 rounded">5h</span>
                             </div>
-                            <input id="h1-slider-hours" type="range" min="1" max="40" step="1" value="5" class="w-full" oninput="calcH1()">
+                            <input id="h1-slider-hours" type="range" min="1" max="40" step="1" value="5" class="w-full cursor-pointer accent-blue-500" oninput="calcH1()">
+                        </div>
+                    </div>
+
+                    <div class="mb-6 space-y-2 bg-black/30 p-4 rounded-2xl border border-white/5">
+                        <p class="text-[9px] font-mono text-gray-500 uppercase tracking-wider font-bold">Proyección de Desviación Salarial</p>
+                        <div class="w-full bg-white/5 h-2.5 rounded-full overflow-hidden relative">
+                            <div id="h1-bar-progress" class="bg-gradient-to-r from-blue-500 to-indigo-500 h-full transition-all duration-300 rounded-full" style="width: 15%"></div>
+                        </div>
+                        <div class="flex justify-between text-[9px] font-mono text-gray-500">
+                            <span>Mínimo Riesgo</span>
+                            <span>Escala Crítica</span>
                         </div>
                     </div>
                 </div>
                 
-                <div>
+                <div class="relative z-10 border-t border-white/5 pt-6">
                     <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-center mb-5">
-                        <p class="text-[10px] text-gray-400 font-mono uppercase tracking-wider font-bold">Pérdida Anualizada Mínima</p>
-                        <p id="h1-result" class="text-2xl font-black text-red-400 font-mono mt-1">0 €</p>
+                        <p class="text-[10px] text-gray-400 font-mono uppercase tracking-wider font-bold">Impacto Anualizado Directo</p>
+                        <p id="h1-result" class="text-3xl font-black text-red-400 font-mono mt-1 tracking-tight">0 €</p>
                     </div>
-                    <form onsubmit="submitEngineForm(event, 'h1-btn', {'Pérdida Calculada': document.getElementById('h1-result').innerText})" class="space-y-2">
+                    <form onsubmit="submitEngineForm(event, 'h1-btn', {'Pérdida Laboral (Core)': document.getElementById('h1-result').innerText})" class="space-y-2">
                         <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" name="subject" value="🔥 LEAD MOTOR: Fricción Salarial">
-                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 bg-slate-900/50 transition-colors">
-                        <button id="h1-btn" type="submit" class="w-full text-center py-3 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(59,130,246,0.3)] uppercase tracking-wider">Detener Pérdidas</button>
+                        <input type="hidden" name="subject" value="🔥 LEAD DASHBOARD: Fricción Salarial">
+                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 bg-slate-900/50 transition-colors">
+                        <button id="h1-btn" type="submit" class="w-full text-center py-3.5 bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_14px_rgba(59,130,246,0.3)] uppercase tracking-wider font-mono">Detener Pérdidas Analíticas</button>
                     </form>
                 </div>
             </div>
 
-            <div class="bg-[#0b0f19] p-8 rounded-3xl border border-indigo-500/20 flex flex-col justify-between hover:border-indigo-500/50 hover:shadow-[0_0_40px_rgba(99,102,241,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
-                <div>
+            <div class="lg:col-span-4 bg-[#090f1d] p-8 rounded-3xl border border-indigo-500/20 flex flex-col justify-between hover:border-indigo-500/50 hover:shadow-[0_0_50px_rgba(99,102,241,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-indigo-600/5 rounded-full blur-3xl pointer-events-none group-hover:bg-indigo-600/10 transition-colors"></div>
+                <div class="relative z-10">
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] font-mono tracking-wider bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full font-bold uppercase">Seguridad LOPD</span>
-                        <span class="text-xs font-mono text-gray-500 font-bold">02 / 03</span>
+                        <span class="text-[10px] font-mono tracking-wider bg-indigo-500/10 text-indigo-400 px-2.5 py-1 rounded-full font-bold uppercase">Seguridad Core</span>
+                        <span class="text-xs font-mono text-gray-600 font-bold">02 / 03</span>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-indigo-400 transition-colors">Riesgo de Exposición</h3>
-                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Nivel de vulnerabilidad en almacenamiento de datos.</p>
+                    <h3 class="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-indigo-400 transition-colors">Riesgo de Exposición</h3>
+                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Modelado automatizado de brechas de privacidad y cumplimiento normativo (LOPD).</p>
                     
-                    <div class="space-y-2 mb-6">
-                        <p class="text-[11px] font-mono text-gray-300 uppercase mb-2 font-bold tracking-wide">¿Dónde guardas tus datos?</p>
-                        <button type="button" onclick="setH2Score('Crítico', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium">Excels locales en PCs desprotegidos</button>
-                        <button type="button" onclick="setH2Score('Medio', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium">Drive / Sharepoint compartido</button>
-                        <button type="button" onclick="setH2Score('Bajo', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium">Bases de datos en la nube (SQL)</button>
+                    <div class="space-y-3 mb-6" id="h2-quiz-box">
+                        <p class="text-[11px] font-mono text-gray-300 uppercase mb-2 font-bold tracking-wide">Arquitectura de Almacenamiento:</p>
+                        <button type="button" onclick="setH2Score('CRIT', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium font-sans flex justify-between items-center">
+                            <span>Excels locales en PCs</span><span class="text-[10px] font-mono text-gray-500">Riesgo Alto</span>
+                        </button>
+                        <button type="button" onclick="setH2Score('MOD', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium font-sans flex justify-between items-center">
+                            <span>Cloud Compartido (Drive)</span><span class="text-[10px] font-mono text-gray-500">Riesgo Medio</span>
+                        </button>
+                        <button type="button" onclick="setH2Score('SAFE', this)" class="h2-opt w-full text-left p-3.5 rounded-xl border border-white/10 bg-white/[0.02] text-xs text-gray-300 hover:bg-white/10 transition-all font-medium font-sans flex justify-between items-center">
+                            <span>Bases de datos en Nube</span><span class="text-[10px] font-mono text-gray-500">Riesgo Bajo</span>
+                        </button>
                     </div>
                 </div>
 
-                <div>
-                    <div class="p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-white/[0.01] border-white/10" id="h2-result-bg">
-                        <p class="text-[9px] text-gray-400 font-mono uppercase tracking-wider">Dictamen de Riesgo Legal</p>
-                        <p id="h2-result-text" class="text-sm font-black text-gray-400 mt-1 uppercase tracking-wide">Selecciona opción</p>
+                <div class="relative z-10 border-t border-white/5 pt-6">
+                    <div class="p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-white/[0.01] border-white/10 flex flex-col justify-center items-center h-20" id="h2-result-bg">
+                        <p class="text-[9px] text-gray-400 font-mono uppercase tracking-wider font-bold mb-1">Matriz de Vulnerabilidad Estructural</p>
+                        <p id="h2-result-text" class="text-sm font-bold text-gray-400 mt-1 uppercase tracking-widest font-mono">[ ESPERANDO DATOS... ]</p>
                     </div>
-                    <form onsubmit="submitEngineForm(event, 'h2-btn', {'Riesgo LOPD Seleccionado': document.getElementById('h2-result-text').innerText})" class="space-y-2">
+                    <form onsubmit="submitEngineForm(event, 'h2-btn', {'Alerta Seguridad LOPD': document.getElementById('h2-result-text').innerText})" class="space-y-2">
                         <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" name="subject" value="🔥 LEAD MOTOR: Test Seguridad">
-                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 bg-slate-900/50 transition-colors">
-                        <button id="h2-btn" type="submit" class="w-full text-center py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(99,102,241,0.3)] uppercase tracking-wider">Solicitar Auditoría</button>
+                        <input type="hidden" name="subject" value="🔥 LEAD DASHBOARD: Test Seguridad">
+                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 bg-slate-900/50 transition-colors">
+                        <button id="h2-btn" type="submit" class="w-full text-center py-3.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_14px_rgba(99,102,241,0.3)] uppercase tracking-wider font-mono">Solicitar Auditoría Segura</button>
                     </form>
                 </div>
             </div>
 
-            <div class="bg-[#0b0f19] p-8 rounded-3xl border border-cyan-500/20 flex flex-col justify-between hover:border-cyan-500/50 hover:shadow-[0_0_40px_rgba(6,182,212,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
-                <div>
+            <div class="lg:col-span-4 bg-[#090f1d] p-8 rounded-3xl border border-cyan-500/20 flex flex-col justify-between hover:border-cyan-500/50 hover:shadow-[0_0_50px_rgba(6,182,212,0.15)] transition-all duration-500 relative overflow-hidden group shadow-2xl">
+                <div class="absolute -top-24 -right-24 w-48 h-48 bg-cyan-600/5 rounded-full blur-3xl pointer-events-none group-hover:bg-cyan-600/10 transition-colors"></div>
+                <div class="relative z-10">
                     <div class="flex justify-between items-center mb-6">
-                        <span class="text-[10px] font-mono tracking-wider bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-full font-bold uppercase">Optimización</span>
-                        <span class="text-xs font-mono text-gray-500 font-bold">03 / 03</span>
+                        <span class="text-[10px] font-mono tracking-wider bg-cyan-500/10 text-cyan-400 px-2.5 py-1 rounded-full font-bold uppercase">Optimización API</span>
+                        <span class="text-xs font-mono text-gray-600 font-bold">03 / 03</span>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-2 tracking-tight group-hover:text-cyan-400 transition-colors">Entradas de Sistemas</h3>
-                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Potencial de automatización vía Data Pipelines.</p>
+                    <h3 class="text-2xl font-black text-white mb-2 tracking-tight group-hover:text-cyan-400 transition-colors">Entradas de Sistemas</h3>
+                    <p class="text-xs text-gray-400 mb-6 font-mono leading-relaxed">Potencial de consolidación vía Python Scripts y reducción de entropía.</p>
                     
-                    <div class="space-y-2 mb-6">
-                        <p class="text-[11px] font-mono text-gray-300 uppercase mb-2 font-bold tracking-wide">Selecciona tus nodos desconectados:</p>
+                    <div class="space-y-3 mb-6">
+                        <p class="text-[11px] font-mono text-gray-300 uppercase mb-2 font-bold tracking-wide">Seleccione Orígenes Desconectados:</p>
                         
-                        <div onclick="toggleH3('crm', this)" class="h3-opt flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-medium">
+                        <div onclick="toggleH3('crm', this)" class="h3-opt flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-sans">
                             <div class="chk-box w-4 h-4 rounded border border-white/30 flex items-center justify-center text-[10px] text-transparent transition-all select-none">&#10003;</div>
-                            Datos aislados (CRM / ERP)
+                            Datos aislados (CRM / Holded)
                         </div>
-                        <div onclick="toggleH3('ads', this)" class="h3-opt flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-medium">
+                        <div onclick="toggleH3('ads', this)" class="h3-opt flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-sans">
                             <div class="chk-box w-4 h-4 rounded border border-white/30 flex items-center justify-center text-[10px] text-transparent transition-all select-none">&#10003;</div>
                             Atribución MKT (Google Ads)
                         </div>
-                        <div onclick="toggleH3('pay', this)" class="h3-opt flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-medium">
+                        <div onclick="toggleH3('pay', this)" class="h3-opt flex items-center gap-4 p-3.5 rounded-xl border border-white/10 bg-white/[0.02] cursor-pointer text-xs text-gray-300 transition-all hover:bg-white/10 font-sans">
                             <div class="chk-box w-4 h-4 rounded border border-white/30 flex items-center justify-center text-[10px] text-transparent transition-all select-none">&#10003;</div>
                             Pasarelas Financieras (Stripe)
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div class="p-4 rounded-xl text-center mb-5 border border-cyan-500/20 bg-cyan-900/10 transition-all duration-300">
-                        <p class="text-[9px] text-cyan-500 font-mono uppercase tracking-wider font-bold">Ahorro de Procesamiento</p>
-                        <p class="text-2xl font-black text-cyan-400 font-mono mt-1"><span id="h3-result-text">0</span> <span class="text-sm">Horas/Mes</span></p>
+                <div class="relative z-10 border-t border-white/5 pt-6">
+                    <div class="p-4 rounded-xl text-center mb-5 border border-cyan-500/20 bg-cyan-900/10 transition-all duration-300 h-20 flex flex-col justify-center items-center">
+                        <p class="text-[9px] text-cyan-500 font-mono uppercase tracking-wider font-bold">Líneas de Script Automatizables</p>
+                        <p class="text-2xl font-black text-cyan-400 font-mono mt-1 tracking-tight"><span id="h3-result-text">0</span> <span class="text-sm font-bold text-cyan-600">LDC</span></p>
                     </div>
-                    <form onsubmit="submitEngineForm(event, 'h3-btn', {'Horas Libres Estimadas': document.getElementById('h3-result-text').innerText})" class="space-y-2">
+                    
+                    <form onsubmit="submitEngineForm(event, 'h3-btn', {'Líneas Código Generables': document.getElementById('h3-result-text').innerText})" class="space-y-2">
                         <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
-                        <input type="hidden" name="subject" value="🔥 LEAD MOTOR: Automatización">
-                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 bg-slate-900/50 transition-colors">
-                        <button id="h3-btn" type="submit" class="w-full text-center py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_12px_rgba(6,182,212,0.3)] uppercase tracking-wider">Unificar Sistemas</button>
+                        <input type="hidden" name="subject" value="🔥 LEAD DASHBOARD: Automatización">
+                        <input type="email" name="Email" placeholder="Tu email corporativo" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3.5 text-xs text-white placeholder-gray-500 focus:outline-none focus:border-cyan-500 bg-slate-900/50 transition-colors">
+                        <button id="h3-btn" type="submit" class="w-full text-center py-3.5 bg-cyan-600 hover:bg-cyan-500 text-white font-bold text-xs rounded-xl transition-all duration-300 shadow-[0_4px_14px_rgba(6,182,212,0.3)] uppercase tracking-wider font-mono">Generar Pipeline Code</button>
                     </form>
                 </div>
             </div>
@@ -333,25 +422,26 @@
 
         <div class="bg-[#0b0f19] border border-white/5 rounded-[2.5rem] p-8 lg:p-14 shadow-[0_30px_60px_rgba(0,0,0,0.6)] relative overflow-hidden">
             <div class="absolute inset-0 bg-gradient-to-br from-emerald-900/10 via-transparent to-transparent pointer-events-none"></div>
+            <div class="absolute -bottom-40 -left-40 w-96 h-96 bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
             
             <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-5 space-y-8">
                     <div>
-                        <div class="flex items-center gap-2 mb-3">
-                            <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
-                            <h3 class="text-2xl font-bold text-white tracking-tight">Macro-Proyección</h3>
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="w-2.5 h-2.5 rounded-sm bg-emerald-500 shadow-[0_0_10px_#10b981] animate-pulse"></span>
+                            <h3 class="text-2xl font-bold text-white tracking-tight">Macro-Proyección Temporal</h3>
                         </div>
-                        <p class="text-sm text-gray-400 font-mono leading-relaxed">Simulador de impacto financiero a 5 años basado en el Efecto de Arrastre Operacional (Operational Drag).</p>
+                        <p class="text-sm text-gray-400 font-mono leading-relaxed">Consola de impacto financiero a 5 años basada en la simulación del Efecto de Arrastre Operacional (Operational Drag).</p>
                     </div>
 
                     <div class="bg-black/50 border border-white/5 rounded-2xl p-6 shadow-inner">
                         <div class="flex justify-between items-end mb-6 font-mono">
-                            <span class="text-[11px] text-gray-400 uppercase tracking-widest font-bold">Facturación Mensual</span>
+                            <span class="text-[11px] text-gray-400 uppercase tracking-widest font-bold">Volumen de Facturación / Mes</span>
                             <span id="macro-revenue-label" class="text-3xl text-emerald-400 font-black tracking-tighter">50.000 €</span>
                         </div>
                         <input type="range" id="macro-slider" min="10000" max="1000000" step="10000" value="50000" class="w-full slider-global" oninput="calcMacro()">
-                        <div class="flex justify-between text-[10px] text-gray-600 font-mono mt-4">
+                        <div class="flex justify-between text-[10px] text-gray-600 font-mono mt-4 font-bold">
                             <span>10K EUR</span>
                             <span>1M EUR</span>
                         </div>
@@ -359,43 +449,43 @@
 
                     <div class="space-y-4 font-mono bg-black/30 p-6 rounded-2xl border border-white/5">
                         <div class="flex justify-between text-xs pb-4 border-b border-white/5">
-                            <span class="text-gray-400">Tasa de Entropía:</span>
-                            <span class="text-gray-200 font-bold">5.4% - 12%</span>
+                            <span class="text-gray-400">Desviación Estructural (Entropía):</span>
+                            <span class="text-gray-200 font-bold" id="macro-entropy-rate">11.5%</span>
                         </div>
                         <div class="flex justify-between text-xs pt-1 items-center">
-                            <span class="text-gray-400">Capital Recuperable:</span>
+                            <span class="text-gray-400">Blindaje de Capital Recomendado:</span>
                             <span class="text-emerald-400 font-black text-lg" id="macro-roi">--</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="lg:col-span-7">
-                    <div class="bg-black/30 border border-white/5 rounded-3xl p-8 lg:p-10">
-                        <p class="text-xs text-gray-400 font-mono uppercase tracking-widest mb-10 font-bold text-center">Crecimiento de la Hemorragia (Proyección Acumulada)</p>
+                    <div class="bg-[#050810] border border-white/5 rounded-3xl p-8 lg:p-10 shadow-inner">
+                        <p class="text-xs text-gray-500 font-mono uppercase tracking-widest mb-10 font-bold text-center">Crecimiento de la Hemorragia (Proyección Acumulada)</p>
                         
                         <div class="relative h-64 border-b border-l border-white/10 flex items-end justify-around px-4 pb-0 pt-6 font-mono">
                             
                             <div class="flex flex-col items-center group w-1/4 relative">
-                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg" id="bar-val-1">0 €</div>
-                                <div id="bar-1" class="w-full max-w-[50px] bg-gradient-to-t from-red-900/50 to-red-500/80 rounded-t-md chart-bar relative z-10" style="height: 20%;"></div>
+                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg pointer-events-none" id="bar-val-1">0 €</div>
+                                <div id="bar-1" class="w-full max-w-[60px] bg-gradient-to-t from-red-900/30 to-red-500/70 rounded-t-md chart-bar relative z-10 cursor-pointer hover:brightness-125" style="height: 20%;"></div>
                                 <span class="text-xs text-gray-500 mt-4 absolute -bottom-8 font-bold">AÑO 1</span>
                             </div>
 
                             <div class="flex flex-col items-center group w-1/4 relative">
-                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg" id="bar-val-3">0 €</div>
-                                <div id="bar-3" class="w-full max-w-[50px] bg-gradient-to-t from-red-900/50 to-red-500/90 rounded-t-md chart-bar relative z-10" style="height: 50%;"></div>
+                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg pointer-events-none" id="bar-val-3">0 €</div>
+                                <div id="bar-3" class="w-full max-w-[60px] bg-gradient-to-t from-red-900/40 to-red-500/90 rounded-t-md chart-bar relative z-10 cursor-pointer hover:brightness-125" style="height: 50%;"></div>
                                 <span class="text-xs text-gray-500 mt-4 absolute -bottom-8 font-bold">AÑO 3</span>
                             </div>
 
                             <div class="flex flex-col items-center group w-1/4 relative">
-                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg" id="bar-val-5">0 €</div>
-                                <div id="bar-5" class="w-full max-w-[50px] bg-gradient-to-t from-red-900/50 to-red-500 rounded-t-md chart-bar shadow-[0_0_20px_rgba(239,68,68,0.5)] relative z-10" style="height: 90%;">
+                                <div class="absolute opacity-0 group-hover:opacity-100 transition-opacity -top-10 text-[11px] text-red-400 font-bold bg-[#0b0f19] border border-red-500/50 px-3 py-1.5 rounded-lg whitespace-nowrap z-20 shadow-lg pointer-events-none" id="bar-val-5">0 €</div>
+                                <div id="bar-5" class="w-full max-w-[60px] bg-gradient-to-t from-red-900/60 to-red-500 rounded-t-md chart-bar shadow-[0_0_20px_rgba(239,68,68,0.5)] relative z-10 cursor-pointer hover:brightness-125" style="height: 90%;">
                                     <div class="absolute -top-1 left-0 right-0 h-1.5 bg-red-400 blur-sm rounded-t-md"></div>
                                 </div>
-                                <span class="text-xs text-emerald-500 mt-4 absolute -bottom-8 font-bold">AÑO 5</span>
+                                <span class="text-xs text-emerald-500 mt-4 absolute -bottom-8 font-bold bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">AÑO 5</span>
                             </div>
 
-                            <div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-20">
+                            <div class="absolute inset-0 flex flex-col justify-between pointer-events-none opacity-10">
                                 <div class="w-full h-px bg-white border-dashed"></div>
                                 <div class="w-full h-px bg-white border-dashed"></div>
                                 <div class="w-full h-px bg-white border-dashed"></div>
@@ -404,10 +494,10 @@
                         </div>
 
                         <div class="mt-20 border-t border-white/5 pt-8">
-                            <form onsubmit="submitEngineForm(event, 'macro-btn', {'Pérdida 5 Años': document.getElementById('bar-val-5').innerText})" class="flex flex-col sm:flex-row gap-4">
+                            <form onsubmit="submitEngineForm(event, 'macro-btn', {'Desviación Proyectada a 5 Años': document.getElementById('bar-val-5').innerText})" class="flex flex-col sm:flex-row gap-4">
                                 <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
                                 <input type="hidden" name="subject" value="🔥 LEAD ENTERPRISE: Simulación Macro">
-                                <input type="email" name="Email" placeholder="Correo corporativo del directivo..." required class="flex-grow bg-black border border-white/10 rounded-xl px-5 py-4 text-sm text-white font-mono focus:outline-none focus:border-emerald-500 transition-colors">
+                                <input type="email" name="Email" placeholder="Correo corporativo de Gerencia / CTO..." required class="flex-grow bg-black border border-white/10 rounded-xl px-5 py-4 text-sm text-white font-mono focus:outline-none focus:border-emerald-500 transition-colors shadow-inner">
                                 <button id="macro-btn" type="submit" class="sm:w-auto px-8 py-4 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm rounded-xl font-mono tracking-wider transition-all shadow-[0_0_20px_rgba(16,185,129,0.3)] uppercase">Frenar Pérdidas</button>
                             </form>
                         </div>
@@ -426,7 +516,7 @@
                     <span class="text-sm font-black tracking-widest text-white uppercase font-sans">NEXUS ANALYTICS</span>
                 </div>
                 <p class="text-xs text-gray-500 max-w-sm leading-relaxed mx-auto md:mr-auto md:ml-0 mt-4 font-mono">
-                    Arquitecturas de datos e infraestructura automatizada de alto rendimiento técnico bajo estándares europeos.
+                    Arquitecturas de datos e infraestructura automatizada de alto rendimiento técnico bajo estándares europeos de privacidad.
                 </p>
                 
                 <div class="flex flex-col md:flex-row items-center gap-4 mt-8 mb-4 justify-center md:justify-start font-mono">
@@ -454,7 +544,7 @@
             <p>NEXUS ANALYTICS &copy; 2026 • TODOS LOS DERECHOS RESERVADOS.</p>
             <p class="flex items-center gap-1.5 font-bold tracking-widest text-gray-500">
                 <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 
-                SISTEMAS OPERATIVOS
+                SISTEMAS EN LÍNEA
             </p>
         </div>
     </footer>
@@ -466,13 +556,17 @@
             <div id="general-step-1">
                 <h3 class="text-2xl font-black text-white mb-2">Auditoría Gratuita</h3>
                 <p class="text-xs text-gray-400 mb-6">Déjanos tus datos. Evaluaremos el potencial de optimización de tu negocio y te contactaremos en menos de 24h.</p>
+                
                 <form onsubmit="submitModalForm(event, 'general-step-1', 'general-step-success')" id="formGeneral" class="space-y-4">
                     <input type="hidden" name="access_key" value="1174b91c-994d-4964-b546-f2dab1f06133">
                     <input type="hidden" name="subject" value="🔥 NUEVO LEAD: Contacto General Web">
+                    
                     <div><input type="text" name="name" required placeholder="Tu Nombre o Empresa" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none"></div>
                     <div><input type="email" name="email" required placeholder="Correo corporativo" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none"></div>
                     <div><textarea name="message" rows="3" placeholder="¿Cuál es tu mayor reto con los datos? (Opcional)" class="w-full bg-black/50 border border-white/10 rounded-xl p-3.5 text-white text-sm focus:border-blue-500 outline-none resize-none"></textarea></div>
+                    
                     <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                    
                     <button type="submit" class="w-full py-3.5 bg-blue-600 hover:bg-blue-500 rounded-xl text-white font-bold text-sm shadow-[0_0_15px_rgba(59,130,246,0.4)] mt-2 transition-colors">Solicitar Auditoría Ahora</button>
                 </form>
             </div>
@@ -496,7 +590,7 @@
     </div>
 
     <script>
-        // Formateador EUR
+        // Formateador EUR Global
         const formatEur = (num) => new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR', maximumFractionDigits: 0 }).format(num);
 
         /* --- ANIMACIÓN TYPEWRITER (HERO) --- */
@@ -507,23 +601,25 @@
         function executeTyping() {
             if(charIdx < stringsTypewriter[stringIdx].length) { 
                 domTarget.textContent += stringsTypewriter[stringIdx].charAt(charIdx); 
-                charIdx++; setTimeout(executeTyping, 80); 
+                charIdx++; 
+                setTimeout(executeTyping, 80); 
+            } else { 
+                setTimeout(executeErasing, 2500); 
             }
-            else { setTimeout(executeErasing, 2500); }
         }
         
         function executeErasing() {
             if(charIdx > 0) { 
                 domTarget.textContent = stringsTypewriter[stringIdx].substring(0, charIdx - 1); 
-                charIdx--; setTimeout(executeErasing, 40); 
-            }
-            else { 
+                charIdx--; 
+                setTimeout(executeErasing, 40); 
+            } else { 
                 stringIdx = (stringIdx + 1) % stringsTypewriter.length; 
                 setTimeout(executeTyping, 400); 
             }
         }
 
-        /* --- LÓGICA TARJETA 1 (LABORAL) --- */
+        /* --- LÓGICA TARJETA 1 (LABORAL Y BARRA PROGRESO) --- */
         function calcH1() {
             const emp = parseInt(document.getElementById('h1-slider-emp').value);
             const hrs = parseInt(document.getElementById('h1-slider-hours').value);
@@ -531,40 +627,51 @@
             document.getElementById('h1-emp-text').innerText = emp;
             document.getElementById('h1-hours-text').innerText = hrs + "h";
             
-            // Salario a 25€ + 33% SS
+            // Salario a 25€ + 33% Seguridad Social
             const rawLabor = emp * hrs * 52 * 25; 
             const ssTax = rawLabor * 0.33;
             const total = rawLabor + ssTax;
 
             document.getElementById('h1-result').innerText = formatEur(total);
+
+            // Actualizar barra de progreso (Max estimado: 30 emp * 40h * 52wk * 33.25 = ~2.07M)
+            const maxTotal = 2074800;
+            let percentage = (total / maxTotal) * 100;
+            // Asegurar un mínimo visible
+            percentage = Math.max(percentage, 5);
+            document.getElementById('h1-bar-progress').style.width = percentage + '%';
         }
 
-        /* --- LÓGICA TARJETA 2 (RIESGO LEGAL) --- */
+        /* --- LÓGICA TARJETA 2 (RIESGO LEGAL LOPD) --- */
         function setH2Score(level, el) {
+            // Reiniciar botones
             document.querySelectorAll('.h2-opt').forEach(btn => {
                 btn.classList.remove('border-indigo-500', 'bg-indigo-900/20', 'text-indigo-300');
                 btn.classList.add('border-white/10', 'bg-white/[0.02]', 'text-gray-300');
             });
+            // Activar botón seleccionado
             el.classList.remove('border-white/10', 'bg-white/[0.02]', 'text-gray-300');
             el.classList.add('border-indigo-500', 'bg-indigo-900/20', 'text-indigo-300');
 
             const resultBg = document.getElementById('h2-result-bg');
             const resultText = document.getElementById('h2-result-text');
-            resultText.innerText = "Riesgo " + level;
 
-            if(level === 'Crítico') {
-                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-red-900/20 border-red-500/30";
-                resultText.className = "text-sm font-black text-red-400 mt-1 uppercase tracking-wide";
-            } else if (level === 'Medio') {
-                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-amber-900/20 border-amber-500/30";
-                resultText.className = "text-sm font-black text-amber-400 mt-1 uppercase tracking-wide";
+            if(level === 'CRIT') {
+                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-red-900/20 border-red-500/30 flex flex-col justify-center items-center h-16";
+                resultText.className = "text-sm font-black text-red-400 mt-1 uppercase tracking-widest font-mono";
+                resultText.innerText = "[ ERR: VUL-2026-CRIT ]";
+            } else if (level === 'MOD') {
+                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-amber-900/20 border-amber-500/30 flex flex-col justify-center items-center h-16";
+                resultText.className = "text-sm font-black text-amber-400 mt-1 uppercase tracking-widest font-mono";
+                resultText.innerText = "[ WRN: VUL-2026-MOD ]";
             } else {
-                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-emerald-900/20 border-emerald-500/30";
-                resultText.className = "text-sm font-black text-emerald-400 mt-1 uppercase tracking-wide";
+                resultBg.className = "p-4 rounded-xl text-center mb-5 border transition-all duration-300 bg-emerald-900/20 border-emerald-500/30 flex flex-col justify-center items-center h-16";
+                resultText.className = "text-sm font-black text-emerald-400 mt-1 uppercase tracking-widest font-mono";
+                resultText.innerText = "[ OK: SEC-2026-SAFE ]";
             }
         }
 
-        /* --- LÓGICA TARJETA 3 (AUTOMATIZACIÓN) --- */
+        /* --- LÓGICA TARJETA 3 (AUTOMATIZACIÓN LÍNEAS DE CÓDIGO) --- */
         const h3State = { crm: false, ads: false, pay: false };
         function toggleH3(key, el) {
             h3State[key] = !h3State[key];
@@ -583,20 +690,22 @@
             }
 
             let count = Object.values(h3State).filter(v => v).length;
-            let hours = 0;
-            if(count === 1) hours = 32;
-            else if(count === 2) hours = 84;
-            else if(count === 3) hours = 150;
+            let lines = 0;
+            // Valores técnicos simulados (LDC: Líneas de Código)
+            if(count === 1) lines = 12500;
+            else if(count === 2) lines = 28400;
+            else if(count === 3) lines = 45800;
 
             let curr = 0;
-            let step = Math.ceil(hours / 15) || 1;
+            let step = Math.ceil(lines / 15) || 1;
             let anim = setInterval(() => {
                 curr += step;
-                if(curr >= hours) { curr = hours; clearInterval(anim); }
-                document.getElementById('h3-result-text').innerText = curr;
+                if(curr >= lines) { curr = lines; clearInterval(anim); }
+                // Formato con punto de miles
+                document.getElementById('h3-result-text').innerText = new Intl.NumberFormat('es-ES').format(curr);
             }, 20);
             
-            if(hours === 0) document.getElementById('h3-result-text').innerText = 0;
+            if(lines === 0) document.getElementById('h3-result-text').innerText = 0;
         }
 
         /* --- LÓGICA SIMULADOR MACRO (STRIPE STYLE) --- */
@@ -604,21 +713,26 @@
             const rev = parseInt(document.getElementById('macro-slider').value);
             document.getElementById('macro-revenue-label').innerText = formatEur(rev);
 
+            // Fórmula: a más facturación, menor tasa % relativa pero mayor volumen absoluto
             const minRev = 10000; const maxRev = 1000000;
             const maxRate = 0.12; const minRate = 0.054;
             const rate = maxRate - ((rev - minRev) / (maxRev - minRev)) * (maxRate - minRate);
             
+            // Actualizar etiqueta de entropía
+            document.getElementById('macro-entropy-rate').innerText = (rate * 100).toFixed(1) + "%";
+
             const baseLossYear1 = (rev * 12) * rate;
             const lossY1 = baseLossYear1;
-            const lossY3 = baseLossYear1 * 3.4;
-            const lossY5 = baseLossYear1 * 6.2;
+            const lossY3 = baseLossYear1 * 3.4; // Multiplicador de arrastre a 3 años
+            const lossY5 = baseLossYear1 * 6.2; // Multiplicador de arrastre a 5 años
 
-            document.getElementById('macro-roi').innerText = formatEur(lossY1 * 0.85);
+            document.getElementById('macro-roi').innerText = formatEur(lossY1 * 0.85); // 85% recuperable
             
             document.getElementById('bar-val-1').innerText = formatEur(lossY1);
             document.getElementById('bar-val-3').innerText = formatEur(lossY3);
             document.getElementById('bar-val-5').innerText = formatEur(lossY5);
 
+            // Alturas dinámicas en el gráfico CSS
             const maxH = lossY5;
             document.getElementById('bar-1').style.height = Math.max((lossY1 / maxH) * 90, 5) + '%';
             document.getElementById('bar-3').style.height = Math.max((lossY3 / maxH) * 90, 15) + '%';
@@ -652,11 +766,15 @@
                     }, 4000);
                 } else { 
                     alert("Error. Intenta de nuevo."); 
-                    btn.innerText = originalText; btn.disabled = false; btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                    btn.innerText = originalText; 
+                    btn.disabled = false; 
+                    btn.classList.remove('opacity-75', 'cursor-not-allowed');
                 }
             }).catch(error => { 
                 alert("Error de red."); 
-                btn.innerText = originalText; btn.disabled = false; btn.classList.remove('opacity-75', 'cursor-not-allowed');
+                btn.innerText = originalText; 
+                btn.disabled = false; 
+                btn.classList.remove('opacity-75', 'cursor-not-allowed');
             });
         }
 
@@ -667,7 +785,10 @@
             const formData = new FormData(form);
             const btn = form.querySelector('button[type="submit"]');
             const originalText = btn.innerText;
-            btn.innerText = "Enviando..."; btn.disabled = true;
+            
+            btn.innerText = "Enviando..."; 
+            btn.disabled = true;
+            
             fetch('https://api.web3forms.com/submit', { method: 'POST', body: formData })
             .then(async (response) => {
                 if (response.status == 200) {
@@ -681,7 +802,10 @@
         }
 
         /* --- CONTROL DE MODALES GENERAL Y LEGALES --- */
-        function openModal(id) { document.getElementById(id).classList.add('active'); }
+        function openModal(id) { 
+            document.getElementById(id).classList.add('active'); 
+        }
+        
         function closeModal(id) { 
             document.getElementById(id).classList.remove('active'); 
             setTimeout(() => {
@@ -718,7 +842,7 @@
             if (e.target === this) closeLegalModal();
         });
 
-        // INICIALIZACIÓN GLOBAL
+        // INICIALIZACIÓN GLOBAL AL CARGAR LA PÁGINA
         window.addEventListener('DOMContentLoaded', () => {
             calcH1();
             calcMacro();
