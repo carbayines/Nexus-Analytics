@@ -6,12 +6,12 @@ const cookieBanner = document.getElementById('cookie-banner');
 const acceptCookies = document.getElementById('accept-cookies');
 const rejectCookies = document.getElementById('reject-cookies');
 
-const empleados = document.getElementById('empleados');
-const horas = document.getElementById('horas');
-const coste = document.getElementById('coste');
-const empleadosValue = document.getElementById('empleados-value');
-const horasValue = document.getElementById('horas-value');
-const costeValue = document.getElementById('coste-value');
+const estructura = document.getElementById('estructura');
+const visibilidad = document.getElementById('visibilidad');
+const prediccion = document.getElementById('prediccion');
+const estructuraValue = document.getElementById('estructura-value');
+const visibilidadValue = document.getElementById('visibilidad-value');
+const prediccionValue = document.getElementById('prediccion-value');
 const resultadoAnual = document.getElementById('resultado-anual');
 const resultadoPotencial = document.getElementById('resultado-potencial');
 const calcBarFill = document.getElementById('calc-bar-fill');
@@ -31,41 +31,36 @@ if (navToggle && siteNav) {
   });
 }
 
-function formatCurrency(value) {
-  return new Intl.NumberFormat('es-ES', {
-    style: 'currency',
-    currency: 'EUR',
-    maximumFractionDigits: 0
-  }).format(value);
-}
-
 function updateCalculator() {
-  const e = Number(empleados.value);
-  const h = Number(horas.value);
-  const c = Number(coste.value);
-  const annualCost = e * h * c * 52;
+  const e = Number(estructura.value);
+  const v = Number(visibilidad.value);
+  const p = Number(prediccion.value);
+  const score = ((e + v + p) / 3).toFixed(1);
 
-  empleadosValue.textContent = `${e} ${e === 1 ? 'persona' : 'personas'}`;
-  horasValue.textContent = `${h} ${h === 1 ? 'hora' : 'horas'}`;
-  costeValue.textContent = `${c} €/hora`;
-  resultadoAnual.textContent = formatCurrency(annualCost);
+  estructuraValue.textContent = `${e} / 10`;
+  visibilidadValue.textContent = `${v} / 10`;
+  prediccionValue.textContent = `${p} / 10`;
 
-  let level = 'Bajo';
-  let width = 28;
+  let level = 'Inicial';
+  let priority = 'Estructurar y unificar';
+  let width = 24;
 
-  if (annualCost >= 15000 && annualCost < 40000) {
-    level = 'Medio';
+  if (score >= 4.5 && score < 7) {
+    level = 'Intermedia';
+    priority = 'Mejorar visibilidad y análisis';
     width = 56;
-  } else if (annualCost >= 40000) {
-    level = 'Alto';
-    width = 86;
+  } else if (score >= 7) {
+    level = 'Avanzada';
+    priority = 'Escalar predicción y optimización';
+    width = 84;
   }
 
-  resultadoPotencial.textContent = level;
+  resultadoAnual.textContent = level;
+  resultadoPotencial.textContent = priority;
   calcBarFill.style.width = `${width}%`;
 }
 
-[empleados, horas, coste].forEach(input => {
+[estructura, visibilidad, prediccion].forEach(input => {
   input?.addEventListener('input', updateCalculator);
 });
 
@@ -77,8 +72,8 @@ if (form) {
     formStatus.textContent = 'Enviando solicitud...';
 
     const data = new FormData(form);
-    data.append('Estimación anual calculadora', resultadoAnual.textContent);
-    data.append('Potencial de mejora', resultadoPotencial.textContent);
+    data.append('Madurez de datos', resultadoAnual.textContent);
+    data.append('Prioridad recomendada', resultadoPotencial.textContent);
 
     try {
       const response = await fetch(form.action, {
