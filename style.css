@@ -97,7 +97,7 @@ button, input, textarea, select { font: inherit; }
   gap: 0;
 }
 .brand-logo {
-  height: 44px;
+  height: 64px;    /* AQUI HEMOS SUBIDO EL TAMAÑO (ANTES 44px) */
   width: auto;
   display: block;
 }
