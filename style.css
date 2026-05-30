@@ -48,6 +48,7 @@ button, input, textarea, select { font: inherit; }
   display: flex; justify-content: space-between; gap: 1rem; align-items: center; padding: .75rem 0; font-size: .92rem; color: var(--muted);
 }
 .topbar a { color: var(--primary); font-weight: 700; }
+
 .site-header {
   position: sticky; top: 0; z-index: 30; backdrop-filter: blur(14px); background: rgba(9, 13, 19, 0.78); border-bottom: 1px solid rgba(255,255,255,0.05);
 }
@@ -65,6 +66,7 @@ button, input, textarea, select { font: inherit; }
 .site-nav a:hover { color: var(--text); }
 .nav-toggle { display: none; width: 44px; height: 44px; border: 0; background: none; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--text); margin: 5px auto; }
+
 .btn {
   display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: .92rem 1.35rem; border-radius: 999px; border: 1px solid transparent; background: linear-gradient(135deg, var(--primary), var(--accent)); color: #071017; font-weight: 800; transition: .2s ease;
 }
@@ -106,6 +108,7 @@ h3 { margin: 0 0 .75rem; font-size: 1.2rem; }
 .hero-points li::before, .calculator-notes li::before, .contact-points li::before {
   content: '•'; color: var(--gold); margin-right: .55rem; font-weight: 800;
 }
+
 .hero-card, .tool-card, .service-card, .outputs-grid article, .step-card, .calculator-card, .faq-list details, .contact-form, .hero-stats article {
   border: 1px solid var(--border); background: rgba(255,255,255,0.03); border-radius: var(--radius-md); box-shadow: var(--shadow);
 }
@@ -164,6 +167,18 @@ h3 { margin: 0 0 .75rem; font-size: 1.2rem; }
 .case-section .outputs-grid article strong {
   display: block;
   margin-bottom: .35rem;
+}
+
+.case-image {
+  margin-top: 1.5rem;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+.case-image img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .calculator-card {
