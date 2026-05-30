@@ -89,7 +89,7 @@ button, input, textarea, select { font: inherit; }
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 0;
+  padding: 0.6rem 0;
 }
 .brand {
   display: inline-flex;
@@ -97,7 +97,7 @@ button, input, textarea, select { font: inherit; }
   gap: 0;
 }
 .brand-logo {
-  height: 64px;    /* AQUI HEMOS SUBIDO EL TAMAÑO (ANTES 44px) */
+  height: 96px;   /* MUCHO MÁS GRANDE */
   width: auto;
   display: block;
 }
