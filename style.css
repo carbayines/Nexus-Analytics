@@ -91,23 +91,21 @@ button, input, textarea, select { font: inherit; }
   align-items: center;
   padding: 1rem 0;
 }
-.brand { display: inline-flex; align-items: center; gap: .9rem; }
-.brand-mark {
-  width: 48px; height: 48px;
-  display: grid; place-items: center;
-  border-radius: 14px;
-  background: linear-gradient(135deg, var(--primary), var(--accent));
-  color: #071017;
-  font-weight: 900;
-  box-shadow: var(--shadow);
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0;
 }
-.brand-text strong { display: block; font-size: 1rem; }
-.brand-text small {
-  color: var(--muted);
-  font-size: .78rem;
-  text-transform: uppercase;
-  letter-spacing: .08em;
+.brand-logo {
+  height: 44px;
+  width: auto;
+  display: block;
 }
+.brand-mark,
+.brand-text {
+  display: none;
+}
+
 .site-nav { display: flex; align-items: center; gap: 1.35rem; }
 .site-nav a { color: var(--muted); font-weight: 600; }
 .site-nav a:hover { color: var(--text); }
