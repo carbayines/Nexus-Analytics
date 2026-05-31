@@ -412,11 +412,11 @@ input[type="range"] {
 }
 
 .diagnostic-icon {
-  width: 80px;                 /* más grande para que se vea claro */
+  width: 100px;              /* tamaño aumentado */
   height: auto;
   flex-shrink: 0;
   border-radius: 16px;
-  border: 2px solid #56c2b6;   /* borde turquesa para que destaque */
+  border: 2px solid #56c2b6; /* borde turquesa */
 }
 
 /* Proceso, FAQ */
