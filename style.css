@@ -407,16 +407,16 @@ input[type="range"] {
 .calculator-head {
   display: flex;
   align-items: center;
-  gap: 1.25rem;       /* más espacio entre icono y texto */
+  gap: 1.25rem;
   margin-bottom: 1rem;
 }
 
 .diagnostic-icon {
-  width: 128px;              /* tamaño aumentado */
+  width: 128px;
   height: auto;
   flex-shrink: 0;
   border-radius: 16px;
-  border: 2px solid #56c2b6; /* borde turquesa */
+  border: 2px solid #56c2b6;
 }
 
 /* Proceso, FAQ */
