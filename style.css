@@ -407,12 +407,12 @@ input[type="range"] {
 .calculator-head {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-bottom: 0.75rem;
+  gap: 1.25rem;       /* más espacio entre icono y texto */
+  margin-bottom: 1rem;
 }
 
 .diagnostic-icon {
-  width: 100px;              /* tamaño aumentado */
+  width: 128px;              /* tamaño aumentado */
   height: auto;
   flex-shrink: 0;
   border-radius: 16px;
