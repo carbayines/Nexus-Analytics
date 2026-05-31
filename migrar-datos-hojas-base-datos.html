@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Cuándo y cómo migrar tus datos de hojas de cálculo a una base de datos | Nexus Analytics</title>
+
+  <meta name="description"
+        content="Guía práctica para saber cuándo migrar datos de hojas de cálculo como Excel o Google Sheets a una base de datos y cómo hacerlo sin perder información." />
+
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#0b1220" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:title"
+        content="Cuándo y cómo migrar de hojas de cálculo a una base de datos" />
+  <meta property="og:description"
+        content="Indicadores, pasos y recomendaciones para pasar de Excel/Sheets a una base de datos más estable y preparada para BI." />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:image"
+        content="https://images.unsplash.com/photo-1551434678-e076c223a692?auto=format&fit=crop&w=1400&q=80" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html#inicio" aria-label="Ir al inicio de Nexus Analytics">
+        <img src="logo-nexus-horizontal.png"
+             alt="Nexus Analytics, empresa de análisis de datos, BI y migración"
+             class="brand-logo">
+      </a>
+
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
+        <span></span><span></span>
+      </button>
+
+      <nav id="site-nav" class="site-nav" aria-label="Principal">
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#herramientas">Herramientas</a>
+        <a href="index.html#diagnostico">Diagnóstico</a>
+        <a href="index.html#sobre-nexus">Sobre Nexus</a>
+        <a href="index.html#contacto">Contacto</a>
+        <a href="mailto:nexusanalytics011@gmail.com">Escríbenos</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido" class="section article-section">
+    <div class="container">
+      <p class="eyebrow">Guía de migración de datos</p>
+      <h1>Cuándo y cómo migrar tus datos de hojas de cálculo a una base de datos.</h1>
+
+      <p class="section-intro">
+        Muchas empresas empiezan gestionando todo en Excel o Google Sheets. Es cómodo al principio,
+        pero llega un momento en el que las hojas se vuelven frágiles, lentas y difíciles de mantener.
+        Esta guía explica cuándo tiene sentido dar el salto a una base de datos y cómo hacerlo sin perder el control.
+      </p>
+
+      <!-- Por qué las hojas se quedan cortas -->
+      <section class="article-block">
+        <h2>Por qué las hojas de cálculo se quedan cortas con el tiempo.</h2>
+        <p>
+          Hojas de cálculo como Excel o Google Sheets son herramientas muy flexibles, pero no están pensadas
+          para ser el “sistema central” de datos de una empresa. A medida que crece el volumen de información
+          y el número de personas que la usan, aparecen problemas que se repiten en muchas pymes.
+        </p>
+        <ul class="article-list">
+          <li>Archivos duplicados con nombres como “versión final”, “definitivo 2” o “nuevo_ok”.</li>
+          <li>Errores por fórmulas rotas cuando alguien mueve columnas o filas sin avisar.</li>
+          <li>Dificultad para controlar quién cambia qué y cuándo.</li>
+          <li>Limitaciones de rendimiento cuando la hoja tiene cientos de miles de filas.</li>
+          <li>Imposibilidad de conectar bien esas hojas con herramientas de BI o sistemas externos.</li>
+        </ul>
+      </section>
+
+      <!-- Cuándo es momento de migrar -->
+      <section class="article-block">
+        <h2>Señales claras de que ha llegado el momento de migrar.</h2>
+        <p>
+          No hace falta esperar a que todo “salte por los aires”. Hay señales muy concretas que indican
+          que seguir ampliando hojas de cálculo es más arriesgado y caro que empezar a construir una base de datos.
+        </p>
+        <ul class="article-list">
+          <li>
+            <strong>Volumen de datos creciente:</strong> tus hojas superan con facilidad las decenas de miles de filas
+            y empiezan a ir lentas o a bloquearse.
+          </li>
+          <li>
+            <strong>Muchos usuarios simultáneos:</strong> varias personas editan el mismo archivo y se pisan cambios o
+            aparecen conflictos de versión.
+          </li>
+          <li>
+            <strong>Informes difíciles de reproducir:</strong> cada cierre de mes exige repetir procesos manuales de copia y pega.
+          </li>
+          <li>
+            <strong>Necesidad de trazabilidad:</strong> te interesa saber quién modificó un dato y cuándo, algo que las hojas no controlan bien.
+          </li>
+          <li>
+            <strong>Integración con otros sistemas:</strong> quieres conectar datos con un ERP, CRM o herramientas de BI
+            y las hojas se convierten en un cuello de botella.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Diferencia entre hoja y base de datos -->
+      <section class="article-block">
+        <h2>Qué aporta una base de datos frente a una hoja de cálculo.</h2>
+        <p>
+          Migrar a una base de datos no es solo “cambiar de sitio los datos”. Supone definir mejor la estructura
+          de la información y controlar mejor cómo se registra, consulta y actualiza.
+        </p>
+        <ul class="article-list">
+          <li>
+            <strong>Estructura más clara:</strong> tablas separadas para clientes, productos, proyectos, facturas, etc.,
+            conectadas mediante relaciones bien definidas.
+          </li>
+          <li>
+            <strong>Integridad de datos:</strong> reglas que evitan duplicados, referencias rotas o valores inconsistentes.
+          </li>
+          <li>
+            <strong>Consultas más potentes:</strong> posibilidad de hacer preguntas complejas con rapidez
+            (por ejemplo, rentabilidad por cliente y servicio en un periodo concreto).
+          </li>
+          <li>
+            <strong>Mejor integración con BI:</strong> las herramientas de dashboards trabajan mucho mejor con bases de datos
+            que con hojas dispersas.
+          </li>
+          <li>
+            <strong>Seguridad y permisos:</strong> control más fino de quién puede ver o modificar cada tipo de dato.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Preparar la migración -->
+      <section class="article-block">
+        <h2>Cómo preparar la migración desde Excel o Google Sheets.</h2>
+        <p>
+          Antes de mover datos a una base de datos, conviene invertir algo de tiempo en entender
+          qué tienes ahora y qué realmente necesitas conservar.
+        </p>
+        <ul class="article-list">
+          <li>
+            Identifica las hojas “críticas” (clientes, facturación, proyectos, horas, etc.) y qué campos se usan realmente.
+          </li>
+          <li>
+            Detecta duplicados evidentes en nombres de clientes, productos o códigos internos.
+          </li>
+          <li>
+            Revisa si hay columnas que mezclan información distinta (por ejemplo, comentarios + fechas en la misma celda).
+          </li>
+          <li>
+            Define campos clave que deberían ser únicos (ID de cliente, código de proyecto, etc.).
+          </li>
+          <li>
+            Acuerda con el equipo qué datos son fuente de verdad y cuáles se pueden descartar o archivar.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Estrategia de migración en fases -->
+      <section class="article-block">
+        <h2>Estrategia en fases para migrar sin bloquear el día a día.</h2>
+        <p>
+          Una migración bien hecha no se limita a importar todo de golpe. Es preferible trabajar en fases,
+          probando cada paso antes de dar el siguiente.
+        </p>
+
+        <h3>Fase 1: modelo de datos inicial</h3>
+        <ul class="article-list">
+          <li>Diseñar tablas principales (clientes, productos, proyectos, ventas, etc.).</li>
+          <li>Definir las relaciones entre ellas (qué se relaciona con qué y cómo).</li>
+          <li>Crear un entorno de prueba donde cargar datos de ejemplo.</li>
+        </ul>
+
+        <h3>Fase 2: carga inicial y limpieza</h3>
+        <ul class="article-list">
+          <li>Exportar las hojas a CSV manteniendo siempre una copia original como respaldo.</li>
+          <li>Importar los datos en la base de datos cuidando los formatos (fechas, números, caracteres especiales).</li>
+          <li>Detectar y corregir errores de carga, duplicados o registros incompletos.</li>
+        </ul>
+
+        <h3>Fase 3: validación con el negocio</h3>
+        <ul class="article-list">
+          <li>Reproducir informes clave que antes se hacían en Excel y comparar resultados.</li>
+          <li>Ajustar el modelo de datos si falta alguna relación o columna importante.</li>
+          <li>Documentar cómo se obtienen ahora los principales indicadores desde la base de datos.</li>
+        </ul>
+
+        <h3>Fase 4: conexión con dashboards y otros sistemas</h3>
+        <ul class="article-list">
+          <li>Conectar la base de datos a herramientas de BI como Power BI, Tableau o similares.</li>
+          <li>Automatizar cargas periódicas desde sistemas de origen (ERP, CRM, etc.).</li>
+          <li>Definir un calendario de revisión y mantenimiento de datos.</li>
+        </ul>
+      </section>
+
+      <!-- Qué pasa con el ERP / CRM -->
+      <section class="article-block">
+        <h2>Y si ya tienes un ERP o CRM, ¿también merece la pena migrar?</h2>
+        <p>
+          Muchas empresas combinan hojas de cálculo con un ERP o CRM que no está bien explotado.
+          En esos casos, la “migración” no siempre es mover todo a una base de datos nueva,
+          sino reorganizar qué rol tiene cada sistema.
+        </p>
+        <ul class="article-list">
+          <li>
+            Usar el ERP/CRM como sistema de registro principal y la base de datos como capa de análisis y consolidación.
+          </li>
+          <li>
+            Reducir las hojas de cálculo a roles específicos (por ejemplo, análisis ad hoc o planificación puntual).
+          </li>
+          <li>
+            Sincronizar información clave entre ERP/CRM y base de datos para evitar duplicidades.
+          </li>
+        </ul>
+      </section>
+
+      <!-- Cómo ayuda Nexus -->
+      <section class="article-block">
+        <h2>Cómo puede ayudarte Nexus Analytics en la migración.</h2>
+        <p>
+          En Nexus Analytics el foco está en que la migración de datos desde hojas de cálculo no sea
+          un ejercicio puramente técnico, sino un paso real hacia tener mejor información para decidir.
+        </p>
+        <ul class="article-list">
+          <li>
+            <strong>Diagnóstico inicial:</strong> revisión de las hojas de cálculo actuales,
+            detección de riesgos y propuesta de modelo de datos objetivo.
+          </li>
+          <li>
+            <strong>Diseño de base de datos:</strong> creación de tablas, relaciones y estructuras preparadas
+            para análisis y BI.
+          </li>
+          <li>
+            <strong>Plan de migración:</strong> fases claras para cargar datos, depurarlos y validar resultados con el negocio.
+          </li>
+          <li>
+            <strong>Integración con BI:</strong> conexión posterior a dashboards y reporting para aprovechar mejor
+            la nueva base de datos.
+          </li>
+        </ul>
+        <p>
+          Si quieres revisar si tu empresa está en ese punto de pasar de hojas de cálculo a una base de datos,
+          puedes solicitar un diagnóstico inicial desde la página principal o escribir a
+          <strong>nexusanalytics011@gmail.com</strong>.
+        </p>
+        <p>
+          <a class="btn" href="index.html#contacto">Solicitar diagnóstico de migración</a>
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand footer-brand" href="index.html#inicio">
+          <img src="logo-nexus-horizontal.png"
+               alt="Nexus Analytics, empresa de análisis de datos, BI y migración"
+               class="brand-logo">
+        </a>
+        <p>
+          Especialistas en análisis de datos, migración, bases de datos, dashboards,
+          optimización y predicción. Disponibles para proyectos en remoto con pymes y empresas.
+        </p>
+      </div>
+      <nav class="footer-links" aria-label="Legal y navegación secundaria">
+        <a href="index.html#servicios">Servicios</a>
+        <a href="index.html#diagnostico">Diagnóstico</a>
+        <a href="index.html#sobre-nexus">Sobre Nexus</a>
+        <a href="index.html#contacto">Contacto</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
