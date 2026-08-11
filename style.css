@@ -55,10 +55,10 @@ p { margin-bottom: 15px; color: var(--muted); }
 .btn-full { width: 100%; text-align: center; }
 
 /* Topbar y Logo Ajustado a tamaño grande */
-.topbar { position: sticky; top: 0; z-index: 100; background-color: rgba(12, 16, 22, 0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 18px 0; }
+.topbar { position: sticky; top: 0; z-index: 100; background-color: rgba(12, 16, 22, 0.94); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 5px 0; }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; }
 .brand { display: flex; align-items: center; text-decoration: none; }
-.brand-logo { height: 85px; width: auto; max-width: 280px; object-fit: contain; display: block; }
+.brand-logo { height: 100px; width: auto; max-height: 100px; max-width: 320px; object-fit: contain; display: block; }
 
 .site-nav { display: flex; align-items: center; gap: 20px; }
 .site-nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
