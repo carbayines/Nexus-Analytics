@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 2. CALCULADORA DE ROI ---
+  // --- 2. CALCULADORA DE ROI (CON ANIMACIÓN GSAP) ---
   const estructura = document.getElementById('estructura');
   const visibilidad = document.getElementById('visibilidad');
   const estructuraValue = document.getElementById('estructura-value');
@@ -18,24 +18,36 @@ document.addEventListener('DOMContentLoaded', () => {
   const resultadoAnual = document.getElementById('resultado-anual');
   const resultadoPotencial = document.getElementById('resultado-potencial');
 
+  // Objeto base para que GSAP pueda animar los números (Motion Dev)
+  let estadoCalculadora = { ahorro: 0 };
+
   function updateCalculator() {
     if (!estructura || !visibilidad || !resultadoAnual || !resultadoPotencial) return;
 
     const vEst = parseInt(estructura.value, 10);
     const vVis = parseInt(visibilidad.value, 10);
 
-    // Actualizar etiquetas UI
     estructuraValue.textContent = vEst;
     visibilidadValue.textContent = vVis + "h";
 
-    // Lógica de Cálculo de Ahorro (Estimación: vVis * 52 semanas * coste h * factor desorden)
-    // Supongamos un coste hora promedio desperdiciada de 40€
     const costeHora = 40;
     const ahorroEstimado = Math.round(vVis * 52 * costeHora * (0.3 + (vEst * 0.15)));
     
-    resultadoAnual.textContent = `€ ${ahorroEstimado.toLocaleString()}`;
+    // Animación de conteo fluido de euros
+    if (typeof gsap !== "undefined") {
+      gsap.to(estadoCalculadora, {
+        ahorro: ahorroEstimado,
+        duration: 0.8,
+        ease: "power2.out",
+        onUpdate: function() {
+          resultadoAnual.textContent = `€ ${Math.round(estadoCalculadora.ahorro).toLocaleString()}`;
+        }
+      });
+    } else {
+      // Fallback si falla la librería
+      resultadoAnual.textContent = `€ ${ahorroEstimado.toLocaleString()}`;
+    }
 
-    // Lógica de producto sugerido
     if (vEst > 3) {
       resultadoPotencial.textContent = "Limpieza & Migración";
     } else if (vVis > 10) {
@@ -45,12 +57,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Listeners de los rangos
   if (estructura && visibilidad) {
     [estructura, visibilidad].forEach(input => {
       input.addEventListener('input', updateCalculator);
     });
-    // Llamada inicial para establecer valores
     updateCalculator();
   }
 
@@ -95,11 +105,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const acceptCookiesBtn = document.getElementById('accept-cookies');
   const rejectCookiesBtn = document.getElementById('reject-cookies');
 
-  // Comprobar si ya se tomó una decisión (sessionStorage para esta sesión o localStorage para siempre)
   const cookieDecision = localStorage.getItem('nexus-cookie-decision');
 
   if (!cookieDecision && cookieBanner) {
-    // Si no hay decisión, mostrar banner con un pequeño delay
     setTimeout(() => {
         cookieBanner.classList.add('show');
     }, 1500);
@@ -108,10 +116,53 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleCookieDecision(decision) {
     localStorage.setItem('nexus-cookie-decision', decision);
     if(cookieBanner) cookieBanner.classList.remove('show');
-    // Aquí se activarían/desactivarían scripts de seguimiento (analytics, ads, etc.)
   }
 
   if (acceptCookiesBtn) acceptCookiesBtn.addEventListener('click', () => handleCookieDecision('accepted'));
   if (rejectCookiesBtn) rejectCookiesBtn.addEventListener('click', () => handleCookieDecision('rejected'));
+
+
+  // --- 5. ANIMACIONES GSAP (SCROLL Y FLOAT) ---
+  if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Animación de aparición de las tarjetas de Servicios
+    gsap.from(".service-card", {
+      scrollTrigger: {
+        trigger: ".services-grid",
+        start: "top 85%"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2, // Cada tarjeta aparece una tras otra
+      ease: "power3.out"
+    });
+
+    // Animación de aparición de las Herramientas/Demos
+    gsap.from(".tool-card", {
+      scrollTrigger: {
+        trigger: ".tools-grid",
+        start: "top 85%"
+      },
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out"
+    });
+
+    // Animación flotante continua para el Tech Stack (Base de datos, Python, AWS...)
+    gsap.utils.toArray(".stack-icon").forEach((icon, i) => {
+      gsap.to(icon, {
+        y: "-15px",
+        duration: 2 + Math.random(), // Cada icono flota a una velocidad un poco diferente
+        repeat: -1,
+        yoyo: true, // Va y vuelve suavemente
+        ease: "sine.inOut",
+        delay: Math.random() * 2
+      });
+    });
+  }
 
 });
