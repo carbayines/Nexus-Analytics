@@ -82,7 +82,7 @@ p { margin-bottom: 15px; color: var(--muted); }
 .hero-image-main { width: 100%; height: auto; border-radius: var(--radius-xl); box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid var(--border-strong); }
 
 /* Grids */
-.tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
 /* Tarjetas */
