@@ -25,12 +25,11 @@
 </head>
 <body>
 
-  <!-- BARRA SUPERIOR -->
   <header class="topbar">
     <div class="container topbar-inner">
       <a href="#" class="brand">
-        <!-- Logo con escalado visual para compensar los márgenes de la imagen -->
-        <img src="logo_traza.png" alt="Traza Analytics Logo" class="brand-logo" style="height: 60px; width: auto; object-fit: contain; transform: scale(1.8); transform-origin: left center;">
+        <!-- Logo corregido con tu archivo -->
+        <img src="logo_traza.png" alt="Logo Traza Analytics" class="brand-logo">
       </a>
 
       <button class="nav-toggle" aria-label="Abrir menú" aria-expanded="false">
@@ -39,16 +38,15 @@
 
       <nav class="site-nav">
         <a href="#servicios">Servicios</a>
-        <a href="#requisitos">Datos Necesarios</a>
         <a href="#herramientas">Demos en Vivo</a>
         <a href="#stack">Tecnologías</a>
+        <a href="#proceso">Metodología</a>
         <a href="#contacto" class="btn btn-primary-sm">Solicitar Auditoría</a>
       </nav>
     </div>
   </header>
 
   <main>
-    <!-- HERO -->
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-content">
@@ -65,43 +63,16 @@
           </div>
         </div>
         <div class="hero-image-container">
-          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80" alt="Dashboard de Análisis de Datos en Modo Oscuro" class="hero-image-main">
+          <!-- Vídeo integrado (puedes cambiar el src por tu propio vídeo IA más adelante) -->
+          <video class="hero-video-main" autoplay loop muted playsinline>
+            <source src="https://cdn.coverr.co/videos/coverr-abstract-blue-and-green-waves-4439/1080p.mp4" type="video/mp4">
+            Tu navegador no soporta vídeos HTML5.
+          </video>
         </div>
       </div>
     </section>
 
-    <!-- REQUISITOS -->
-    <section id="requisitos" class="section dark-bg">
-      <div class="container">
-        <div class="section-header">
-          <h2>¿Qué datos necesitas facilitarnos para trabajar?</h2>
-          <p>Queremos ponértelo lo más fácil posible. Si ya dispones de estos archivos, genial. <strong>Y si no sabes cómo extraerlos de tus programas o sistemas actuales, no te preocupes: nuestra primera fase de trabajo consiste en ayudarte y guiarte para extraerlos de forma totalmente segura.</strong></p>
-        </div>
-
-        <div class="services-grid">
-          <div class="service-card">
-            <div class="service-icon">📁</div>
-            <h3>1. Tus Archivos o Fuentes Actuales</h3>
-            <p>Archivos Excel, CSV, exportaciones de tu CRM/ERP o volcados de datos. Si están desordenados o no sabes cómo sacarlos de tu software, nosotros nos encargamos de asesorarte en la extracción.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">🎯</div>
-            <h3>2. Tu Reto de Negocio</h3>
-            <p>Cuéntanos qué problema necesitas resolver o qué proceso te hace perder tiempo (ej: <em>"Tardo horas en consolidar reportes"</em> o <em>"Quiero saber qué clientes son los más rentables"</em>). Nosotros diseñamos la solución técnica.</p>
-          </div>
-
-          <div class="service-card">
-            <div class="service-icon">🚀</div>
-            <h3>3. El Formato que Prefieras</h3>
-            <p>Dinos cómo le resulta más cómodo trabajar a tu equipo: una aplicación web personalizada (Streamlit), un cuadro de mando interactivo (Tableau/PowerBI) o informes automatizados.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HERRAMIENTAS Y DEMOS -->
-    <section id="herramientas" class="section">
+    <section id="herramientas" class="section dark-bg">
       <div class="container">
         <div class="section-header">
           <h2>Productos & Demos en Vivo</h2>
@@ -132,7 +103,7 @@
                 <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80" alt="Análisis de datos en pantalla" class="tool-card-image">
             </div>
             <div class="tool-card-content">
-              <h3>NFL Analytics Dashboard</h3>
+              <h3>NFL Nexus Analytics</h3>
               <p>Cuadro de mando interactivo integral. Analítica profunda de franquicias y comparativas tácticas en tiempo real de jugadores de la NFL.</p>
               <div class="tool-tags">
                 <span>Data Analysis</span>
@@ -140,7 +111,7 @@
                 <span>Dashboards</span>
               </div>
               <a href="https://nfl-nexus-analytics-8nzauyz9rgck89kbvknnrb.streamlit.app/" target="_blank" rel="noopener" class="btn btn-secondary btn-full">
-                Probar Demo NFL Analytics ↗
+                Probar Demo NFL Nexus ↗
               </a>
             </div>
           </article>
@@ -148,8 +119,7 @@
       </div>
     </section>
 
-    <!-- SERVICIOS -->
-    <section id="servicios" class="section dark-bg">
+    <section id="servicios" class="section">
       <div class="container">
         <div class="section-header">
           <h2>Nuestros Servicios</h2>
@@ -176,8 +146,7 @@
       </div>
     </section>
 
-    <!-- TECH STACK -->
-    <section id="stack" class="section">
+    <section id="stack" class="section dark-bg">
       <div class="container">
         <div class="section-header">
           <h2>Nuestra Arquitectura Tecnológica</h2>
@@ -195,8 +164,7 @@
       </div>
     </section>
 
-    <!-- CALCULADORA ROI -->
-    <section id="calculadora" class="section dark-bg">
+    <section id="calculadora" class="section">
       <div class="container calculator-layout">
         <div class="calculator-content">
           <h2>¿Cuánto te cuesta no tener tus datos en orden?</h2>
@@ -214,6 +182,7 @@
           <div class="calc-results">
             <div class="result-box">
               <span>Ahorro estimado (Anual)</span>
+              <!-- El script animará este ID -->
               <h3 id="resultado-anual">€ 14,400</h3>
             </div>
             <div class="result-box">
@@ -225,18 +194,17 @@
       </div>
     </section>
 
-    <!-- CONTACTO -->
-    <section id="contacto" class="section">
+    <section id="contacto" class="section dark-bg">
       <div class="container contact-grid">
         <div class="contact-text">
-          <h2>Información Corporativa & Contacto Directo</h2>
+          <h2>Información Corporativa & Contacto</h2>
           <p>Atendemos proyectos de ingeniería de datos, analítica predictiva y desarrollo de soluciones de Inteligencia Artificial para organizaciones a nivel global.</p>
           
-          <div style="margin-top: 25px; line-height: 1.8; background: var(--surface); padding: 25px; border-radius: var(--radius-md); border: 1px solid var(--border);">
-            <p style="font-size: 1.1rem; color: #ffffff;">📧 <strong>Email Directo:</strong> <a href="mailto:traza-analytics@hotmail.com" style="color: var(--primary); font-weight: bold; text-decoration: none;">traza-analytics@hotmail.com</a></p>
-            <p>⚡ <strong>Tiempo de Respuesta:</strong> &lt; 24 horas laborables</p>
-            <p>🌍 <strong>Modalidad de Trabajo:</strong> Remoto internacional / Presencial previa reserva</p>
-            <p>🔒 <strong>Garantía de Confidencialidad:</strong> Firma de acuerdo NDA antes de la transferencia de archivos</p>
+          <div style="margin-top: 25px; line-height: 1.8;">
+            <p>✉️ <strong>Atención Comercial:</strong> <a href="mailto:nexusanalytics011@gmail.com" style="color: var(--primary); text-decoration: none;">nexusanalytics011@gmail.com</a></p>
+            <p>⚡ <strong>Tiempo de Respuesta:</strong> < 24 horas laborables</p>
+            <p>🌍 <strong>Modalidad:</strong> Servicios remotos / Presencial según proyecto</p>
+            <p>🔒 <strong>Acuerdos:</strong> Confidencialidad (NDA) garantizado previo a auditoría</p>
           </div>
         </div>
         
@@ -259,21 +227,20 @@
       </div>
     </section>
 
-    <!-- LEGALES -->
-    <section id="legales" class="section dark-bg" style="border-top: 1px solid var(--border);">
+    <section id="legales" class="section" style="border-top: 1px solid var(--border); background-color: var(--bg);">
       <div class="container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; font-size: 0.85rem; color: var(--muted);">
         
         <div>
           <h4 style="color: #ffffff; margin-bottom: 12px;">Aviso Legal</h4>
           <p>En cumplimiento de la normativa de Servicios de la Sociedad de la Información y Comercio Electrónico (LSSI-CE), se informa de que la titularidad del presente sitio web corresponde a <strong>Traza Analytics</strong>.</p>
-          <p>Contacto corporativo: <strong>traza-analytics@hotmail.com</strong>.</p>
+          <p>Contacto principal: <strong>nexusanalytics011@gmail.com</strong>.</p>
           <p>El uso del sitio web atribuye la condición de usuario e implica la aceptación plena de las condiciones expuestas. Todos los contenidos, marcas y código fuente están protegidos por derechos de propiedad intelectual.</p>
         </div>
 
         <div>
           <h4 style="color: #ffffff; margin-bottom: 12px;">Política de Privacidad</h4>
           <p>De conformidad con el Reglamento General de Protección de Datos (RGPD), los datos recopilados a través del formulario de contacto se utilizarán exclusivamente para responder a las consultas o solicitudes de presupuesto recibidas.</p>
-          <p>Los datos no se cederán a terceros salvo obligación legal. El usuario puede ejercer sus derechos de acceso, rectificación, supresión y oposición mediante correo electrónico a traza-analytics@hotmail.com.</p>
+          <p>Los datos no se cederán a terceros salvo obligación legal. El usuario puede ejercer sus derechos de acceso, rectificación, supresión y oposición mediante correo electrónico a nexusanalytics011@gmail.com.</p>
         </div>
 
         <div>
@@ -298,11 +265,14 @@
 
   <footer class="site-footer" style="background: #080b10;">
     <div class="container footer-inner">
-      <p>© 2026 Traza Analytics. Todos los derechos reservados. Contacto: <strong>traza-analytics@hotmail.com</strong></p>
+      <p>© 2026 Traza Analytics. Todos los derechos reservados. Ingeniería de Datos e IA.</p>
       <a href="#legales" class="muted-link">Información Legal & Privacidad</a>
     </div>
   </footer>
 
+  <!-- Scripts de GSAP integrados aquí -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
