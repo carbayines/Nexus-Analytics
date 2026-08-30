@@ -22,7 +22,7 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; font-size: 16px; }
-body { background-color: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-bottom: 80px; }
+body { background-color: var(--bg); color: var(--text); font-family: var(--font-body); line-height: 1.6; -webkit-font-smoothing: antialiased; padding-bottom: 80px; /* Espacio para el banner de cookies */ }
 .container { width: 90%; max-width: var(--max-width); margin: 0 auto; }
 
 /* Tipografía */
@@ -54,11 +54,12 @@ p { margin-bottom: 15px; color: var(--muted); }
 .btn-sm { padding: 8px 16px; font-size: 0.85rem; }
 .btn-full { width: 100%; text-align: center; }
 
-/* Topbar y Logo Traza */
+/* Topbar y Logo */
 .topbar { position: sticky; top: 0; z-index: 100; background-color: rgba(12, 16, 22, 0.88); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); padding: 15px 0; }
 .topbar-inner { display: flex; align-items: center; justify-content: space-between; }
-.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.brand-logo { height: 45px; width: auto; object-fit: contain; } /* Ajustado para el nuevo logo */
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: white; font-weight: 700; font-family: var(--font-display); }
+.brand-logo { height: 35px; width: auto; border-radius: 6px; }
+.brand-text { font-size: 1.15rem; letter-spacing: 0.5px; }
 
 .site-nav { display: flex; align-items: center; gap: 20px; }
 .site-nav a { color: var(--muted); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
@@ -79,10 +80,9 @@ p { margin-bottom: 15px; color: var(--muted); }
 .hero-subtitle { font-size: 1.25rem; margin-bottom: 40px; }
 .hero-actions { display: flex; gap: 15px; margin-bottom: 50px; }
 .hero-image-container { display: flex; justify-content: center; }
-/* Se añade clase para el video con los mismos estilos */
-.hero-image-main, .hero-video-main { width: 100%; height: auto; border-radius: var(--radius-xl); box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid var(--border-strong); }
+.hero-image-main { width: 100%; height: auto; border-radius: var(--radius-xl); box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid var(--border-strong); }
 
-/* Grids Comunes */
+/* Grids Comunes (Herramientas, Servicios, Stack) */
 .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
 .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 
@@ -100,7 +100,7 @@ p { margin-bottom: 15px; color: var(--muted); }
 .tool-tags { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
 .tool-tags span { background: rgba(0,212,177,0.1); color: var(--primary); font-size: 0.75rem; font-weight: 600; padding: 4px 10px; border-radius: 4px; }
 
-/* Tech Stack */
+/* Tech Stack (Iconos que brillan) */
 .stack-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px 60px; padding: 20px 0; }
 .stack-icon { height: 50px; width: auto; max-width: 140px; object-fit: contain; filter: grayscale(100%) opacity(0.7); transition: all 0.3s ease; }
 .stack-icon:hover { filter: grayscale(0%) opacity(1) drop-shadow(0 0 10px rgba(0, 212, 177, 0.5)); transform: scale(1.1); }
@@ -128,7 +128,7 @@ input[type="range"] { width: 100%; accent-color: var(--primary); }
 .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--primary); }
 .form-status { margin-top: 15px; font-size: 0.9rem; text-align: center; font-weight: 500; }
 
-/* Cookies Banner */
+/* Cookies Banner (Fijo abajo) */
 .cookie-banner { position: fixed; bottom: 0; left: 0; width: 100%; background: var(--surface-2); border-top: 1px solid var(--border-strong); padding: 20px 0; z-index: 1000; box-shadow: 0 -10px 30px rgba(0,0,0,0.5); display: none; }
 .cookie-banner.show { display: block; }
 .cookie-inner { display: flex; align-items: center; justify-content: space-between; gap: 30px; }
@@ -141,11 +141,11 @@ input[type="range"] { width: 100%; accent-color: var(--primary); }
 .muted-link { color: var(--muted); font-size: 0.8rem; text-decoration: none; }
 .muted-link:hover { color: var(--primary); }
 
-/* RESPONSIVE */
+/* RESPONSIVE (Mantenemos la optimización móvil) */
 @media (max-width: 1024px) {
   .hero-grid, .calculator-layout, .contact-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
   .hero-content { display: flex; flex-direction: column; align-items: center; }
-  .hero-image-container { display: none; }
+  .hero-image-container { display: none; } /* Ocultar imagen hero en tablet/móvil para mejorar velocidad */
   .hero-actions, .cookie-inner { justify-content: center; }
 }
 
